@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
+import com.papermoon.spaceapp.Screens.launchOverviewScreen
+import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentOverviewBinding
 import com.papermoon.spaceapp.features.overview.adapter.MarginItemDecoration
+import com.papermoon.spaceapp.features.overview.adapter.OnClickListener
 import com.papermoon.spaceapp.features.overview.adapter.OverviewAdapter
 import com.papermoon.spaceapp.features.overview.vm.OverviewViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,10 +26,13 @@ class OverviewFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = OverviewAdapter()
+        val adapter = OverviewAdapter(OnClickListener {
+            SpaceApp.INSTANCE.router.navigateTo(launchOverviewScreen())
+        })
+
         overviewViewModel.options.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }

@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.papermoon.spaceapp.databinding.OptionItemBinding
 import com.papermoon.spaceapp.domain.model.MenuOption
 
-class OverviewAdapter : ListAdapter<MenuOption, OverviewAdapter.OptionViewHolder>(DiffUtilCallback()) {
+class OverviewAdapter(
+    private val onClickListener: OnClickListener
+) :
+    ListAdapter<MenuOption, OverviewAdapter.OptionViewHolder>(DiffUtilCallback()) {
 
     class OptionViewHolder(private val binding: OptionItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -27,6 +30,9 @@ class OverviewAdapter : ListAdapter<MenuOption, OverviewAdapter.OptionViewHolder
 
     override fun onBindViewHolder(holder: OptionViewHolder, position: Int) {
         val item = currentList[position]
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(item)
+        }
         holder.bind(item)
     }
 
@@ -45,4 +51,8 @@ class DiffUtilCallback : DiffUtil.ItemCallback<MenuOption>() {
                 && oldItem.description == newItem.description
                 && oldItem.srcImageId == newItem.srcImageId
     }
+}
+
+class OnClickListener(val clickListener: (menuOption: MenuOption) -> Unit) {
+    fun onClick(menuOption: MenuOption) = clickListener(menuOption)
 }

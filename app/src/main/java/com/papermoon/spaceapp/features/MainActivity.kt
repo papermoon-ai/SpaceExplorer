@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ativity_layout)
 
-        SpaceApp.INSTANCE.router.replaceScreen(Screens.OverviewScreen())
+        SpaceApp.INSTANCE.router.replaceScreen(Screens.overviewScreen())
     }
 
     override fun onResume() {
