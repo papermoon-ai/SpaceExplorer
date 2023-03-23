@@ -26,7 +26,7 @@ class OverviewViewModel : ViewModel() {
                 "Explore who is in space right now",
                 R.drawable.ic_astronaut
             ),
-            MenuOption("Rockets",
+            MenuOption("Launches",
                 "Look what rockets are about to launch",
                 R.drawable.ic_rocket
             )
