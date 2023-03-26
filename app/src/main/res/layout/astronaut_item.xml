@@ -13,10 +13,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/relativeLayout"
+            android:id="@+id/relativeLayout2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,16 +24,17 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/launchItemImageView"
+                android:id="@+id/astronautItemImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_rocket" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ic_astronaut" />
 
             <ProgressBar
-                android:id="@+id/launchItemProgressBar"
+                android:id="@+id/astronautItemProgressBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
@@ -42,44 +43,39 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/launchItemNameTextView"
+            android:id="@+id/astronautItemNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:maxLines="1"
             android:textAppearance="@style/AppTheme.Text.Title.H4"
-            android:textColor="?attr/colorOnSurface"
-            app:layout_constrainedWidth="true"
+            android:textColor="?colorOnSurface"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/relativeLayout"
-            app:layout_constraintTop_toTopOf="@+id/relativeLayout"
-            tools:text="Falcon 9" />
+            app:layout_constraintStart_toEndOf="@+id/relativeLayout2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Thomas Pesquet" />
 
         <TextView
-            android:id="@+id/launchItemDateTextView"
+            android:id="@+id/astronautItemSpacecraftTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:textAppearance="@style/AppTheme.Text.Description.H3"
-            android:textColor="?attr/colorOnSurface"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/launchItemLocationTextView"
-            app:layout_constraintTop_toBottomOf="@+id/launchItemLocationTextView"
-            tools:text="01:25:11" />
+            android:textColor="?colorOnSurface"
+            app:layout_constraintStart_toStartOf="@+id/astronautItemNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/astronautItemNameTextView"
+            tools:text="Spacecraft: Orion" />
 
         <TextView
-            android:id="@+id/launchItemLocationTextView"
+            android:id="@+id/astronautItemNationalityTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:textAppearance="@style/AppTheme.Text.Description.H3"
-            android:textColor="?attr/colorOnSurface"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/launchItemNameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/launchItemNameTextView"
-            tools:text="California, USA" />
+            android:textColor="?colorOnSurfaceVariant"
+            app:layout_constraintStart_toStartOf="@+id/astronautItemSpacecraftTextView"
+            app:layout_constraintTop_toBottomOf="@+id/astronautItemSpacecraftTextView"
+            tools:text="Nationality: French" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

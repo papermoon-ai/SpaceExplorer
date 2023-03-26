@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.features.launch.vm
+package com.papermoon.spaceapp.features.launchOverview.vm
 
 import android.util.Log
 import androidx.lifecycle.LiveData

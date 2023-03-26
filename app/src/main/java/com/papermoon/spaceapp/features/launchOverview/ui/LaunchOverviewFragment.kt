@@ -1,15 +1,16 @@
-package com.papermoon.spaceapp.features.launch.ui
+package com.papermoon.spaceapp.features.launchOverview.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.papermoon.spaceapp.R
+import com.papermoon.spaceapp.Screens
+import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentLaunchOverviewBinding
-import com.papermoon.spaceapp.features.launch.adapter.LaunchOverviewAdapter
-import com.papermoon.spaceapp.features.launch.vm.LaunchOverviewViewModel
-import com.papermoon.spaceapp.features.overview.adapter.MarginItemDecoration
+import com.papermoon.spaceapp.features.launchOverview.adapter.LaunchOverviewAdapter
+import com.papermoon.spaceapp.features.launchOverview.adapter.OnClickListener
+import com.papermoon.spaceapp.features.launchOverview.vm.LaunchOverviewViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LaunchOverviewFragment : Fragment() {
@@ -27,15 +28,15 @@ class LaunchOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentLaunchOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = LaunchOverviewAdapter()
+        val adapter = LaunchOverviewAdapter(OnClickListener {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.launchScreen(it))
+        })
+
         launchViewModel.upcomingLaunches.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-        binding.launchesList.adapter = adapter
 
-        binding.launchesList.addItemDecoration(
-            MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.little_margin))
-        )
+        binding.launchesList.adapter = adapter
 
         return binding.root
     }

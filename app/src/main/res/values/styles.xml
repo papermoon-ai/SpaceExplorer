@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Texts -->
+    <style name="AppTheme.Text" />
+
+    <!-- Texts Title -->
+    <style name="AppTheme.Text.Title">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.H2">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.H3">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.H4">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Texts Description -->
+    <style name="AppTheme.Text.Description" />
+
+    <style name="AppTheme.Text.Description.H3">
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>
