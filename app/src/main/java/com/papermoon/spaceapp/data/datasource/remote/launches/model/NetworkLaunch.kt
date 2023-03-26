@@ -6,21 +6,28 @@ import com.papermoon.spaceapp.domain.model.Launch
 import org.joda.time.DateTime
 import java.util.*
 
-data class NetworkLaunchEntity(
+data class NetworkLaunch(
     val name: String,
-    val location: String,
     @SerializedName("window_end")
     val launchDate: Date,
-    @SerializedName("lsp_name")
     val launchServiceProvider: String,
     @SerializedName("image")
-    val imageUrl: String
+    val imageUrl: String,
+    val pad: NetworkPad,
+    val mission: NetworkMission
 )
 
-fun NetworkLaunchEntity.asDomainObject(): Launch {
-    return Launch(name, location, DateTime(launchDate), launchServiceProvider, Uri.parse(imageUrl))
+fun NetworkLaunch.asDomainObject(): Launch {
+    return Launch(
+        name,
+        DateTime(launchDate),
+        launchServiceProvider,
+        Uri.parse(imageUrl),
+        pad.asDomainObject(),
+        mission.asDomainObject()
+    )
 }
 
-fun List<NetworkLaunchEntity>.asDomainObject(): List<Launch> {
+fun List<NetworkLaunch>.asDomainObject(): List<Launch> {
     return this.map { it.asDomainObject() }
 }

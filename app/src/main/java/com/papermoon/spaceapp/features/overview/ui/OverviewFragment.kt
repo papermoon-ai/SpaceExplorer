@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
+import com.papermoon.spaceapp.Screens.astronautOverviewScreen
 import com.papermoon.spaceapp.Screens.launchOverviewScreen
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentOverviewBinding
@@ -30,7 +31,12 @@ class OverviewFragment : Fragment() {
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
         val adapter = OverviewAdapter(OnClickListener {
-            SpaceApp.INSTANCE.router.navigateTo(launchOverviewScreen())
+            when(it.name) {
+                "Launches" -> SpaceApp.INSTANCE.router.navigateTo(launchOverviewScreen())
+                "Astronauts" -> SpaceApp.INSTANCE.router.navigateTo(astronautOverviewScreen())
+            }
+            if (it.name == "Launches")
+                SpaceApp.INSTANCE.router.navigateTo(launchOverviewScreen())
         })
 
         overviewViewModel.options.observe(viewLifecycleOwner) {

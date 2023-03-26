@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.papermoon.spaceapp.R
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.google.android.material.elevation.SurfaceColors
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 
@@ -13,6 +14,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ativity_layout)
+
+        val color = SurfaceColors.SURFACE_1.getColor(this)
+        window.statusBarColor = color
 
         SpaceApp.INSTANCE.router.replaceScreen(Screens.overviewScreen())
     }
