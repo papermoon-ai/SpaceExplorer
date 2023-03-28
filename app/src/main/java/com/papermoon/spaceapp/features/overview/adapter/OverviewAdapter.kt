@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.papermoon.spaceapp.databinding.OptionItemBinding
+import com.papermoon.spaceapp.databinding.ItemOptionBinding
 import com.papermoon.spaceapp.domain.model.MenuOption
 
 class OverviewAdapter(
@@ -13,7 +13,7 @@ class OverviewAdapter(
 ) :
     ListAdapter<MenuOption, OverviewAdapter.OptionViewHolder>(DiffUtilCallback()) {
 
-    class OptionViewHolder(private val binding: OptionItemBinding) :
+    class OptionViewHolder(private val binding: ItemOptionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(menuOption: MenuOption) {
@@ -25,7 +25,7 @@ class OverviewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return OptionViewHolder(OptionItemBinding.inflate(inflater, parent, false))
+        return OptionViewHolder(ItemOptionBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: OptionViewHolder, position: Int) {

@@ -38,11 +38,11 @@ class AstronautFragment(
         binding.astronautCountryTextView.text = getString(R.string.country, astronaut.nationality)
         binding.astronautSpacecraftTextView.text = getString(R.string.spacecraft_name, astronaut.spacecraft)
         binding.astronautDateOfBirthTextView.text =
-            getString(R.string.date_of_birth, astronaut.dateOfBirth.toString("dd.mm.yyyy"))
+            getString(R.string.date_of_birth, astronaut.dateOfBirth.toString("dd.MM.yyyy"))
         binding.astronautFirstFlightTextView.text =
-            getString(R.string.first_flight_date, astronaut.firstFlight.toString("dd.mm.yyyy"))
+            getString(R.string.first_flight_date, astronaut.firstFlight.toString("dd.MM.yyyy"))
         binding.astronautLastFlightTextView.text =
-            getString(R.string.last_flight_date, astronaut.lastFlight.toString("dd.mm.yyyy"))
+            getString(R.string.last_flight_date, astronaut.lastFlight.toString("dd.MM.yyyy"))
         binding.astronautBioTextView.text = astronaut.bio
 
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)

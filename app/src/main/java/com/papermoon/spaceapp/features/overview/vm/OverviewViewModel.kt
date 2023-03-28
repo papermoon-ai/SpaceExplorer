@@ -18,7 +18,7 @@ class OverviewViewModel : ViewModel() {
                 "Explore real-time planet data",
                 R.drawable.ic_planet
             ),
-            MenuOption("ISS",
+            MenuOption("Space stations",
                 "Observe real-time data of Internation Space Station",
                 R.drawable.ic_space_station
             ),

@@ -17,8 +17,8 @@
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/base_image_width"
+            android:layout_height="@dimen/base_image_height"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -45,8 +45,8 @@
             android:id="@+id/launchItemNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/base_margin"
+            android:layout_marginTop="@dimen/base_margin"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="@style/AppTheme.Text.Title.H4"

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens.astronautOverviewScreen
 import com.papermoon.spaceapp.Screens.launchOverviewScreen
+import com.papermoon.spaceapp.Screens.spaceStationOverviewScreen
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentOverviewBinding
 import com.papermoon.spaceapp.features.MainActivity
@@ -35,6 +36,7 @@ class OverviewFragment : Fragment() {
             when(it.name) {
                 "Launches" -> SpaceApp.INSTANCE.router.navigateTo(launchOverviewScreen())
                 "Astronauts" -> SpaceApp.INSTANCE.router.navigateTo(astronautOverviewScreen())
+                "Space stations" -> SpaceApp.INSTANCE.router.navigateTo(spaceStationOverviewScreen())
             }
             if (it.name == "Launches")
                 SpaceApp.INSTANCE.router.navigateTo(launchOverviewScreen())
