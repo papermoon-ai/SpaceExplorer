@@ -8,6 +8,7 @@ import com.papermoon.spaceapp.features.astronautOverview.ui.AstronautOverviewFra
 import com.papermoon.spaceapp.features.launch.ui.LaunchFragment
 import com.papermoon.spaceapp.features.launchOverview.ui.LaunchOverviewFragment
 import com.papermoon.spaceapp.features.overview.ui.OverviewFragment
+import com.papermoon.spaceapp.features.spaceStationOverview.ui.SpaceStationOverviewFragment
 
 object Screens {
     fun overviewScreen() = FragmentScreen { OverviewFragment() }
@@ -15,4 +16,5 @@ object Screens {
     fun launchScreen(launch: Launch) = FragmentScreen { LaunchFragment(launch) }
     fun astronautOverviewScreen() = FragmentScreen { AstronautOverviewFragment() }
     fun astronautScreen(astronaut: Astronaut) = FragmentScreen { AstronautFragment(astronaut) }
+    fun spaceStationOverviewScreen() = FragmentScreen { SpaceStationOverviewFragment() }
 }

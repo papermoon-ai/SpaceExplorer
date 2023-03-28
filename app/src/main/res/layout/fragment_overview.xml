@@ -14,5 +14,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/option_item"/>
+        tools:listitem="@layout/item_option"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.papermoon.spaceapp.R
-import com.papermoon.spaceapp.databinding.AstronautItemBinding
+import com.papermoon.spaceapp.databinding.ItemAstronautBinding
 import com.papermoon.spaceapp.domain.model.Astronaut
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -17,10 +17,8 @@ class AstronautOverviewAdapter(
 ) :
     ListAdapter<Astronaut, AstronautOverviewAdapter.AstronautViewHolder>(DiffUtilCallback()) {
 
-    class AstronautViewHolder(private val binding: AstronautItemBinding) :
+    class AstronautViewHolder(private val binding: ItemAstronautBinding) :
         ViewHolder(binding.root) {
-        val astronautImageView = binding.astronautItemImageView
-        val astronautProgressBar = binding.astronautItemProgressBar
 
         fun bind(astronaut: Astronaut) {
             binding.astronautItemNameTextView.text = astronaut.name
@@ -29,34 +27,32 @@ class AstronautOverviewAdapter(
                 astronaut.spacecraft.ifEmpty { "-" }
             )
             binding.astronautItemNationalityTextView.text = astronaut.nationality
+
+            Picasso.get()
+                .load(astronaut.profileImage)
+                .resize(200, 200)
+                .centerCrop()
+                .into(binding.astronautItemImageView, object : Callback {
+                    override fun onSuccess() {
+                        binding.astronautItemProgressBar.visibility = View.GONE
+                    }
+
+                    override fun onError(e: Exception?) {
+                        binding.astronautItemProgressBar.visibility = View.GONE
+                        binding.astronautItemImageView.setImageResource(R.drawable.image_not_found_icon)
+                    }
+                })
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AstronautViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return AstronautViewHolder(AstronautItemBinding.inflate(inflater, parent, false))
+        return AstronautViewHolder(ItemAstronautBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: AstronautViewHolder, position: Int) {
         val item = currentList[position]
-
-        Picasso.get()
-            .load(item.profileImage)
-            .resize(200, 200)
-            .centerCrop()
-            .into(holder.astronautImageView, object : Callback {
-                override fun onSuccess() {
-                    holder.astronautProgressBar.visibility = View.GONE
-                }
-
-                override fun onError(e: Exception?) {
-                    holder.astronautProgressBar.visibility = View.GONE
-                    holder.astronautImageView.setImageResource(R.drawable.image_not_found_icon)
-                }
-            })
-
         holder.itemView.setOnClickListener { onClickListener(item) }
-
         holder.bind(item)
     }
 
@@ -65,7 +61,7 @@ class AstronautOverviewAdapter(
     }
 }
 
-class DiffUtilCallback() : DiffUtil.ItemCallback<Astronaut>() {
+class DiffUtilCallback : DiffUtil.ItemCallback<Astronaut>() {
     override fun areItemsTheSame(oldItem: Astronaut, newItem: Astronaut): Boolean {
         return oldItem == newItem
     }

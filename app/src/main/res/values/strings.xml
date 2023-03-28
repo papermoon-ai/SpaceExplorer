@@ -3,11 +3,16 @@
     <string name="launch_message">Launched!</string>
     <string name="open_in_browser">Open in browser</string>
 
+    <string name="active">Активно</string>
+    <string name="deactivated">Неактивно</string>
+
+    <string name="start_of_operation">Начало эксплуатации: %1$s</string>
+
     <string name="planets">Планеты</string>
     <string name="planets_option_description">Explore real-time planet data</string>
 
-    <string name="spacecrafts">Космические станции</string>
-    <string name="spacecrafts_option_description">Observe real-time data of International Space Station</string>
+    <string name="space_stations">Космические станции</string>
+    <string name="space_stations_option_description">Observe real-time data of International Space Station</string>
 
     <string name="astronauts">Космонавты</string>
     <string name="astronauts_option_description">Explore who is in space right now</string>
