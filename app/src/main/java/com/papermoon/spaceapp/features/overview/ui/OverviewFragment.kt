@@ -10,6 +10,7 @@ import com.papermoon.spaceapp.Screens.astronautOverviewScreen
 import com.papermoon.spaceapp.Screens.launchOverviewScreen
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentOverviewBinding
+import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.overview.adapter.MarginItemDecoration
 import com.papermoon.spaceapp.features.overview.adapter.OnClickListener
 import com.papermoon.spaceapp.features.overview.adapter.OverviewAdapter
@@ -49,7 +50,14 @@ class OverviewFragment : Fragment() {
             MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.little_margin))
         )
 
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity!!.title=getString(R.string.app_name)
     }
 
     override fun onDestroyView() {

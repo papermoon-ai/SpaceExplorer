@@ -14,7 +14,7 @@ data class NetworkLaunch(
     @SerializedName("image")
     val imageUrl: String,
     val pad: NetworkPad,
-    val mission: NetworkMission
+    val mission: NetworkMission?
 )
 
 fun NetworkLaunch.asDomainObject(): Launch {
@@ -24,7 +24,7 @@ fun NetworkLaunch.asDomainObject(): Launch {
         launchServiceProvider,
         Uri.parse(imageUrl),
         pad.asDomainObject(),
-        mission.asDomainObject()
+        mission?.asDomainObject()
     )
 }
 

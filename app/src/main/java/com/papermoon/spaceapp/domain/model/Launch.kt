@@ -9,5 +9,5 @@ data class Launch (
     val launchServiceProvider: String,
     val imageUrl: Uri,
     val pad: Pad,
-    val mission: Mission
+    val mission: Mission?
 )
