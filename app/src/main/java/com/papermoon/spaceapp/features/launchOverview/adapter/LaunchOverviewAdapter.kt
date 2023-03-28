@@ -104,8 +104,8 @@ class DiffUtilCallback : DiffUtil.ItemCallback<Launch>() {
                 && oldItem.pad.location == newItem.pad.location
                 && oldItem.pad.name == newItem.pad.name
                 && oldItem.launchDate == newItem.launchDate
-                && oldItem.mission.name == newItem.mission.name
-                && oldItem.mission.description == newItem.mission.description
+                && oldItem.mission?.name == newItem.mission?.name
+                && oldItem.mission?.description == newItem.mission?.description
     }
 }
 

@@ -2,14 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CardViewItemStyle"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/base_margin"
-    android:layout_marginTop="@dimen/base_margin"
-    android:layout_marginRight="@dimen/base_margin"
-    android:layout_marginBottom="@dimen/base_margin"
-    app:cardBackgroundColor="?colorSurfaceVariant"
-    app:cardCornerRadius="8dp">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,8 +12,8 @@
 
         <RelativeLayout
             android:id="@+id/relativeLayout2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/base_image_width"
+            android:layout_height="@dimen/base_image_height"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -30,7 +25,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_astronaut" />
 
             <ProgressBar
@@ -44,14 +38,13 @@
 
         <TextView
             android:id="@+id/astronautItemNameTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/base_margin"
+            android:layout_marginTop="@dimen/base_margin"
             android:textAppearance="@style/AppTheme.Text.Title.H4"
             android:textColor="?colorOnSurface"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/relativeLayout2"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Thomas Pesquet" />
@@ -60,22 +53,22 @@
             android:id="@+id/astronautItemSpacecraftTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/base_margin"
             android:textAppearance="@style/AppTheme.Text.Description.H3"
             android:textColor="?colorOnSurface"
             app:layout_constraintStart_toStartOf="@+id/astronautItemNameTextView"
             app:layout_constraintTop_toBottomOf="@+id/astronautItemNameTextView"
-            tools:text="Spacecraft: Orion" />
+            tools:text="Станция: Orion" />
 
         <TextView
             android:id="@+id/astronautItemNationalityTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/base_margin"
             android:textAppearance="@style/AppTheme.Text.Description.H3"
             android:textColor="?colorOnSurfaceVariant"
             app:layout_constraintStart_toStartOf="@+id/astronautItemSpacecraftTextView"
             app:layout_constraintTop_toBottomOf="@+id/astronautItemSpacecraftTextView"
-            tools:text="Nationality: French" />
+            tools:text="Страна: French" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

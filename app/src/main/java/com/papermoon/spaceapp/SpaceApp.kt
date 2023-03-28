@@ -1,10 +1,10 @@
 package com.papermoon.spaceapp
 
 import android.app.Application
-import com.papermoon.spaceapp.di.appModule
 import com.github.terrakok.cicerone.Cicerone
 import com.papermoon.spaceapp.data.datasource.di.repositoryModule
 import com.papermoon.spaceapp.data.datasource.remote.di.networkModule
+import com.papermoon.spaceapp.di.appModule
 import com.papermoon.spaceapp.domain.usecase.di.useCaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

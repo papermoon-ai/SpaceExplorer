@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentLaunchOverviewBinding
+import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.launchOverview.adapter.LaunchOverviewAdapter
 import com.papermoon.spaceapp.features.launchOverview.adapter.OnClickListener
 import com.papermoon.spaceapp.features.launchOverview.vm.LaunchOverviewViewModel
@@ -38,7 +40,14 @@ class LaunchOverviewFragment : Fragment() {
 
         binding.launchesList.adapter = adapter
 
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity!!.title = getString(R.string.orbital_launches)
     }
 
     override fun onDestroyView() {

@@ -11,9 +11,10 @@ import com.papermoon.spaceapp.databinding.AstronautItemBinding
 import com.papermoon.spaceapp.domain.model.Astronaut
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import java.lang.Exception
 
-class AstronautOverviewAdapter :
+class AstronautOverviewAdapter(
+    private val onClickListener: (Astronaut) -> Unit
+) :
     ListAdapter<Astronaut, AstronautOverviewAdapter.AstronautViewHolder>(DiffUtilCallback()) {
 
     class AstronautViewHolder(private val binding: AstronautItemBinding) :
@@ -53,6 +54,8 @@ class AstronautOverviewAdapter :
                     holder.astronautImageView.setImageResource(R.drawable.image_not_found_icon)
                 }
             })
+
+        holder.itemView.setOnClickListener { onClickListener(item) }
 
         holder.bind(item)
     }
