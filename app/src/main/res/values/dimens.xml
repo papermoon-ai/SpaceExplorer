@@ -5,13 +5,21 @@
     <dimen name="little_margin">4dp</dimen>
     <dimen name="big_margin">16dp</dimen>
 
-    <!-- Margin -->
+    <!-- Padding -->
     <dimen name="base_padding">8dp</dimen>
+    <dimen name="image_button_padding">10dp</dimen>
 
     <!-- Elevation -->
     <dimen name="base_elevation">4dp</dimen>
 
+    <!-- CardView corner radius -->
+    <dimen name="base_card_view_corner_radius">8dp</dimen>
+    <dimen name="big_card_view_corner_radius">32dp</dimen>
+
     <!-- ImageSize -->
+    <dimen name="small_image_width">30dp</dimen>
+    <dimen name="small_image_height">30dp</dimen>
+
     <dimen name="base_image_width">100dp</dimen>
     <dimen name="base_image_height">100dp</dimen>
 
@@ -20,4 +28,6 @@
 
     <dimen name="big_image_width">300dp</dimen>
     <dimen name="big_image_height">300dp</dimen>
+    <dimen name="base_image_button_height">48dp</dimen>
+    <dimen name="base_image_button_width">48dp</dimen>
 </resources>

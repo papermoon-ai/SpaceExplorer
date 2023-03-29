@@ -5,156 +5,360 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/launchImageView"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/big_image_height"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/rocket_image" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/launchImageView">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/launchInfoCardView"
-                style="@style/CardViewStyle"
+            <ImageView
+                android:id="@+id/launchImageView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/big_image_height"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/launchImageView">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/rocket_image" />
+
+            <androidx.cardview.widget.CardView
+                style="@style/CardViewStyleV2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/rocketIconImageView"
+                        android:layout_width="@dimen/small_image_width"
+                        android:layout_height="@dimen/small_image_height"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:src="@drawable/ic_rocket"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/launchNameTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:text="@string/launch_name_title"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rocketIconImageView"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/launchNameTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/AppTheme.Text.Title.H2"
+                        android:layout_marginTop="@dimen/little_margin"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/launchNameTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/launchNameTitle"
                         tools:text="Falcon 9" />
 
-                    <TextView
-                        android:id="@+id/launchDateTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?colorOnSurface"
-                        android:layout_marginTop="@dimen/base_margin"
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/CardViewStyleV2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/groupIconImageView"
+                        android:layout_width="@dimen/small_image_width"
+                        android:layout_height="@dimen/small_image_height"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:src="@drawable/ic_group"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/launchServiceProviderTextView"
-                        tools:text="Дата запуска: 23.05.2023" />
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/agencyTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/organization_title"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/groupIconImageView"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/launchServiceProviderTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/AppTheme.Text.Subtext.H3"
+                        android:layout_marginTop="@dimen/little_margin"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/launchNameTextView"
+                        app:layout_constraintStart_toStartOf="@+id/agencyTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/agencyTitle"
                         tools:text="SpaceX" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/launchPadInfoCardView"
-                style="@style/CardViewStyle"
+                style="@style/CardViewStyleV2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/launchInfoCardView">
+                android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/launch_pad_location_text_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Место запуска: Калифорния, США" />
-
-                    <TextView
-                        android:id="@+id/launch_pad_name_text_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/base_margin"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?colorOnSurface"
+                    <ImageView
+                        android:id="@+id/calendarIconImageView"
+                        android:layout_width="@dimen/small_image_width"
+                        android:layout_height="@dimen/small_image_height"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:src="@drawable/ic_calendar"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/launch_pad_location_text_view"
-                        tools:text="Стартовый комплекс: Space Launch Complex 4E" />
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/launchDateTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/launch_date_title"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/calendarIconImageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/launchDateTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/little_margin"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/launchDateTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/launchDateTitle"
+                        tools:text="15.12.2023" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyle"
+                style="@style/CardViewStyleV2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/launchPadInfoCardView"
-                app:layout_constraintVertical_bias="0">
+                android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/worldIconImageView"
+                        android:layout_width="@dimen/small_image_width"
+                        android:layout_height="@dimen/small_image_height"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:src="@drawable/ic_world"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/launchLocationTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:text="@string/location"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toStartOf="@+id/launchOpenMapImageButton"
+                        app:layout_constraintStart_toEndOf="@+id/worldIconImageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/launchPadLocationTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/little_margin"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toStartOf="@+id/launchOpenMapImageButton"
+                        app:layout_constraintStart_toStartOf="@+id/launchLocationTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/launchLocationTitle"
+                        tools:text="Plesetsk Cosmodrome, Russian Federation, 43/4 (43R)" />
+
+                    <ImageButton
+                        android:id="@+id/launchOpenMapImageButton"
+                        style="@style/RoundImageButton"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:src="@drawable/ic_location"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/CardViewStyleV2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/spaceportIconImageView"
+                        android:layout_width="@dimen/small_image_width"
+                        android:layout_height="@dimen/small_image_height"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:src="@drawable/ic_flag"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/launchPadNameTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:text="@string/pad_location_title"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toStartOf="@+id/launchOpenInWebImageButton"
+                        app:layout_constraintStart_toEndOf="@+id/spaceportIconImageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/launchPadNameTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/little_margin"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toStartOf="@+id/launchOpenInWebImageButton"
+                        app:layout_constraintStart_toStartOf="@+id/launchPadNameTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/launchPadNameTitle"
+                        tools:text="43/4 (43R)" />
+
+                    <ImageButton
+                        android:id="@+id/launchOpenInWebImageButton"
+                        style="@style/RoundImageButton"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:src="@drawable/ic_wikipedia"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/CardViewStyleV2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/descriptionIconImageView"
+                        android:layout_width="@dimen/small_image_width"
+                        android:layout_height="@dimen/small_image_height"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:src="@drawable/ic_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/missionTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/mission_title"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/descriptionIconImageView"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/launchMissionNameTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?attr/colorOnSurface"
+                        android:layout_marginTop="@dimen/little_margin"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/missionTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/missionTitle"
+                        tools:text="Mission name" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/CardViewStyleV2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/descriptionTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:text="@string/description_title"
+                        android:textAppearance="@style/AppTheme.Text.Title.H3"
+                        android:textColor="?colorOnSurface"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Миссия: Starlink Group 6-2" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/launchMissionDescriptionTextView"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/big_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?attr/colorOnSurface"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textColor="?colorOnSurface"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/launchMissionNameTextView"
+                        app:layout_constraintStart_toStartOf="@+id/descriptionTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/descriptionTitle"
                         tools:text="A batch of satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system." />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

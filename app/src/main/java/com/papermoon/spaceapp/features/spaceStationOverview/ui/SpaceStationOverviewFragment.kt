@@ -9,6 +9,7 @@ import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentSpaceStationOverviewBinding
+import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.spaceStationOverview.adapter.SpaceStationAdapter
 import com.papermoon.spaceapp.features.spaceStationOverview.vm.SpaceStationOverviewViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,6 +36,8 @@ class SpaceStationOverviewFragment : Fragment() {
             adapter.submitList(it)
         }
         binding.spaceStationList.adapter = adapter
+
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         return binding.root
     }

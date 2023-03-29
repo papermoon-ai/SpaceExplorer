@@ -3,8 +3,6 @@ package com.papermoon.spaceapp.features.launch.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -34,31 +32,32 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
 
         binding.launchNameTextView.text = launch.name
         binding.launchServiceProviderTextView.text = launch.launchServiceProvider
-        binding.launchDateTextView.text = getString(R.string.launch_date, launch.launchDate.toString("dd.MM.yyyy hh:mm:ss"))
-        binding.launchPadNameTextView.text = getString(R.string.pad_name, launch.pad.name)
-        binding.launchPadLocationTextView.text = getString(R.string.pad_location, launch.pad.location)
-        binding.launchMissionNameTextView.text = getString(
-            R.string.mission_name,
-            (launch.mission?.name ?: "-")
-        )
+        binding.launchDateTextView.text = launch.launchDate.toString("dd.MM.yyyy hh:mm:ss")
+        binding.launchPadLocationTextView.text = launch.pad.location
+        binding.launchPadNameTextView.text = launch.pad.name
+        binding.launchMissionNameTextView.text = launch.mission?.name ?: "-"
         binding.launchMissionDescriptionTextView.text = (launch.mission?.description ?: "-")
 
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        setHasOptionsMenu(true)
+        if (launch.pad.wikiUrl.toString().isNotEmpty()) {
+            binding.launchOpenInWebImageButton.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, launch.pad.wikiUrl)
+                startActivity(intent)
+            }
+        } else {
+            binding.launchOpenInWebImageButton.visibility = View.GONE
+        }
+        if (launch.pad.mapUrl.toString().isNotEmpty()) {
+            binding.launchOpenMapImageButton.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, launch.pad.mapUrl)
+                startActivity(intent)
+            }
+        } else {
+            binding.launchOpenMapImageButton.visibility = View.GONE
+        }
 
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.launch_menu, menu)
-
-        if (launch.pad.wikiUrl.toString().isEmpty())
-            menu.findItem(R.id.action_open_pad_wiki).isVisible = false
-        if (launch.pad.mapUrl.toString().isEmpty())
-            menu.findItem(R.id.action_open_map).isVisible = false
-
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

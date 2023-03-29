@@ -37,4 +37,11 @@
     <string name="date_of_birth">Дата рождения: %1$s</string>
     <string name="first_flight_date">Первый полет: %1$s</string>
     <string name="last_flight_date">Крайний полет: %1$s</string>
+    <string name="launch_name_title">Название</string>
+    <string name="launch_date_title">Дата запуска</string>
+    <string name="pad_location_title">Стартовый комплекс</string>
+    <string name="organization_title">Корпорация</string>
+    <string name="mission_title">Миссия</string>
+    <string name="description_title">Описание</string>
+    <string name="location">Местоположение</string>
 </resources>

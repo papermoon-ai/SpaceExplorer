@@ -40,7 +40,7 @@ class SpaceStationAdapter(
 
                     override fun onError(e: Exception?) {
                         binding.spaceStationItemProgressBar.visibility = View.GONE
-                        binding.spaceStationItemImageView.setImageResource(R.drawable.image_not_found_icon)
+                        binding.spaceStationItemImageView.setImageResource(R.drawable.ic_image_not_found)
                     }
                 })
         }

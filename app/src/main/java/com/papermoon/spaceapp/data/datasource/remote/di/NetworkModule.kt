@@ -3,6 +3,7 @@ package com.papermoon.spaceapp.data.datasource.remote.di
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.papermoon.spaceapp.BuildConfig
 import com.papermoon.spaceapp.data.datasource.remote.astronaut.di.networkAstronautModule
+import com.papermoon.spaceapp.data.datasource.remote.celestialBody.di.networkCelestialBodyModule
 import com.papermoon.spaceapp.data.datasource.remote.launches.di.networkLaunchModule
 import com.papermoon.spaceapp.data.datasource.remote.spacestation.di.networkSpaceStationModule
 import okhttp3.Interceptor
@@ -16,7 +17,12 @@ val networkModule = module {
     single { provideRetrofit(get()) }
     single { provideOkHttpClient(get()) }
     single { provideLoggingInterceptor() }
-    includes(networkLaunchModule, networkAstronautModule, networkSpaceStationModule)
+    includes(
+        networkLaunchModule,
+        networkAstronautModule,
+        networkSpaceStationModule,
+        networkCelestialBodyModule
+    )
 }
 
 fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {

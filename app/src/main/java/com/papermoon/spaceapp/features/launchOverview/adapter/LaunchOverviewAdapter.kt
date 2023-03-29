@@ -35,7 +35,11 @@ class LaunchOverviewAdapter(
 
             Picasso.get()
                 .load(launch.imageUrl)
-                .fit()
+                .resize(
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_width).toInt(),
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_height).toInt()
+                )
+                .centerCrop()
                 .into(launchImageView, object : Callback {
                     override fun onSuccess() {
                         progressBar.visibility = View.GONE
@@ -43,7 +47,7 @@ class LaunchOverviewAdapter(
 
                     override fun onError(e: Exception?) {
                         progressBar.visibility = View.GONE
-                        launchImageView.setImageResource(R.drawable.image_not_found_icon)
+                        launchImageView.setImageResource(R.drawable.ic_image_not_found)
                     }
                 })
 
