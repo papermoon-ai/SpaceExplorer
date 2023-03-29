@@ -31,6 +31,10 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="AppTheme.Text.Description.H3.Bold" parent="AppTheme.Text.Description.H3">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- Texts Subtext -->
     <style name="AppTheme.Text.Subtext">
         <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
@@ -51,11 +55,30 @@
         <item name="android:layout_marginEnd">@dimen/base_margin</item>
         <item name="contentPadding">@dimen/base_padding</item>
         <item name="cardBackgroundColor">?colorSurfaceVariant</item>
-        <item name="android:elevation">4dp</item>
-        <item name="cardCornerRadius">@dimen/base_margin</item>
+        <item name="android:elevation">@dimen/base_elevation</item>
+        <item name="cardCornerRadius">@dimen/base_card_view_corner_radius</item>
     </style>
 
     <style name="CardViewItemStyle" parent="CardViewStyle">
         <item name="contentPadding">0dp</item>
+    </style>
+
+    <style name="CardViewStyleV2" parent="CardView">
+        <item name="android:layout_marginStart">@dimen/base_margin</item>
+        <item name="android:layout_marginTop">@dimen/big_margin</item>
+        <item name="android:layout_marginEnd">@dimen/base_margin</item>
+        <item name="contentPadding">@dimen/base_padding</item>
+        <item name="cardBackgroundColor">?colorSurface</item>
+        <item name="android:elevation">@dimen/base_elevation</item>
+        <item name="cardCornerRadius">@dimen/big_card_view_corner_radius</item>
+    </style>
+
+    <!-- ImageButton -->
+    <style name="RoundImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">@dimen/base_image_button_width</item>
+        <item name="android:layout_height">@dimen/base_image_button_height</item>
+        <item name="android:background">@drawable/rounded_button</item>
+        <item name="android:padding">@dimen/image_button_padding</item>
+        <item name="android:scaleType">fitCenter</item>
     </style>
 </resources>

@@ -30,7 +30,10 @@ class AstronautOverviewAdapter(
 
             Picasso.get()
                 .load(astronaut.profileImage)
-                .resize(200, 200)
+                .resize(
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_width).toInt(),
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_height).toInt()
+                )
                 .centerCrop()
                 .into(binding.astronautItemImageView, object : Callback {
                     override fun onSuccess() {
@@ -39,7 +42,7 @@ class AstronautOverviewAdapter(
 
                     override fun onError(e: Exception?) {
                         binding.astronautItemProgressBar.visibility = View.GONE
-                        binding.astronautItemImageView.setImageResource(R.drawable.image_not_found_icon)
+                        binding.astronautItemImageView.setImageResource(R.drawable.ic_image_not_found)
                     }
                 })
         }

@@ -5,10 +5,10 @@
         android:id="@+id/action_open_map"
         android:title="@string/open_in_browser"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/open_in_map_icon"/>
+        android:icon="@drawable/ic_open_in_map"/>
     <item
         android:id="@+id/action_open_pad_wiki"
         android:title="@string/open_in_browser"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/open_in_browser_icon"/>
+        android:icon="@drawable/ic_open_in_web"/>
 </menu>
