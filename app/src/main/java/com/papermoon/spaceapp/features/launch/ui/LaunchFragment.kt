@@ -3,11 +3,9 @@ package com.papermoon.spaceapp.features.launch.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.databinding.FragmentLaunchBinding
 import com.papermoon.spaceapp.domain.model.Launch
 import com.papermoon.spaceapp.features.MainActivity
@@ -58,20 +56,6 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         }
 
         return binding.root
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_open_pad_wiki -> {
-                val intent = Intent(Intent.ACTION_VIEW, launch.pad.wikiUrl)
-                startActivity(intent)
-            }
-            R.id.action_open_map -> {
-                val intent = Intent(Intent.ACTION_VIEW, launch.pad.mapUrl)
-                startActivity(intent)
-            }
-        }
-        return true
     }
 
     override fun onResume() {
