@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
+import com.papermoon.spaceapp.Screens
+import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentSpaceStationOverviewBinding
 import com.papermoon.spaceapp.features.spaceStationOverview.adapter.SpaceStationAdapter
 import com.papermoon.spaceapp.features.spaceStationOverview.vm.SpaceStationOverviewViewModel
@@ -26,7 +28,9 @@ class SpaceStationOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentSpaceStationOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = SpaceStationAdapter()
+        val adapter = SpaceStationAdapter() {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.spaceStationScreen(it))
+        }
         spaceStationOverviewViewModel.spaceStationsList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
