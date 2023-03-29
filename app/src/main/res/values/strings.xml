@@ -6,6 +6,9 @@
     <string name="active">Активно</string>
     <string name="deactivated">Неактивно</string>
 
+    <string name="status_active">Статус: активно</string>
+    <string name="status_deactivated">Статус: неактивно</string>
+
     <string name="start_of_operation">Начало эксплуатации: %1$s</string>
 
     <string name="planets">Планеты</string>
@@ -21,7 +24,7 @@
     <string name="orbital_launches_option_description">Look what rockets are about to launch</string>
 
     <!-- Spacecraft -->
-    <string name="spacecraft_name">Станция: %1$s</string>
+    <string name="spacecraft_name">Аппарат: %1$s</string>
 
     <!-- Launch -->
     <string name="launch_date">Дата: %1$s</string>

@@ -13,7 +13,9 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
-class SpaceStationAdapter :
+class SpaceStationAdapter(
+    private val onClickListener: (SpaceStation) -> Unit
+) :
     ListAdapter<SpaceStation, SpaceStationAdapter.SpaceStationViewHolder>(DiffUtilCallback()) {
 
     class SpaceStationViewHolder(private val binding: ItemSpaceStationBinding) :
@@ -51,6 +53,9 @@ class SpaceStationAdapter :
 
     override fun onBindViewHolder(holder: SpaceStationViewHolder, position: Int) {
         val item = currentList[position]
+        holder.itemView.setOnClickListener {
+            onClickListener(item)
+        }
         holder.bind(item)
     }
 
