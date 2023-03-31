@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.databinding.FragmentLaunchBinding
 import com.papermoon.spaceapp.domain.model.Launch
 import com.papermoon.spaceapp.features.MainActivity
@@ -26,41 +27,43 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         Picasso.get()
             .load(launch.imageUrl)
             .fit()
-            .into(binding.launchImageView)
+            .into(binding.imgLaunch)
 
-        binding.launchNameTextView.text = launch.name
-        binding.launchServiceProviderTextView.text = launch.launchServiceProvider
-        binding.launchDateTextView.text = launch.launchDate.toString("dd.MM.yyyy hh:mm:ss")
-        binding.launchPadLocationTextView.text = launch.pad.location
-        binding.launchPadNameTextView.text = launch.pad.name
-        binding.launchMissionNameTextView.text = launch.mission?.name ?: "-"
-        binding.launchMissionDescriptionTextView.text = (launch.mission?.description ?: "-")
+        binding.tvLaunchName.text = launch.name
+        binding.tvLaunchAgency.text = launch.launchServiceProvider
+        binding.tvLaunchDate.text = launch.launchDate.toString("dd.MM.yyyy hh:mm:ss")
+        binding.tvLaunchLocation.text = launch.pad.location
+        binding.tvLaunchPadName.text = launch.pad.name
+        binding.tvLaunchMission.text = launch.mission?.name ?: "-"
+        binding.tvLaunchDescription.text = (launch.mission?.description ?: "-")
 
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         if (launch.pad.wikiUrl.toString().isNotEmpty()) {
-            binding.launchOpenInWebImageButton.setOnClickListener {
+            binding.btnLaunchOpenWeb.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, launch.pad.wikiUrl)
                 startActivity(intent)
             }
         } else {
-            binding.launchOpenInWebImageButton.visibility = View.GONE
+            binding.btnLaunchOpenWeb.visibility = View.GONE
         }
         if (launch.pad.mapUrl.toString().isNotEmpty()) {
-            binding.launchOpenMapImageButton.setOnClickListener {
+            binding.btnLaunchOpenMap.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, launch.pad.mapUrl)
                 startActivity(intent)
             }
         } else {
-            binding.launchOpenMapImageButton.visibility = View.GONE
+            binding.btnLaunchOpenMap.visibility = View.GONE
         }
+
+        (activity as MainActivity).supportActionBar?.themedContext?.setTheme(R.style.TransparentAppBar)
 
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        activity!!.title = launch.name
+        activity!!.title = ""
     }
 
     override fun onDestroyView() {

@@ -1,97 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/spaceStationImageView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/big_image_height"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_space_station" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spaceStationImageView">
-
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imgSpaceStation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="@dimen/big_image_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_space_station" />
 
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewStyle"
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/spaceStationNameTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/AppTheme.Text.Title.H3"
-                        android:textColor="?colorOnSurface"
-                        tools:text="International Space Station" />
-
-                    <TextView
-                        android:id="@+id/spaceStationFoundedTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/base_margin"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?colorOnSurface"
-                        tools:text="Начало эксплуатации: 01.02.1998" />
-
-                    <TextView
-                        android:id="@+id/spaceStationStatusTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/base_margin"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?colorOnSurface"
-                        tools:text="Статус: активно" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imgStationNameIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_space_station"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/spaceStationOwnersTextView"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvStationNameLabel"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_date_of_operation"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toStartOf="@+id/btnStationOpenInWeb"
+                    app:layout_constraintStart_toEndOf="@+id/imgStationNameIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvStationName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toStartOf="@+id/btnStationOpenInWeb"
+                    app:layout_constraintStart_toStartOf="@+id/tvStationNameLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStationNameLabel"
+                    tools:text="International Space Station" />
+
+                <ImageButton
+                    android:id="@+id/btnStationOpenInWeb"
+                    style="@style/RoundImageButton"
+                    android:layout_width="@dimen/base_image_button_width"
+                    android:layout_height="@dimen/base_image_button_height"
+                    android:src="@drawable/ic_wikipedia"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgStationDateOfOperationIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_calendar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvStationDateOfOperationLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_date_of_operation"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgStationDateOfOperationIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvStationDateOfOperation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvStationDateOfOperationLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStationDateOfOperationLabel"
+                    tools:text="31.03.2023" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgStationStatusIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_info"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvStationStatusLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_status"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgStationStatusIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvStationStatusLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStationStatusLabel"
+                    tools:text="Активно" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgStationOwnersIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_group"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvStationOwnersLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_owners"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgStationOwnersIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvStationOwners"
+                    style="@style/AppTheme.Text.Description.H3.Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvStationOwnersLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStationOwnersLabel"
                     tools:text="CES" />
-            </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewStyle"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/spaceStationDescriptionTextView"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvStationDescriptionLabel"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_description"
+                    android:textAppearance="@style/AppTheme.Text.Title.H3"
                     android:textColor="?colorOnSurface"
-                    tools:text="Description" />
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tvDescription"
+                    style="@style/AppTheme.Text.Description.H3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvStationDescriptionLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStationDescriptionLabel"
+                    tools:text="Some info" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

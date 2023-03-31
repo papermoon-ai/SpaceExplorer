@@ -34,7 +34,7 @@ class OverviewFragment : Fragment() {
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
         val adapter = OverviewAdapter(OnClickListener {
-            when(it.name) {
+            when (it.name) {
                 "Launches" -> SpaceApp.INSTANCE.router.navigateTo(launchOverviewScreen())
                 "Astronauts" -> SpaceApp.INSTANCE.router.navigateTo(astronautOverviewScreen())
                 "Space stations" -> SpaceApp.INSTANCE.router.navigateTo(spaceStationOverviewScreen())
@@ -61,7 +61,7 @@ class OverviewFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        activity!!.title=getString(R.string.app_name)
+        activity!!.title = getString(R.string.app_name)
     }
 
     override fun onDestroyView() {

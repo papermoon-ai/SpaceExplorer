@@ -1,5 +1,6 @@
 package com.papermoon.spaceapp.features.spaceStation.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,20 +29,36 @@ class SpaceStationFragment(
         Picasso.get()
             .load(spaceStation.imageUrl)
             .fit()
-            .into(binding.spaceStationImageView)
+            .into(binding.imgSpaceStation)
 
-        binding.spaceStationNameTextView.text = spaceStation.name
-        binding.spaceStationFoundedTextView.text =
-            getString(R.string.start_of_operation, spaceStation.founded.toString("dd.MM.yyyy"))
-        binding.spaceStationStatusTextView.text =
-            if (spaceStation.isActive)
-                getString(R.string.status_active)
-            else
-                getString(R.string.status_deactivated)
-        binding.spaceStationOwnersTextView.text = spaceStation.owners.joinToString()
-        binding.spaceStationDescriptionTextView.text = spaceStation.description
+        with(spaceStation) {
+            binding.tvStationName.text = name
+            binding.tvStationDateOfOperation.text = founded.toString("dd.MM.yyyy")
+            binding.tvStationOwners.text = owners.joinToString("\n")
+            binding.tvDescription.text = description
+
+            binding.tvStatus.text =
+                if (spaceStation.isActive)
+                    getString(R.string.label_active)
+                else
+                    getString(R.string.label_deactivated)
+        }
+
+        if (spaceStation.wikiUrl != null) {
+            binding.btnStationOpenInWeb.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, spaceStation.wikiUrl)
+                startActivity(intent)
+            }
+        } else {
+            binding.btnStationOpenInWeb.visibility = View.GONE
+        }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity!!.title = ""
     }
 
     override fun onDestroyView() {

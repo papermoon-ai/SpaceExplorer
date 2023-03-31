@@ -1,6 +1,6 @@
 package com.papermoon.spaceapp.data.datasource.remote.astronaut.model
 
-import android.net.Uri
+import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
 import com.papermoon.spaceapp.domain.model.Astronaut
 import org.joda.time.DateTime
@@ -28,10 +28,10 @@ fun NetworkAstronaut.asDomainObject(): Astronaut {
         name,
         spacecraft,
         DateTime(dateOfBirth),
-        if (profileImage != null) Uri.parse(profileImage) else null,
+        profileImage?.toUri(),
         bio,
         nationality,
-        if (wikiUrl != null) Uri.parse(wikiUrl) else null,
+        wikiUrl?.toUri(),
         DateTime(firstFlight),
         DateTime(lastFlight)
     )

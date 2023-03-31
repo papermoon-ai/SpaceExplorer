@@ -11,7 +11,6 @@ import com.papermoon.spaceapp.databinding.ItemCelestialBodyBinding
 import com.papermoon.spaceapp.domain.model.CelestialBody
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import java.lang.Exception
 
 class CelestialBodyAdapter :
     ListAdapter<CelestialBody, CelestialBodyAdapter.CelestialBodyViewHolder>(DiffUtilCallback()) {

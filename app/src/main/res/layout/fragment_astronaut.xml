@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/astronautImageView"
+            android:id="@+id/imgAstronaut"
             android:layout_width="@dimen/base_photo_image_width"
             android:layout_height="@dimen/base_photo_image_height"
             android:layout_gravity="center"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/userIconImageView"
+                    android:id="@+id/imgAstronautUserIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -41,34 +41,34 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/astronautNameTitle"
+                    android:id="@+id/tvAstronautNameLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/big_margin"
                     android:layout_marginTop="@dimen/base_margin"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/name_surname"
+                    android:text="@string/label_name_surname"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintEnd_toStartOf="@+id/astronautOpenWikiImageButton"
-                    app:layout_constraintStart_toEndOf="@+id/userIconImageView"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAstronautOpenWeb"
+                    app:layout_constraintStart_toEndOf="@+id/imgAstronautUserIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/astronautNameTextView"
+                    android:id="@+id/tvAstronautName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintEnd_toStartOf="@+id/astronautOpenWikiImageButton"
-                    app:layout_constraintStart_toStartOf="@+id/astronautNameTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/astronautNameTitle"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAstronautOpenWeb"
+                    app:layout_constraintStart_toStartOf="@+id/tvAstronautNameLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAstronautNameLabel"
                     tools:text="Sergey Prokopyev" />
 
                 <ImageButton
-                    android:id="@+id/astronautOpenWikiImageButton"
+                    android:id="@+id/btnAstronautOpenWeb"
                     style="@style/RoundImageButton"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:src="@drawable/ic_wikipedia"
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/calendarIconImageView"
+                    android:id="@+id/imgAstronautCalendarIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -101,21 +101,21 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/launchNameTitle"
+                    android:id="@+id/tvAstronautLaunchNameLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/big_margin"
                     android:layout_marginTop="@dimen/base_margin"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/date_of_birth"
+                    android:text="@string/label_date_of_birth"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/calendarIconImageView"
+                    app:layout_constraintStart_toEndOf="@+id/imgAstronautCalendarIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/astronautDateOfBirthTextView"
+                    android:id="@+id/tvAstronautDateOfBirth"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
@@ -123,8 +123,8 @@
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/launchNameTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/launchNameTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvAstronautLaunchNameLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAstronautLaunchNameLabel"
                     tools:text="01.01.1975" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/flagIconImageView"
+                    android:id="@+id/imgAstronautCountryIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -151,21 +151,21 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/astronautCountryTitle"
+                    android:id="@+id/tvAstronautCountryLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/big_margin"
                     android:layout_marginTop="@dimen/base_margin"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/country"
+                    android:text="@string/label_country"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/flagIconImageView"
+                    app:layout_constraintStart_toEndOf="@+id/imgAstronautCountryIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/astronautCountryTextView"
+                    android:id="@+id/tvAstronautCountry"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
@@ -173,8 +173,8 @@
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/astronautCountryTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/astronautCountryTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvAstronautCountryLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAstronautCountryLabel"
                     tools:text="Российская Федерация" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -190,7 +190,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/rocketIconImageView"
+                    android:id="@+id/imgAstronautRocketIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -201,22 +201,22 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/astronautSpacecraftTitle"
+                    android:id="@+id/tvAstronautSpacecraftLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/big_margin"
                     android:layout_marginTop="@dimen/base_margin"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/spacecraft_name"
+                    android:text="@string/label_spacecraft_name"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/rocketIconImageView"
+                    app:layout_constraintStart_toEndOf="@+id/imgAstronautRocketIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/astronautSpacecraftTextView"
+                    android:id="@+id/tvAstronautSpacecraft"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
@@ -224,8 +224,8 @@
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/astronautSpacecraftTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/astronautSpacecraftTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvAstronautSpacecraftLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAstronautSpacecraftLabel"
                     tools:text="Orion" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -241,62 +241,61 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/flightDateIconImageView"
+                    android:id="@+id/imgAstronautFlightDateIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
-                    android:src="@drawable/ic_calendar"
+                    android:src="@drawable/ic_calendar_done"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/astronautFirstFlightTitle"
+                    android:id="@+id/tvAstronautFirstFlightLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/big_margin"
                     android:layout_marginTop="@dimen/base_margin"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/first_flight_date"
+                    android:text="@string/label_first_flight_date"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintEnd_toStartOf="@+id/astronautLastFlightTitle"
-                    app:layout_constraintStart_toEndOf="@+id/flightDateIconImageView"
+                    app:layout_constraintEnd_toStartOf="@+id/tvAstronautLastFlightLabel"
+                    app:layout_constraintStart_toEndOf="@+id/imgAstronautFlightDateIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/astronautFirstFlightTextView"
+                    android:id="@+id/tvAstronautFirstFlight"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintEnd_toStartOf="@+id/astronautLastFlightTextView"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/astronautFirstFlightTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/astronautFirstFlightTitle"
+                    app:layout_constraintEnd_toStartOf="@+id/tvAstronautLastFlight"
+                    app:layout_constraintStart_toStartOf="@+id/tvAstronautFirstFlightLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAstronautFirstFlightLabel"
                     tools:text="25.05.2000" />
 
                 <TextView
-                    android:id="@+id/astronautLastFlightTitle"
+                    android:id="@+id/tvAstronautLastFlightLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/great_margin"
-                    android:text="@string/last_flight_date"
+                    android:text="@string/label_last_flight_date"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/astronautFirstFlightTitle" />
+                    app:layout_constraintTop_toTopOf="@+id/tvAstronautFirstFlightLabel" />
 
                 <TextView
-                    android:id="@+id/astronautLastFlightTextView"
+                    android:id="@+id/tvAstronautLastFlight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintStart_toStartOf="@+id/astronautLastFlightTitle"
-                    app:layout_constraintTop_toTopOf="@+id/astronautFirstFlightTextView"
+                    app:layout_constraintStart_toStartOf="@+id/tvAstronautLastFlightLabel"
+                    app:layout_constraintTop_toTopOf="@+id/tvAstronautFirstFlight"
                     tools:text="30.03.2023" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -312,13 +311,13 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/astronautBiographyTitle"
+                    android:id="@+id/tvAstronautBiographyLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/big_margin"
                     android:layout_marginTop="@dimen/base_margin"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/short_biography"
+                    android:text="@string/label_short_biography"
                     android:textAppearance="@style/AppTheme.Text.Title.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -327,16 +326,16 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/astronautBioTextView"
+                    android:id="@+id/tvAstronautBio"
+                    style="@style/AppTheme.Text.Description.H3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/big_margin"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/astronautBiographyTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/astronautBiographyTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvAstronautBiographyLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAstronautBiographyLabel"
                     tools:text="Some Biography" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

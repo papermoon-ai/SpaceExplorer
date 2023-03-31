@@ -11,7 +11,6 @@ import com.papermoon.spaceapp.databinding.ItemSpaceStationBinding
 import com.papermoon.spaceapp.domain.model.SpaceStation
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import java.lang.Exception
 
 class SpaceStationAdapter(
     private val onClickListener: (SpaceStation) -> Unit
@@ -23,12 +22,15 @@ class SpaceStationAdapter(
         fun bind(spaceStation: SpaceStation) {
             binding.spaceStationItemNameTextView.text = spaceStation.name
             binding.spaceStationFoundedTextView.text =
-                binding.root.context.getString(R.string.start_of_operation, spaceStation.founded.toString("dd.MM.yyyy"))
+                binding.root.context.getString(
+                    R.string.description_date_of_operation,
+                    spaceStation.founded.toString("dd.MM.yyyy")
+                )
             binding.spaceStationIsActiveTextView.text =
                 if (spaceStation.isActive)
-                    binding.root.context.getString(R.string.active)
+                    binding.root.context.getString(R.string.label_active)
                 else
-                    binding.root.context.getString(R.string.deactivated)
+                    binding.root.context.getString(R.string.label_deactivated)
 
             Picasso.get()
                 .load(spaceStation.imageUrl)

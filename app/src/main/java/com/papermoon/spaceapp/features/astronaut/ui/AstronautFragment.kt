@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.databinding.FragmentAstronautBinding
 import com.papermoon.spaceapp.domain.model.Astronaut
-import com.papermoon.spaceapp.features.MainActivity
 import com.squareup.picasso.Picasso
 
 class AstronautFragment(
@@ -28,28 +27,26 @@ class AstronautFragment(
 
         Picasso.get()
             .load(astronaut.profileImage)
-            .into(binding.astronautImageView)
+            .into(binding.imgAstronaut)
 
-        binding.astronautNameTextView.text = astronaut.name
-        binding.astronautCountryTextView.text = astronaut.nationality
-        binding.astronautSpacecraftTextView.text = astronaut.spacecraft
-        binding.astronautDateOfBirthTextView.text = astronaut.dateOfBirth.toString("dd.MM.yyyy")
-        binding.astronautFirstFlightTextView.text = astronaut.firstFlight.toString("dd.MM.yyyy")
-        binding.astronautLastFlightTextView.text = astronaut.lastFlight.toString("dd.MM.yyyy")
-        binding.astronautBioTextView.text = astronaut.bio
-        binding.astronautOpenWikiImageButton.setOnClickListener {
+        binding.tvAstronautName.text = astronaut.name
+        binding.tvAstronautCountry.text = astronaut.nationality
+        binding.tvAstronautSpacecraft.text = astronaut.spacecraft
+        binding.tvAstronautDateOfBirth.text = astronaut.dateOfBirth.toString("dd.MM.yyyy")
+        binding.tvAstronautFirstFlight.text = astronaut.firstFlight.toString("dd.MM.yyyy")
+        binding.tvAstronautLastFlight.text = astronaut.lastFlight.toString("dd.MM.yyyy")
+        binding.tvAstronautBio.text = astronaut.bio
+        binding.btnAstronautOpenWeb.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, astronaut.wikiUrl)
             startActivity(intent)
         }
-
-        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        activity!!.title = astronaut.name
+        activity!!.title = ""
     }
 
     override fun onDestroyView() {

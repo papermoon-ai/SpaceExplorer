@@ -1,49 +1,49 @@
 <resources>
     <string name="app_name">SpaceApp</string>
-    <string name="launch_message">Launched!</string>
-    <string name="open_in_browser">Open in browser</string>
 
-    <string name="active">Активно</string>
-    <string name="deactivated">Неактивно</string>
+    <!-- Shared -->
+    <string name="label_description">Краткое описание</string>
 
-    <string name="status_active">Статус: активно</string>
-    <string name="status_deactivated">Статус: неактивно</string>
-
-    <string name="start_of_operation">Начало эксплуатации: %1$s</string>
-
-    <string name="planets">Планеты</string>
-    <string name="planets_option_description">Explore real-time planet data</string>
-
-    <string name="space_stations">Космические станции</string>
-    <string name="space_stations_option_description">Observe real-time data of International Space Station</string>
-
-    <string name="astronauts">Космонавты</string>
-    <string name="astronauts_option_description">Explore who is in space right now</string>
-
-    <string name="orbital_launches">Орбитальные запуски</string>
-    <string name="orbital_launches_option_description">Look what rockets are about to launch</string>
-
-    <!-- Spacecraft -->
-    <string name="spacecraft_name">Аппарат</string>
+    <!-- Menu -->
+    <string name="label_planets">Планеты</string>
+    <string name="label_astronauts">Космонавты</string>
+    <string name="label_space_stations">Космические станции</string>
+    <string name="label_orbital_launches">Орбитальные запуски</string>
+    <string name="description_planets_option">Explore real-time planet data</string>
+    <string name="description_space_stations_option">Observe real-time data of International Space Station</string>
+    <string name="description_astronauts_option">Explore who is in space right now</string>
+    <string name="description_orbital_launches_option">Look what rockets are about to launch</string>
 
     <!-- Launch -->
-    <string name="launch_date">Дата: %1$s</string>
-    <string name="pad_name">Стартовый комплекс: %1$s</string>
-    <string name="pad_location">Площадка: %1$s</string>
-    <string name="mission_name">Миссия: %1$s</string>
+    <string name="label_name">Название</string>
+    <string name="label_mission">Миссия</string>
+    <string name="label_location">Местоположение</string>
+    <string name="label_pad">Стартовый комплекс</string>
+    <string name="label_organization">Организация</string>
+    <string name="label_launch_date_title">Дата запуска</string>
+    <string name="label_launched">Запущено!</string>
+
+
+    <!-- Astronaut item -->
+    <string name="description_spacecraft">Аппарат: %s$1</string>
 
     <!-- Astronaut -->
-    <string name="country">Страна</string>
-    <string name="date_of_birth">Дата рождения</string>
-    <string name="first_flight_date">Первый полет</string>
-    <string name="last_flight_date">Крайний полет</string>
-    <string name="launch_name_title">Название</string>
-    <string name="launch_date_title">Дата запуска</string>
-    <string name="pad_location_title">Стартовый комплекс</string>
-    <string name="organization_title">Корпорация</string>
-    <string name="mission_title">Миссия</string>
-    <string name="description_title">Описание</string>
-    <string name="location">Местоположение</string>
-    <string name="name_surname">Имя и фамилия</string>
-    <string name="short_biography">Краткая биография</string>
+    <string name="label_name_surname">Имя и фамилия</string>
+    <string name="label_country">Страна</string>
+    <string name="label_date_of_birth">Дата рождения</string>
+    <string name="label_first_flight_date">Первый полет</string>
+    <string name="label_last_flight_date">Крайний полет</string>
+    <string name="label_short_biography">Краткая биография</string>
+    <string name="label_spacecraft_name">Аппарат</string>
+
+    <!-- Space station item -->
+    <string name="description_date_of_operation">Начало эксплуатации %s$1</string>
+
+    <!-- Space station -->
+    <string name="label_date_of_operation">Начало эксплуатации</string>
+    <string name="label_owners">Собственники</string>
+    <string name="label_status">Статус</string>
+    <string name="label_active">Активно</string>
+    <string name="label_deactivated">Неактивно</string>
+
 </resources>

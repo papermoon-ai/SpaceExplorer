@@ -47,7 +47,7 @@ class LaunchOverviewFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        activity!!.title = getString(R.string.orbital_launches)
+        activity!!.title = getString(R.string.label_orbital_launches)
     }
 
     override fun onDestroyView() {

@@ -13,20 +13,24 @@ class OverviewViewModel : ViewModel() {
         get() = _options
 
     init {
-        _options.value = listOf (
-            MenuOption("Planets",
+        _options.value = listOf(
+            MenuOption(
+                "Planets",
                 "Explore real-time planet data",
                 R.drawable.ic_planet
             ),
-            MenuOption("Space stations",
+            MenuOption(
+                "Space stations",
                 "Observe real-time data of Internation Space Station",
                 R.drawable.ic_space_station
             ),
-            MenuOption("Astronauts",
+            MenuOption(
+                "Astronauts",
                 "Explore who is in space right now",
                 R.drawable.ic_astronaut
             ),
-            MenuOption("Launches",
+            MenuOption(
+                "Launches",
                 "Look what rockets are about to launch",
                 R.drawable.ic_rocket
             )

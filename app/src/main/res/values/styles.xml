@@ -21,7 +21,9 @@
     </style>
 
     <!-- Texts Description -->
-    <style name="AppTheme.Text.Description" />
+    <style name="AppTheme.Text.Description">
+        <item name="android:lineSpacingExtra">10sp</item>
+    </style>
 
     <style name="AppTheme.Text.Description.H3">
         <item name="android:textSize">16sp</item>
@@ -31,7 +33,7 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="AppTheme.Text.Description.H3.Bold" parent="AppTheme.Text.Description.H3">
+    <style name="AppTheme.Text.Description.H3.Bold">
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -80,5 +82,15 @@
         <item name="android:background">@drawable/rounded_button</item>
         <item name="android:padding">@dimen/image_button_padding</item>
         <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <!-- Transparent AppBar -->
+    <style name="TransparentAppBar" parent="Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@null</item>
+        <!-- Support library compatibility -->
+        <item name="background">?colorSurface</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
     </style>
 </resources>
