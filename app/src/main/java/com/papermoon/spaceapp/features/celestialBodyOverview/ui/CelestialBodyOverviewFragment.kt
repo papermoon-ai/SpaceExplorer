@@ -41,7 +41,7 @@ class CelestialBodyOverviewFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        activity!!.title = getString(R.string.planets)
+        activity!!.title = getString(R.string.label_planets)
     }
 
     override fun onDestroyView() {

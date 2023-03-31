@@ -9,5 +9,6 @@ data class SpaceStation(
     var description: String,
     var imageUrl: Uri,
     var isActive: Boolean,
-    var owners: List<String>
+    var owners: List<String>,
+    var wikiUrl: Uri?
 )

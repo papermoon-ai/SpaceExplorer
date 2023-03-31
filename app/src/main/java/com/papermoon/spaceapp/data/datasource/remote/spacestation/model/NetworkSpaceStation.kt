@@ -1,6 +1,7 @@
 package com.papermoon.spaceapp.data.datasource.remote.spacestation.model
 
 import android.net.Uri
+import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
 import com.papermoon.spaceapp.domain.model.SpaceStation
 import org.joda.time.DateTime
@@ -13,7 +14,8 @@ data class NetworkSpaceStation(
     @SerializedName("image_url")
     var imageUrl: String,
     var isActive: Boolean,
-    var owners: List<NetworkAgency>
+    var owners: List<NetworkAgency>,
+    var wikiUrl: String?
 )
 
 fun NetworkSpaceStation.asDomainObject(): SpaceStation {
@@ -23,7 +25,9 @@ fun NetworkSpaceStation.asDomainObject(): SpaceStation {
         description,
         Uri.parse(imageUrl),
         isActive,
-        owners.map { it.name })
+        owners.map { it.name },
+        wikiUrl?.toUri()
+    )
 }
 
 fun List<NetworkSpaceStation>.asDomainObject(): List<SpaceStation> {

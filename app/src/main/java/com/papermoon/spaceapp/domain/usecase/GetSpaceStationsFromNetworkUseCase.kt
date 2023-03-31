@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 
 class GetSpaceStationsFromNetworkUseCase(
     private val spaceStationRepository: SpaceStationRepository
-): UseCase<List<SpaceStation>, Unit> {
+) : UseCase<List<SpaceStation>, Unit> {
     override suspend fun execute(params: Unit): Resource<List<SpaceStation>> {
         return withContext(Dispatchers.IO) {
             spaceStationRepository.getSpaceStationsFromNetwork()

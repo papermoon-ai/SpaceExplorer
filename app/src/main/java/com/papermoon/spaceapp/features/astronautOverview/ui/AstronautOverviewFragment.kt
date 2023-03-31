@@ -46,7 +46,7 @@ class AstronautOverviewFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        activity!!.title = getString(R.string.astronauts)
+        activity!!.title = getString(R.string.label_astronauts)
     }
 
     override fun onDestroyView() {

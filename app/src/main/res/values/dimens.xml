@@ -31,4 +31,7 @@
     <dimen name="big_image_height">300dp</dimen>
     <dimen name="base_image_button_height">48dp</dimen>
     <dimen name="base_image_button_width">48dp</dimen>
+
+    <!-- Line Spacing -->
+    <dimen name="base_line_spacing">10sp</dimen>
 </resources>

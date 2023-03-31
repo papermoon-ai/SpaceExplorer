@@ -8,4 +8,5 @@ val networkLaunchModule = module {
     single { provideLaunchApi(get()) }
 }
 
-fun provideLaunchApi(retrofit: Retrofit): LaunchApiService = retrofit.create(LaunchApiService::class.java)
+fun provideLaunchApi(retrofit: Retrofit): LaunchApiService =
+    retrofit.create(LaunchApiService::class.java)

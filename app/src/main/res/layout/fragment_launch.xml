@@ -10,11 +10,11 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/launchImageView"
+            android:id="@+id/imgLaunch"
             android:layout_width="match_parent"
             android:layout_height="@dimen/big_image_height"
             android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/rocket_image" />
+            tools:srcCompat="@drawable/img_rocket" />
 
         <androidx.cardview.widget.CardView
             style="@style/CardViewStyleV2"
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/rocketIconImageView"
+                    android:id="@+id/imgLaunchRocketIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -37,21 +37,21 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/launchNameTitle"
+                    android:id="@+id/tvLaunchNameLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/big_margin"
                     android:layout_marginTop="@dimen/base_margin"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/launch_name_title"
+                    android:text="@string/label_name"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/rocketIconImageView"
+                    app:layout_constraintStart_toEndOf="@+id/imgLaunchRocketIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/launchNameTextView"
+                    android:id="@+id/tvLaunchName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
@@ -59,8 +59,8 @@
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/launchNameTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/launchNameTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvLaunchNameLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLaunchNameLabel"
                     tools:text="Falcon 9" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/groupIconImageView"
+                    android:id="@+id/imgLaunchAgencyIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -87,27 +87,27 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/agencyTitle"
+                    android:id="@+id/tvLaunchAgencyLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="@string/organization_title"
+                    android:text="@string/label_organization"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/groupIconImageView"
+                    app:layout_constraintStart_toEndOf="@+id/imgLaunchAgencyIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/launchServiceProviderTextView"
+                    android:id="@+id/tvLaunchAgency"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/agencyTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/agencyTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvLaunchAgencyLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLaunchAgencyLabel"
                     tools:text="SpaceX" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/calendarIconImageView"
+                    android:id="@+id/imgLaunchCalendarIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -134,27 +134,27 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/launchDateTitle"
+                    android:id="@+id/tvLaunchDateLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="@string/launch_date_title"
+                    android:text="@string/label_launch_date_title"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/calendarIconImageView"
+                    app:layout_constraintStart_toEndOf="@+id/imgLaunchCalendarIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/launchDateTextView"
+                    android:id="@+id/tvLaunchDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/launchDateTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/launchDateTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvLaunchDateLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLaunchDateLabel"
                     tools:text="15.12.2023" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/worldIconImageView"
+                    android:id="@+id/imgLaunchLocationIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -181,33 +181,33 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/launchLocationTitle"
+                    android:id="@+id/tvLaunchLocationLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/location"
+                    android:text="@string/label_location"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintEnd_toStartOf="@+id/launchOpenMapImageButton"
-                    app:layout_constraintStart_toEndOf="@+id/worldIconImageView"
+                    app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenMap"
+                    app:layout_constraintStart_toEndOf="@+id/imgLaunchLocationIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/launchPadLocationTextView"
+                    android:id="@+id/tvLaunchLocation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintEnd_toStartOf="@+id/launchOpenMapImageButton"
-                    app:layout_constraintStart_toStartOf="@+id/launchLocationTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/launchLocationTitle"
+                    app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenMap"
+                    app:layout_constraintStart_toStartOf="@+id/tvLaunchLocationLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLaunchLocationLabel"
                     tools:text="Plesetsk Cosmodrome, Russian Federation, 43/4 (43R)" />
 
                 <ImageButton
-                    android:id="@+id/launchOpenMapImageButton"
+                    android:id="@+id/btnLaunchOpenMap"
                     style="@style/RoundImageButton"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:src="@drawable/ic_location"
@@ -228,7 +228,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/spaceportIconImageView"
+                    android:id="@+id/imgLaunchPadIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -239,33 +239,33 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/launchPadNameTitle"
+                    android:id="@+id/tvLaunchPadNameLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="@dimen/base_margin"
-                    android:text="@string/pad_location_title"
+                    android:text="@string/label_pad"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintEnd_toStartOf="@+id/launchOpenInWebImageButton"
-                    app:layout_constraintStart_toEndOf="@+id/spaceportIconImageView"
+                    app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenWeb"
+                    app:layout_constraintStart_toEndOf="@+id/imgLaunchPadIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/launchPadNameTextView"
+                    android:id="@+id/tvLaunchPadName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintEnd_toStartOf="@+id/launchOpenInWebImageButton"
-                    app:layout_constraintStart_toStartOf="@+id/launchPadNameTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/launchPadNameTitle"
+                    app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenWeb"
+                    app:layout_constraintStart_toStartOf="@+id/tvLaunchPadNameLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLaunchPadNameLabel"
                     tools:text="43/4 (43R)" />
 
                 <ImageButton
-                    android:id="@+id/launchOpenInWebImageButton"
+                    android:id="@+id/btnLaunchOpenWeb"
                     style="@style/RoundImageButton"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:src="@drawable/ic_wikipedia"
@@ -286,7 +286,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/descriptionIconImageView"
+                    android:id="@+id/imgLaunchMissionIcon"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
@@ -297,27 +297,27 @@
                     app:tint="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/missionTitle"
+                    android:id="@+id/tvLaunchMissionLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="@string/mission_title"
+                    android:text="@string/label_mission"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/descriptionIconImageView"
+                    app:layout_constraintStart_toEndOf="@+id/imgLaunchMissionIcon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/launchMissionNameTextView"
+                    android:id="@+id/tvLaunchMission"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/little_margin"
                     android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/missionTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/missionTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvLaunchMissionLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLaunchMissionLabel"
                     tools:text="Mission name" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -333,26 +333,26 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/descriptionTitle"
+                    android:id="@+id/tvLaunchDescriptionLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/base_margin"
-                    android:text="@string/description_title"
+                    android:text="@string/label_description"
                     android:textAppearance="@style/AppTheme.Text.Title.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/launchMissionDescriptionTextView"
+                    android:id="@+id/tvLaunchDescription"
+                    style="@style/AppTheme.Text.Description.H3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/big_margin"
-                    android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/descriptionTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/descriptionTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvLaunchDescriptionLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLaunchDescriptionLabel"
                     tools:text="A batch of satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system." />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

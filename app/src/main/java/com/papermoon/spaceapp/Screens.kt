@@ -20,6 +20,8 @@ object Screens {
     fun astronautOverviewScreen() = FragmentScreen { AstronautOverviewFragment() }
     fun astronautScreen(astronaut: Astronaut) = FragmentScreen { AstronautFragment(astronaut) }
     fun spaceStationOverviewScreen() = FragmentScreen { SpaceStationOverviewFragment() }
-    fun spaceStationScreen(spaceStation: SpaceStation) = FragmentScreen { SpaceStationFragment(spaceStation) }
+    fun spaceStationScreen(spaceStation: SpaceStation) =
+        FragmentScreen { SpaceStationFragment(spaceStation) }
+
     fun celestialBodyScreen() = FragmentScreen { CelestialBodyOverviewFragment() }
 }

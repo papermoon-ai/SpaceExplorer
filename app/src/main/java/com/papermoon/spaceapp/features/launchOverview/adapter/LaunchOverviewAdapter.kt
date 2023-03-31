@@ -36,8 +36,10 @@ class LaunchOverviewAdapter(
             Picasso.get()
                 .load(launch.imageUrl)
                 .resize(
-                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_width).toInt(),
-                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_height).toInt()
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_width)
+                        .toInt(),
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_height)
+                        .toInt()
                 )
                 .centerCrop()
                 .into(launchImageView, object : Callback {
@@ -69,7 +71,7 @@ class LaunchOverviewAdapter(
 
                     override fun onFinish() {
                         dateTextView.text =
-                            itemView.context.getString(R.string.launch_message)
+                            itemView.context.getString(R.string.label_launched)
                     }
                 }.start()
             } else {

@@ -44,7 +44,7 @@ class SpaceStationOverviewFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        activity!!.title = getString(R.string.space_stations)
+        activity!!.title = getString(R.string.label_space_stations)
     }
 
     override fun onDestroyView() {

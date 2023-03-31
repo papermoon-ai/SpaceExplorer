@@ -13,5 +13,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_space_station"/>
+        tools:listitem="@layout/item_space_station" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@ class AstronautOverviewAdapter(
         fun bind(astronaut: Astronaut) {
             binding.astronautItemNameTextView.text = astronaut.name
             binding.astronautItemSpacecraftTextView.text = binding.root.context.getString(
-                R.string.spacecraft_name,
+                R.string.description_spacecraft,
                 astronaut.spacecraft.ifEmpty { "-" }
             )
             binding.astronautItemNationalityTextView.text = astronaut.nationality
@@ -31,8 +31,10 @@ class AstronautOverviewAdapter(
             Picasso.get()
                 .load(astronaut.profileImage)
                 .resize(
-                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_width).toInt(),
-                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_height).toInt()
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_width)
+                        .toInt(),
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_height)
+                        .toInt()
                 )
                 .centerCrop()
                 .into(binding.astronautItemImageView, object : Callback {
