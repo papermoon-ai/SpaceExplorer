@@ -6,10 +6,10 @@ data class CelestialBody(
     val name: String,
     val englishName: String,
     val discoverDate: String?,
-    val discoveredBy: String,
-    val gravity: String,
-    val density: String,
+    val discoveredBy: String?,
+    val satelliteCount: Int,
     val description: String,
     val shortDescription: String,
-    val imageUrl: Uri
+    val imageUrl: Uri,
+    val characteristics: PhysicCharacteristics
 )

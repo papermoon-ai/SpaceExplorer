@@ -57,8 +57,8 @@ class AstronautOverviewAdapter(
 
     override fun onBindViewHolder(holder: AstronautViewHolder, position: Int) {
         val item = currentList[position]
-        holder.itemView.setOnClickListener { onClickListener(item) }
         holder.bind(item)
+        holder.itemView.setOnClickListener { onClickListener(item) }
     }
 
     override fun getItemCount(): Int {

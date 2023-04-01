@@ -87,10 +87,10 @@ class LaunchOverviewAdapter(
 
     override fun onBindViewHolder(holder: LaunchViewHolder, position: Int) {
         val item = currentList[position]
+        holder.bind(item)
         holder.itemView.setOnClickListener {
             onClickListener.onClick(item)
         }
-        holder.bind(item)
     }
 
     override fun getItemCount(): Int {

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.databinding.FragmentLaunchBinding
 import com.papermoon.spaceapp.domain.model.Launch
 import com.papermoon.spaceapp.features.MainActivity
@@ -55,8 +54,6 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         } else {
             binding.btnLaunchOpenMap.visibility = View.GONE
         }
-
-        (activity as MainActivity).supportActionBar?.themedContext?.setTheme(R.style.TransparentAppBar)
 
         return binding.root
     }

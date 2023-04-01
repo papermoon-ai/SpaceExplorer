@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
+import com.papermoon.spaceapp.Screens
+import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentCelestialBodyOverviewBinding
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.celestialBodyOverview.adapter.CelestialBodyAdapter
@@ -27,7 +29,9 @@ class CelestialBodyOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentCelestialBodyOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = CelestialBodyAdapter()
+        val adapter = CelestialBodyAdapter() {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.celestialBodyScreen(it))
+        }
         binding.celestialBodyList.adapter = adapter
 
         celestialBodyOverviewViewModel.planets.observe(viewLifecycleOwner) {
