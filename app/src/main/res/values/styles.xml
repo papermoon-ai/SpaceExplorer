@@ -84,13 +84,4 @@
         <item name="android:scaleType">fitCenter</item>
     </style>
 
-    <!-- Transparent AppBar -->
-    <style name="TransparentAppBar" parent="Widget.AppCompat.Light.ActionBar.Solid">
-        <item name="android:background">@null</item>
-        <!-- Support library compatibility -->
-        <item name="background">?colorSurface</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <!-- Support library compatibility -->
-        <item name="windowActionBarOverlay">true</item>
-    </style>
 </resources>

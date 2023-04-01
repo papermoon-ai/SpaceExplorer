@@ -55,10 +55,10 @@ class SpaceStationAdapter(
 
     override fun onBindViewHolder(holder: SpaceStationViewHolder, position: Int) {
         val item = currentList[position]
+        holder.bind(item)
         holder.itemView.setOnClickListener {
             onClickListener(item)
         }
-        holder.bind(item)
     }
 
     override fun getItemCount(): Int {

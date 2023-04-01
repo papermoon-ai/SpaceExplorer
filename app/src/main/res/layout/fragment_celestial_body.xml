@@ -1,6 +1,523 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgCelestialBody"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/big_image_height"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/ic_planet" />
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyPlanetIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_planet"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyNameLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_name"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyPlanetIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyNameLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyNameLabel"
+                    tools:text="Earth" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewCelestialBodyDiscovery"
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyDiscoveryDateIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_calendar"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyDiscoveryDate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyDiscoveryDateLabel"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyDiscoveryDateLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_date_of_discovery"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyDiscoveryDateIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyDiscoveryDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyDiscoveryDateLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyDiscoveryDateLabel"
+                    tools:text="01.04.2023" />
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyDiscovererIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_telescope"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyDiscoverer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyDiscovererLabel"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyDiscovererLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_discoverer"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyDiscovererIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyDiscoveryDate" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyDiscoverer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyDiscovererLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyDiscovererLabel"
+                    tools:text="Galileo Galilei" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodySatellitesIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_satellite"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodySatellitesLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_satellites_count"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodySatellitesIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodySatellites"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodySatellitesLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodySatellitesLabel"
+                    tools:text="1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyAreaIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_area"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyArea"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyAreaLabel"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyAreaLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_area"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyAreaIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyAreaLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyAreaLabel"
+                    tools:text="51.0072 * 10^7 км²" />
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyTemperatureIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_temperature"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyTemperature"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyTemperatureLabel"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyTemperatureLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_temperature"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyTemperatureIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyArea" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyTemperature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyTemperatureLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyTemperatureLabel"
+                    tools:text="-50°C ~ +30°C" />
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyOrbitalSpeedIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_speed"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyOrbitalSpeed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyOrbitalSpeedLabel"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyOrbitalSpeedLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_orbital_speed"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyOrbitalSpeedIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyTemperature" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyOrbitalSpeed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyOrbitalSpeedLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyOrbitalSpeedLabel"
+                    tools:text="29,783 км/c" />
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyRotationAxisIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_rotation_around_axis"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyRotationAxis"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyRotationAxisLabel"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyRotationAxisLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_day_period"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyRotationAxisIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyOrbitalSpeed" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyRotationAxis"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyRotationAxisLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyRotationAxisLabel"
+                    tools:text="24 часа" />
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyRotationSunIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_rotation_around_sun"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyRotationSun"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyRotationSunLabel"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyRotationSunLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_year_period"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyRotationSunIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyRotationAxis" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyRotationSun"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyRotationSunLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyRotationSunLabel"
+                    tools:text="365 дней" />
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyGravityIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_gravity"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyGravity"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyGravityLabel"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyGravityLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_gravity"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyGravityIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyRotationSun" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyGravity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyGravityLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyGravityLabel"
+                    tools:text="9,807 м/с²" />
+
+                <ImageView
+                    android:id="@+id/imgCelestialBodyDensityIcon"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:src="@drawable/ic_density"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyDensity"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyDensityLabel"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyDensityLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/big_margin"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:text="@string/label_density"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyDensityIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyGravity" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyDensity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/little_margin"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyDensityLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyDensityLabel"
+                    tools:text="5,51 г/см³" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyleV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyDescriptionLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:text="@string/label_description"
+                    android:textAppearance="@style/AppTheme.Text.Title.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvCelestialBodyDescription"
+                    style="@style/AppTheme.Text.Description.H3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyDescriptionLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyDescriptionLabel"
+                    tools:text="Some info" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

@@ -8,12 +8,12 @@ data class NetworkCelestialBody(
     val name: String,
     val englishName: String,
     val discoverDate: String?,
-    val discoveredBy: String,
-    val gravity: String,
-    val density: String,
+    val discoveredBy: String?,
+    val satelliteCount: Int,
     val description: String,
     val shortDescription: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val characteristics: NetworkPhysicCharacteristics
 )
 
 fun NetworkCelestialBody.asDomainObject(): CelestialBody {
@@ -22,11 +22,11 @@ fun NetworkCelestialBody.asDomainObject(): CelestialBody {
         englishName,
         discoverDate,
         discoveredBy,
-        gravity,
-        density,
+        satelliteCount,
         description,
         shortDescription,
-        Uri.parse(imageUrl)
+        Uri.parse(imageUrl),
+        characteristics.toDomainObject()
     )
 }
 

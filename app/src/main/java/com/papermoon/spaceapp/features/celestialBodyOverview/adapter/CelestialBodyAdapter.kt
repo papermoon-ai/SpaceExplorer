@@ -12,7 +12,9 @@ import com.papermoon.spaceapp.domain.model.CelestialBody
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
-class CelestialBodyAdapter :
+class CelestialBodyAdapter(
+    private val onClickListener: (CelestialBody) -> Unit
+) :
     ListAdapter<CelestialBody, CelestialBodyAdapter.CelestialBodyViewHolder>(DiffUtilCallback()) {
     class CelestialBodyViewHolder(private val binding: ItemCelestialBodyBinding) :
         ViewHolder(binding.root) {
@@ -23,8 +25,10 @@ class CelestialBodyAdapter :
             Picasso.get()
                 .load(celestialBody.imageUrl)
                 .resize(
-                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_width).toInt(),
-                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_height).toInt()
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_width)
+                        .toInt(),
+                    binding.root.context.resources.getDimension(R.dimen.base_photo_image_height)
+                        .toInt()
                 )
                 .centerCrop()
                 .into(binding.celestialBodyItemImageView, object : Callback {
@@ -47,8 +51,10 @@ class CelestialBodyAdapter :
 
     override fun onBindViewHolder(holder: CelestialBodyViewHolder, position: Int) {
         val item = currentList[position]
-
         holder.bind(item)
+        holder.itemView.setOnClickListener {
+            onClickListener(item)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -64,11 +70,11 @@ class DiffUtilCallback : DiffUtil.ItemCallback<CelestialBody>() {
     override fun areContentsTheSame(oldItem: CelestialBody, newItem: CelestialBody): Boolean {
         return oldItem.name == newItem.name
                 && oldItem.englishName == newItem.englishName
-                && oldItem.density == newItem.density
+                && oldItem.characteristics == newItem.characteristics
                 && oldItem.description == newItem.description
                 && oldItem.discoverDate == newItem.discoverDate
                 && oldItem.discoveredBy == newItem.discoveredBy
                 && oldItem.imageUrl == newItem.imageUrl
-                && oldItem.gravity == newItem.gravity
+                && oldItem.satelliteCount == newItem.satelliteCount
     }
 }
