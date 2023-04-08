@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentLaunchBinding
 import com.papermoon.spaceapp.domain.model.Launch
@@ -61,6 +62,10 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
 
         binding.toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
+        }
+
+        binding.imgLaunch.setOnClickListener {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(listOf(launch.imageUrl)))
         }
 
         return binding.root
