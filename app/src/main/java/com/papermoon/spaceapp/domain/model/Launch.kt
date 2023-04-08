@@ -7,7 +7,7 @@ data class Launch(
     val name: String,
     val launchDate: DateTime,
     val launchServiceProvider: String,
-    val imageUrl: Uri?,
+    val imageUrl: Uri,
     val pad: Pad,
     val mission: Mission?
 )

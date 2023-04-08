@@ -1,6 +1,6 @@
 package com.papermoon.spaceapp.data.datasource.remote.launches.model
 
-import android.net.Uri
+import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
 import com.papermoon.spaceapp.domain.model.Launch
 import org.joda.time.DateTime
@@ -12,7 +12,7 @@ data class NetworkLaunch(
     val launchDate: Date,
     val launchServiceProvider: String,
     @SerializedName("image")
-    val imageUrl: String?,
+    val imageUrl: String,
     val pad: NetworkPad,
     val mission: NetworkMission?
 )
@@ -22,7 +22,7 @@ fun NetworkLaunch.asDomainObject(): Launch {
         name,
         DateTime(launchDate),
         launchServiceProvider,
-        Uri.parse(imageUrl),
+        imageUrl.toUri(),
         pad.asDomainObject(),
         mission?.asDomainObject()
     )

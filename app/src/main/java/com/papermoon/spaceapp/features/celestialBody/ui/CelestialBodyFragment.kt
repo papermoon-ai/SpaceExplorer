@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
+import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentCelestialBodyBinding
 import com.papermoon.spaceapp.domain.model.CelestialBody
@@ -32,56 +33,58 @@ class CelestialBodyFragment(
 
         val formatter = DecimalFormat("#.####")
 
-        with(binding) {
-            tvCelestialBodyName.text = celestialBody.englishName
+        binding.tvCelestialBodyName.text = celestialBody.englishName
 
-            if (celestialBody.discoverDate == null) {
-                cardViewCelestialBodyDiscovery.visibility = View.GONE
-            } else {
-                tvCelestialBodyDiscoveryDate.text = celestialBody.discoverDate
-                tvCelestialBodyDiscoverer.text = celestialBody.discoveredBy
-            }
-
-            tvCelestialBodySatellites.text = celestialBody.satelliteCount.toString()
-            tvCelestialBodyArea.text =
-                getString(
-                    R.string.description_area,
-                    formatter.format(celestialBody.characteristics.area)
-                )
-            tvCelestialBodyTemperature.text = getString(
-                R.string.description_temperatures,
-                getTemperatureString(celestialBody.characteristics.minTemperature),
-                getTemperatureString(celestialBody.characteristics.maxTemperature)
-            )
-            tvCelestialBodyOrbitalSpeed.text =
-                getString(
-                    R.string.description_orbital_speed,
-                    formatter.format(celestialBody.characteristics.avgOrbitalSpeed)
-                )
-            tvCelestialBodyRotationAxis.text =
-                getPeriodString(celestialBody.characteristics.rotationAroundAxis)
-            tvCelestialBodyRotationSun.text =
-                getPeriodString(celestialBody.characteristics.rotationAroundSun)
-            tvCelestialBodyGravity.text = getString(
-                R.string.description_gravity,
-                formatter.format(celestialBody.characteristics.gravity)
-            )
-            tvCelestialBodyDensity.text = getString(
-                R.string.description_density,
-                formatter.format(celestialBody.characteristics.density)
-            )
-            tvCelestialBodyDescription.text = celestialBody.description
-
-            Picasso.get()
-                .load(celestialBody.imageUrl)
-                .into(imgCelestialBody)
+        if (celestialBody.discoverDate == null) {
+            binding.cardViewCelestialBodyDiscovery.visibility = View.GONE
+        } else {
+            binding.tvCelestialBodyDiscoveryDate.text = celestialBody.discoverDate
+            binding.tvCelestialBodyDiscoverer.text = celestialBody.discoveredBy
         }
+
+        binding.tvCelestialBodySatellites.text = celestialBody.satelliteCount.toString()
+        binding.tvCelestialBodyArea.text =
+            getString(
+                R.string.description_area,
+                formatter.format(celestialBody.characteristics.area)
+            )
+        binding.tvCelestialBodyTemperature.text = getString(
+            R.string.description_temperatures,
+            getTemperatureString(celestialBody.characteristics.minTemperature),
+            getTemperatureString(celestialBody.characteristics.maxTemperature)
+        )
+        binding.tvCelestialBodyOrbitalSpeed.text =
+            getString(
+                R.string.description_orbital_speed,
+                formatter.format(celestialBody.characteristics.avgOrbitalSpeed)
+            )
+        binding.tvCelestialBodyRotationAxis.text =
+            getPeriodString(celestialBody.characteristics.rotationAroundAxis)
+        binding.tvCelestialBodyRotationSun.text =
+            getPeriodString(celestialBody.characteristics.rotationAroundSun)
+        binding.tvCelestialBodyGravity.text = getString(
+            R.string.description_gravity,
+            formatter.format(celestialBody.characteristics.gravity)
+        )
+        binding.tvCelestialBodyDensity.text = getString(
+            R.string.description_density,
+            formatter.format(celestialBody.characteristics.density)
+        )
+        binding.tvCelestialBodyDescription.text = celestialBody.description
+
+        Picasso.get()
+            .load(celestialBody.imageUrl)
+            .into(binding.imgCelestialBody)
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         binding.toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
+        }
+
+        binding.imgCelestialBody.setOnClickListener {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(listOf(celestialBody.imageUrl, celestialBody.imageUrl)))
         }
 
         return binding.root

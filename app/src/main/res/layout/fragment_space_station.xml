@@ -111,6 +111,7 @@
                         android:layout_width="@dimen/base_image_button_width"
                         android:layout_height="@dimen/base_image_button_height"
                         android:src="@drawable/ic_wikipedia"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>

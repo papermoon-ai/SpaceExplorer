@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
+import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentSpaceStationBinding
 import com.papermoon.spaceapp.domain.model.SpaceStation
@@ -60,6 +61,10 @@ class SpaceStationFragment(
 
         binding.toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
+        }
+
+        binding.imgSpaceStation.setOnClickListener {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(listOf(spaceStation.imageUrl)))
         }
 
         return binding.root
