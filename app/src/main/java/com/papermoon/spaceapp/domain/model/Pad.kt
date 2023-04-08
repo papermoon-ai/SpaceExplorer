@@ -5,6 +5,6 @@ import android.net.Uri
 data class Pad(
     val name: String,
     val location: String,
-    val mapUrl: Uri,
-    val wikiUrl: Uri
+    val mapUrl: Uri?,
+    val wikiUrl: Uri?
 )

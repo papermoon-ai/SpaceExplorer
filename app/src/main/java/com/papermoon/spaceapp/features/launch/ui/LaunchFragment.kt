@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentLaunchBinding
 import com.papermoon.spaceapp.domain.model.Launch
 import com.papermoon.spaceapp.features.MainActivity
@@ -55,12 +56,19 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
             binding.btnLaunchOpenMap.visibility = View.GONE
         }
 
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.setNavigationOnClickListener {
+            SpaceApp.INSTANCE.router.exit()
+        }
+
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        activity!!.title = ""
+        activity!!.title = launch.name
     }
 
     override fun onDestroyView() {

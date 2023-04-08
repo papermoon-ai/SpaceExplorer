@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
+import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentCelestialBodyBinding
 import com.papermoon.spaceapp.domain.model.CelestialBody
 import com.papermoon.spaceapp.domain.model.Period
+import com.papermoon.spaceapp.features.MainActivity
 import com.squareup.picasso.Picasso
 import java.text.DecimalFormat
 
@@ -73,10 +75,21 @@ class CelestialBodyFragment(
             Picasso.get()
                 .load(celestialBody.imageUrl)
                 .into(imgCelestialBody)
+        }
 
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.setNavigationOnClickListener {
+            SpaceApp.INSTANCE.router.exit()
         }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity!!.title = celestialBody.englishName
     }
 
     override fun onDestroyView() {

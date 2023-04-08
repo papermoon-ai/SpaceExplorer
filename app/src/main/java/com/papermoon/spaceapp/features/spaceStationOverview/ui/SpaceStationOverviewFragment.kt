@@ -37,7 +37,12 @@ class SpaceStationOverviewFragment : Fragment() {
         }
         binding.spaceStationList.adapter = adapter
 
+        (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.root.setNavigationOnClickListener {
+            SpaceApp.INSTANCE.router.exit()
+        }
 
         return binding.root
     }

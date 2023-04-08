@@ -12,7 +12,7 @@ data class NetworkLaunch(
     val launchDate: Date,
     val launchServiceProvider: String,
     @SerializedName("image")
-    val imageUrl: String,
+    val imageUrl: String?,
     val pad: NetworkPad,
     val mission: NetworkMission?
 )

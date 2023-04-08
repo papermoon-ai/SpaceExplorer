@@ -4,12 +4,10 @@
     android:id="@+id/activity_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.papermoon.spaceapp.features.MainActivity">
 
     <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
-    <include layout="@layout/content_main" />
+        layout="@layout/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

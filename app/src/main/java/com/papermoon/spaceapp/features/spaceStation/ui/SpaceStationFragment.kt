@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
+import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentSpaceStationBinding
 import com.papermoon.spaceapp.domain.model.SpaceStation
+import com.papermoon.spaceapp.features.MainActivity
 import com.squareup.picasso.Picasso
 
 class SpaceStationFragment(
@@ -53,12 +55,19 @@ class SpaceStationFragment(
             binding.btnStationOpenInWeb.visibility = View.GONE
         }
 
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.setNavigationOnClickListener {
+            SpaceApp.INSTANCE.router.exit()
+        }
+
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        activity!!.title = ""
+        activity!!.title = spaceStation.name
     }
 
     override fun onDestroyView() {

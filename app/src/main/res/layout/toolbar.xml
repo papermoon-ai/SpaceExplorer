@@ -3,5 +3,4 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="?colorSurface"
-    android:elevation="@dimen/base_elevation"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+    android:elevation="@dimen/base_elevation" />

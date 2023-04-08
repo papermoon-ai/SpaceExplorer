@@ -40,8 +40,6 @@ class OverviewFragment : Fragment() {
                 "Space stations" -> SpaceApp.INSTANCE.router.navigateTo(spaceStationOverviewScreen())
                 "Planets" -> SpaceApp.INSTANCE.router.navigateTo(celestialBodyOverviewScreen())
             }
-            if (it.name == "Launches")
-                SpaceApp.INSTANCE.router.navigateTo(launchOverviewScreen())
         })
 
         overviewViewModel.options.observe(viewLifecycleOwner) {
@@ -54,7 +52,7 @@ class OverviewFragment : Fragment() {
             MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.little_margin))
         )
 
-        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
 
         return binding.root
     }

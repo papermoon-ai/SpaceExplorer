@@ -34,4 +34,7 @@
 
     <!-- Line Spacing -->
     <dimen name="base_line_spacing">10sp</dimen>
+
+    <!-- Text protection -->
+    <dimen name="text_scrim_height">50dp</dimen>
 </resources>
