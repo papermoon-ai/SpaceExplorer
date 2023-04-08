@@ -2,6 +2,9 @@ package com.papermoon.spaceapp.features.celestialBodyOverview.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -40,6 +43,7 @@ class CelestialBodyOverviewFragment : Fragment() {
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        setHasOptionsMenu(true)
 
         binding.toolbar.root.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
@@ -51,6 +55,18 @@ class CelestialBodyOverviewFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity!!.title = getString(R.string.label_planets)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.update_info_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_update) {
+            celestialBodyOverviewViewModel.updatePlanets()
+        }
+        return true
     }
 
     override fun onDestroyView() {

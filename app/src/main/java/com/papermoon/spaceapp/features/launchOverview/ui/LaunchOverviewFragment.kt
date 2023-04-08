@@ -2,6 +2,9 @@ package com.papermoon.spaceapp.features.launchOverview.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -42,6 +45,7 @@ class LaunchOverviewFragment : Fragment() {
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        setHasOptionsMenu(true)
 
         binding.toolbar.root.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
@@ -53,6 +57,18 @@ class LaunchOverviewFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity!!.title = getString(R.string.label_orbital_launches)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.update_info_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_update) {
+            launchViewModel.updateUpcomingLaunches()
+        }
+        return true
     }
 
     override fun onDestroyView() {
