@@ -2,7 +2,6 @@ package com.papermoon.spaceapp.features
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.google.android.material.elevation.SurfaceColors
 import com.papermoon.spaceapp.R
@@ -15,13 +14,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        toolbar.setNavigationOnClickListener {
-            SpaceApp.INSTANCE.router.exit()
-        }
 
         val color = SurfaceColors.SURFACE_1.getColor(this)
         window.statusBarColor = color

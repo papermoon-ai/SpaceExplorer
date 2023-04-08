@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentAstronautBinding
 import com.papermoon.spaceapp.domain.model.Astronaut
+import com.papermoon.spaceapp.features.MainActivity
 import com.squareup.picasso.Picasso
 
 class AstronautFragment(
@@ -41,12 +43,19 @@ class AstronautFragment(
             startActivity(intent)
         }
 
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.setNavigationOnClickListener {
+            SpaceApp.INSTANCE.router.exit()
+        }
+
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        activity!!.title = ""
+        activity!!.title = astronaut.name
     }
 
     override fun onDestroyView() {

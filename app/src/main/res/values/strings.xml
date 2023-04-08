@@ -40,6 +40,7 @@
     <string name="description_date_of_operation">Начало эксплуатации %1$s</string>
 
     <!-- Space station -->
+    <string name="label_space_station_name">Название станции</string>
     <string name="label_date_of_operation">Начало эксплуатации</string>
     <string name="label_owners">Собственники</string>
     <string name="label_status">Статус</string>

@@ -19,7 +19,7 @@
     <color name="md_theme_light_onBackground">#1B1B1F</color>
     <color name="md_theme_light_surface">#FFFBFF</color>
     <color name="md_theme_light_onSurface">#1B1B1F</color>
-    <color name="md_theme_light_surfaceVariant">#F3F2F7</color>
+    <color name="md_theme_light_surfaceVariant">#F7F7F7</color>
     <color name="md_theme_light_onSurfaceVariant">#46464F</color>
     <color name="md_theme_light_outline">#777680</color>
     <color name="md_theme_light_inverseOnSurface">#F3F0F4</color>
@@ -49,7 +49,7 @@
     <color name="md_theme_dark_onBackground">#E4E1E6</color>
     <color name="md_theme_dark_surface">#1B1B1F</color>
     <color name="md_theme_dark_onSurface">#E4E1E6</color>
-    <color name="md_theme_dark_surfaceVariant">#323236</color>
+    <color name="md_theme_dark_surfaceVariant">#222426</color>
     <color name="md_theme_dark_onSurfaceVariant">#C7C5D0</color>
     <color name="md_theme_dark_outline">#90909A</color>
     <color name="md_theme_dark_inverseOnSurface">#1B1B1F</color>
@@ -59,4 +59,8 @@
     <color name="md_theme_dark_surfaceTint">#BBC3FF</color>
     <color name="md_theme_dark_outlineVariant">#46464F</color>
     <color name="md_theme_dark_scrim">#000000</color>
+    <color name="translucent_scrim_top">#33000000</color>
+    <color name="translucent_scrim_top_center">#26000000</color>
+    <color name="translucent_scrim_bottom">#4D000000</color>
+    <color name="translucent_scrim_bottom_center">#40000000</color>
 </resources>
