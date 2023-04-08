@@ -2,6 +2,9 @@ package com.papermoon.spaceapp.features.spaceStationOverview.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -39,6 +42,7 @@ class SpaceStationOverviewFragment : Fragment() {
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        setHasOptionsMenu(true)
 
         binding.toolbar.root.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
@@ -50,6 +54,18 @@ class SpaceStationOverviewFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity!!.title = getString(R.string.label_space_stations)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.update_info_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_update) {
+            spaceStationOverviewViewModel.updateSpaceStationsList()
+        }
+        return true
     }
 
     override fun onDestroyView() {
