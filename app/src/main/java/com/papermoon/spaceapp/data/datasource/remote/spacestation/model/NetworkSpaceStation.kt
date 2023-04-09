@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.remote.spacestation.model
 
-import android.net.Uri
 import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
 import com.papermoon.spaceapp.domain.model.SpaceStation
@@ -23,7 +22,7 @@ fun NetworkSpaceStation.asDomainObject(): SpaceStation {
         name,
         DateTime(founded),
         description,
-        Uri.parse(imageUrl),
+        imageUrl.toUri(),
         isActive,
         owners.map { it.name },
         wikiUrl?.toUri()

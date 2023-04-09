@@ -23,7 +23,7 @@ class CelestialBodyAdapter(
             binding.celestialBodyItemTextView.text = celestialBody.englishName
             binding.celestialBodyShortDescriptionItemTextView.text = celestialBody.shortDescription
             Picasso.get()
-                .load(celestialBody.imageUrl)
+                .load(celestialBody.imageUrls.first())
                 .resize(
                     binding.root.context.resources.getDimension(R.dimen.base_photo_image_width)
                         .toInt(),
@@ -74,7 +74,7 @@ class DiffUtilCallback : DiffUtil.ItemCallback<CelestialBody>() {
                 && oldItem.description == newItem.description
                 && oldItem.discoverDate == newItem.discoverDate
                 && oldItem.discoveredBy == newItem.discoveredBy
-                && oldItem.imageUrl == newItem.imageUrl
+                && oldItem.imageUrls == newItem.imageUrls
                 && oldItem.satelliteCount == newItem.satelliteCount
     }
 }

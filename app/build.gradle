@@ -20,7 +20,7 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            buildConfigField "String", "API_URL", "\"http://192.168.1.186:8080/\""
+            buildConfigField "String", "API_URL", "\"http://192.168.97.32:8080/\""
             debuggable true
         }
         release {
