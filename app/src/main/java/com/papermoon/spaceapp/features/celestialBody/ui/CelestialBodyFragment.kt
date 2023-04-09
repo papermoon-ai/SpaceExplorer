@@ -73,7 +73,7 @@ class CelestialBodyFragment(
         binding.tvCelestialBodyDescription.text = celestialBody.description
 
         Picasso.get()
-            .load(celestialBody.imageUrl)
+            .load(celestialBody.imageUrls.first())
             .into(binding.imgCelestialBody)
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar)
@@ -84,7 +84,7 @@ class CelestialBodyFragment(
         }
 
         binding.imgCelestialBody.setOnClickListener {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(listOf(celestialBody.imageUrl, celestialBody.imageUrl)))
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(celestialBody.imageUrls))
         }
 
         return binding.root

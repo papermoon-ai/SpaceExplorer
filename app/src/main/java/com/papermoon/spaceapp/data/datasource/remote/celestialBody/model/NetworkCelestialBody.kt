@@ -1,6 +1,6 @@
 package com.papermoon.spaceapp.data.datasource.remote.celestialBody.model
 
-import android.net.Uri
+import androidx.core.net.toUri
 import com.papermoon.spaceapp.domain.model.CelestialBody
 
 data class NetworkCelestialBody(
@@ -12,7 +12,7 @@ data class NetworkCelestialBody(
     val satelliteCount: Int,
     val description: String,
     val shortDescription: String,
-    val imageUrl: String,
+    val imageUrls: List<String>,
     val characteristics: NetworkPhysicCharacteristics
 )
 
@@ -25,7 +25,7 @@ fun NetworkCelestialBody.asDomainObject(): CelestialBody {
         satelliteCount,
         description,
         shortDescription,
-        Uri.parse(imageUrl),
+        imageUrls.map { it.toUri() },
         characteristics.toDomainObject()
     )
 }

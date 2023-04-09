@@ -10,6 +10,6 @@ data class CelestialBody(
     val satelliteCount: Int,
     val description: String,
     val shortDescription: String,
-    val imageUrl: Uri,
+    val imageUrls: List<Uri>,
     val characteristics: PhysicCharacteristics
 )
