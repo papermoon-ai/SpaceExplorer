@@ -13,7 +13,7 @@ import com.papermoon.spaceapp.Screens.spaceStationOverviewScreen
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentOverviewBinding
 import com.papermoon.spaceapp.features.MainActivity
-import com.papermoon.spaceapp.features.overview.adapter.MarginItemDecoration
+import com.papermoon.spaceapp.features.util.MarginItemDecoration
 import com.papermoon.spaceapp.features.overview.adapter.OnClickListener
 import com.papermoon.spaceapp.features.overview.adapter.OverviewAdapter
 import com.papermoon.spaceapp.features.overview.vm.OverviewViewModel

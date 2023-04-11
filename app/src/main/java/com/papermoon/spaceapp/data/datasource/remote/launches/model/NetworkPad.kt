@@ -2,7 +2,7 @@ package com.papermoon.spaceapp.data.datasource.remote.launches.model
 
 import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
-import com.papermoon.spaceapp.domain.model.Pad
+import com.papermoon.spaceapp.domain.model.launch.Pad
 
 data class NetworkPad(
     val name: String,

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.databinding.ItemAstronautBinding
-import com.papermoon.spaceapp.domain.model.Astronaut
+import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 

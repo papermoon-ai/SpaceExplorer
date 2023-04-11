@@ -2,7 +2,7 @@ package com.papermoon.spaceapp.data.datasource.remote.astronaut.model
 
 import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
-import com.papermoon.spaceapp.domain.model.Astronaut
+import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import org.joda.time.DateTime
 import java.util.*
 

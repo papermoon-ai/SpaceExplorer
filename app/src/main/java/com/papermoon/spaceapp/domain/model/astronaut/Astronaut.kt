@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.domain.model
+package com.papermoon.spaceapp.domain.model.astronaut
 
 import android.net.Uri
 import org.joda.time.DateTime

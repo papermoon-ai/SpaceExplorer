@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/relativeLayout2"
+            android:id="@+id/relativeLayout"
             android:layout_width="@dimen/base_image_width"
             android:layout_height="@dimen/base_image_height"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +45,7 @@
             android:textAppearance="@style/AppTheme.Text.Title.H4"
             android:textColor="?colorOnSurface"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/relativeLayout2"
+            app:layout_constraintStart_toEndOf="@+id/relativeLayout"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Thomas Pesquet" />
 

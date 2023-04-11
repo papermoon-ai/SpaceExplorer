@@ -1,6 +1,6 @@
 package com.papermoon.spaceapp.data.datasource.remote.celestialBody.model
 
-import com.papermoon.spaceapp.domain.model.Period
+import com.papermoon.spaceapp.domain.model.celestialbody.Period
 
 data class NetworkPeriod(
     val years: Int,

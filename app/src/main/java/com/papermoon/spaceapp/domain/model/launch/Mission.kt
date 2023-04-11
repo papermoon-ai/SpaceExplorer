@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.domain.model
+package com.papermoon.spaceapp.domain.model.launch
 
 data class Mission(
     val name: String,

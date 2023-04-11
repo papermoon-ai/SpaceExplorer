@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.papermoon.spaceapp.databinding.ItemOptionBinding
-import com.papermoon.spaceapp.domain.model.MenuOption
+import com.papermoon.spaceapp.domain.model.menu.MenuOption
 
 class OverviewAdapter(
     private val onClickListener: OnClickListener

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.databinding.ItemCelestialBodyBinding
-import com.papermoon.spaceapp.domain.model.CelestialBody
+import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
@@ -23,7 +23,7 @@ class CelestialBodyAdapter(
             binding.celestialBodyItemTextView.text = celestialBody.englishName
             binding.celestialBodyShortDescriptionItemTextView.text = celestialBody.shortDescription
             Picasso.get()
-                .load(celestialBody.imageUrls.first())
+                .load(celestialBody.images.first().imageUrl)
                 .resize(
                     binding.root.context.resources.getDimension(R.dimen.base_photo_image_width)
                         .toInt(),
@@ -74,7 +74,7 @@ class DiffUtilCallback : DiffUtil.ItemCallback<CelestialBody>() {
                 && oldItem.description == newItem.description
                 && oldItem.discoverDate == newItem.discoverDate
                 && oldItem.discoveredBy == newItem.discoveredBy
-                && oldItem.imageUrls == newItem.imageUrls
+                && oldItem.images == newItem.images
                 && oldItem.satelliteCount == newItem.satelliteCount
     }
 }

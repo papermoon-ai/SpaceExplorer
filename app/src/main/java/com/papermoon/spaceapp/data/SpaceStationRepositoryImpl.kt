@@ -1,8 +1,8 @@
 package com.papermoon.spaceapp.data
 
 import com.papermoon.spaceapp.data.datasource.remote.spacestation.SpaceStationApiService
-import com.papermoon.spaceapp.data.datasource.remote.spacestation.model.asDomainObject
-import com.papermoon.spaceapp.domain.model.SpaceStation
+import com.papermoon.spaceapp.data.datasource.remote.spacestation.model.toDomainObject
+import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import com.papermoon.spaceapp.domain.repository.SpaceStationRepository
 import com.papermoon.spaceapp.domain.resource.Resource
 
@@ -12,7 +12,7 @@ class SpaceStationRepositoryImpl(
 
     override suspend fun getSpaceStationsFromNetwork(): Resource<List<SpaceStation>> {
         return try {
-            val spaceStations = spaceStationApiService.getSpaceStations().asDomainObject()
+            val spaceStations = spaceStationApiService.getSpaceStations().toDomainObject()
             Resource.Success(spaceStations)
         } catch (exception: Exception) {
             Resource.Failure(exception)
@@ -21,7 +21,7 @@ class SpaceStationRepositoryImpl(
 
     override suspend fun getActiveSpaceStationsFromNetwork(): Resource<List<SpaceStation>> {
         return try {
-            val spaceStations = spaceStationApiService.getActiveSpaceStations().asDomainObject()
+            val spaceStations = spaceStationApiService.getActiveSpaceStations().toDomainObject()
             Resource.Success(spaceStations)
         } catch (exception: Exception) {
             Resource.Failure(exception)

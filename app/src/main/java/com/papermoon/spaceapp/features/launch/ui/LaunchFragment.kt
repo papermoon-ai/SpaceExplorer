@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentLaunchBinding
-import com.papermoon.spaceapp.domain.model.Launch
+import com.papermoon.spaceapp.domain.model.launch.Launch
 import com.papermoon.spaceapp.features.MainActivity
 import com.squareup.picasso.Picasso
 
@@ -26,7 +26,7 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         _binding = FragmentLaunchBinding.inflate(inflater, container, false)
 
         Picasso.get()
-            .load(launch.imageUrl)
+            .load(launch.images.first().imageUrl)
             .fit()
             .into(binding.imgLaunch)
 
@@ -65,7 +65,7 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         }
 
         binding.imgLaunch.setOnClickListener {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(listOf(launch.imageUrl)))
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(launch.images))
         }
 
         return binding.root

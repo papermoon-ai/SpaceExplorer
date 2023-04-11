@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.papermoon.spaceapp.domain.model.SpaceStation
+import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
 import com.papermoon.spaceapp.domain.usecase.GetActiveSpaceStationsFromNetworkUseCase

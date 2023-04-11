@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.domain.model
+package com.papermoon.spaceapp.domain.model.celestialbody
 
 data class PhysicCharacteristics(
     val gravity: Double,

@@ -10,7 +10,7 @@ import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentSpaceStationBinding
-import com.papermoon.spaceapp.domain.model.SpaceStation
+import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import com.papermoon.spaceapp.features.MainActivity
 import com.squareup.picasso.Picasso
 
@@ -30,7 +30,7 @@ class SpaceStationFragment(
         _binding = FragmentSpaceStationBinding.inflate(inflater, container, false)
 
         Picasso.get()
-            .load(spaceStation.imageUrl)
+            .load(spaceStation.images.first().imageUrl)
             .fit()
             .into(binding.imgSpaceStation)
 
@@ -64,7 +64,7 @@ class SpaceStationFragment(
         }
 
         binding.imgSpaceStation.setOnClickListener {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(listOf(spaceStation.imageUrl)))
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(spaceStation.images))
         }
 
         return binding.root

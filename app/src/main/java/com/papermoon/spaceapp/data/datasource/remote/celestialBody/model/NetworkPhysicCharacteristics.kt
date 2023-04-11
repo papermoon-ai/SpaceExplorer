@@ -1,6 +1,6 @@
 package com.papermoon.spaceapp.data.datasource.remote.celestialBody.model
 
-import com.papermoon.spaceapp.domain.model.PhysicCharacteristics
+import com.papermoon.spaceapp.domain.model.celestialbody.PhysicCharacteristics
 
 data class NetworkPhysicCharacteristics(
     val gravity: Double,

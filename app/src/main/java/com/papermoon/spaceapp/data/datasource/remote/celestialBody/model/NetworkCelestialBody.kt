@@ -1,7 +1,8 @@
 package com.papermoon.spaceapp.data.datasource.remote.celestialBody.model
 
-import androidx.core.net.toUri
-import com.papermoon.spaceapp.domain.model.CelestialBody
+import com.papermoon.spaceapp.data.datasource.remote.model.NetworkImageWithDescription
+import com.papermoon.spaceapp.data.datasource.remote.model.toDomainObject
+import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
 
 data class NetworkCelestialBody(
     val id: String,
@@ -12,11 +13,11 @@ data class NetworkCelestialBody(
     val satelliteCount: Int,
     val description: String,
     val shortDescription: String,
-    val imageUrls: List<String>,
+    val images: List<NetworkImageWithDescription>,
     val characteristics: NetworkPhysicCharacteristics
 )
 
-fun NetworkCelestialBody.asDomainObject(): CelestialBody {
+fun NetworkCelestialBody.toDomainObject(): CelestialBody {
     return CelestialBody(
         name,
         englishName,
@@ -25,11 +26,11 @@ fun NetworkCelestialBody.asDomainObject(): CelestialBody {
         satelliteCount,
         description,
         shortDescription,
-        imageUrls.map { it.toUri() },
+        images.map { it.toDomainObject() },
         characteristics.toDomainObject()
     )
 }
 
-fun List<NetworkCelestialBody>.asDomainObject(): List<CelestialBody> {
-    return this.map { it.asDomainObject() }
+fun List<NetworkCelestialBody>.toDomainObject(): List<CelestialBody> {
+    return this.map { it.toDomainObject() }
 }

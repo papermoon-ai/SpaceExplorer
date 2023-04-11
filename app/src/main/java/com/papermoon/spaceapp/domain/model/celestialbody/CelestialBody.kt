@@ -1,6 +1,6 @@
-package com.papermoon.spaceapp.domain.model
+package com.papermoon.spaceapp.domain.model.celestialbody
 
-import android.net.Uri
+import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 
 data class CelestialBody(
     val name: String,
@@ -10,6 +10,6 @@ data class CelestialBody(
     val satelliteCount: Int,
     val description: String,
     val shortDescription: String,
-    val imageUrls: List<Uri>,
+    val images: List<ImageWithDescription>,
     val characteristics: PhysicCharacteristics
 )
