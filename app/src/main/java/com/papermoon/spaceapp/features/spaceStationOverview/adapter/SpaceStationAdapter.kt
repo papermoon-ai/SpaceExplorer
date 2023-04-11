@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.databinding.ItemSpaceStationBinding
-import com.papermoon.spaceapp.domain.model.SpaceStation
+import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
@@ -33,7 +33,7 @@ class SpaceStationAdapter(
                     binding.root.context.getString(R.string.label_deactivated)
 
             Picasso.get()
-                .load(spaceStation.imageUrl)
+                .load(spaceStation.images.first().imageUrl)
                 .fit()
                 .into(binding.spaceStationItemImageView, object : Callback {
                     override fun onSuccess() {
@@ -74,7 +74,7 @@ class DiffUtilCallback : DiffUtil.ItemCallback<SpaceStation>() {
     override fun areContentsTheSame(oldItem: SpaceStation, newItem: SpaceStation): Boolean {
         return oldItem.name == newItem.name
                 && oldItem.founded == newItem.founded
-                && oldItem.imageUrl == newItem.imageUrl
+                && oldItem.images == newItem.images
                 && oldItem.owners == newItem.owners
                 && oldItem.description == newItem.description
                 && oldItem.isActive == newItem.isActive

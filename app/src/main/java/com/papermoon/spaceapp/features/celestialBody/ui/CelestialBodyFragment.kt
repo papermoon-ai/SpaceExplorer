@@ -9,8 +9,8 @@ import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentCelestialBodyBinding
-import com.papermoon.spaceapp.domain.model.CelestialBody
-import com.papermoon.spaceapp.domain.model.Period
+import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
+import com.papermoon.spaceapp.domain.model.celestialbody.Period
 import com.papermoon.spaceapp.features.MainActivity
 import com.squareup.picasso.Picasso
 import java.text.DecimalFormat
@@ -73,7 +73,7 @@ class CelestialBodyFragment(
         binding.tvCelestialBodyDescription.text = celestialBody.description
 
         Picasso.get()
-            .load(celestialBody.imageUrls.first())
+            .load(celestialBody.images.first().imageUrl)
             .into(binding.imgCelestialBody)
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar)
@@ -84,7 +84,7 @@ class CelestialBodyFragment(
         }
 
         binding.imgCelestialBody.setOnClickListener {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(celestialBody.imageUrls))
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(celestialBody.images))
         }
 
         return binding.root

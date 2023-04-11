@@ -2,7 +2,7 @@ package com.papermoon.spaceapp.data
 
 import com.papermoon.spaceapp.data.datasource.remote.launches.LaunchApiService
 import com.papermoon.spaceapp.data.datasource.remote.launches.model.asDomainObject
-import com.papermoon.spaceapp.domain.model.Launch
+import com.papermoon.spaceapp.domain.model.launch.Launch
 import com.papermoon.spaceapp.domain.repository.LaunchRepository
 import com.papermoon.spaceapp.domain.resource.Resource
 

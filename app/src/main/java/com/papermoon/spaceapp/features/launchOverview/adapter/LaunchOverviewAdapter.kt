@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.databinding.ItemLaunchBinding
-import com.papermoon.spaceapp.domain.model.Launch
+import com.papermoon.spaceapp.domain.model.launch.Launch
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import org.joda.time.DateTime
@@ -24,7 +24,7 @@ class LaunchOverviewAdapter(
 
     class LaunchViewHolder(private val binding: ItemLaunchBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        var timer: CountDownTimer? = null
+        private var timer: CountDownTimer? = null
         var dateTextView: TextView = binding.launchItemDateTextView
         var launchImageView: ImageView = binding.launchItemImageView
         var progressBar: ProgressBar = binding.launchItemProgressBar
@@ -34,7 +34,7 @@ class LaunchOverviewAdapter(
             binding.launchItemLocationTextView.text = launch.pad.location
 
             Picasso.get()
-                .load(launch.imageUrl)
+                .load(launch.images.first().imageUrl)
                 .resize(
                     binding.root.context.resources.getDimension(R.dimen.base_photo_image_width)
                         .toInt(),
@@ -106,7 +106,7 @@ class DiffUtilCallback : DiffUtil.ItemCallback<Launch>() {
     override fun areContentsTheSame(oldItem: Launch, newItem: Launch): Boolean {
         return oldItem.name == newItem.name
                 && oldItem.launchServiceProvider == newItem.launchServiceProvider
-                && oldItem.imageUrl == newItem.imageUrl
+                && oldItem.images == newItem.images
                 && oldItem.pad.location == newItem.pad.location
                 && oldItem.pad.name == newItem.pad.name
                 && oldItem.launchDate == newItem.launchDate

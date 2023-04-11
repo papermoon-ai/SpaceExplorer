@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentAstronautBinding
-import com.papermoon.spaceapp.domain.model.Astronaut
+import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import com.papermoon.spaceapp.features.MainActivity
 import com.squareup.picasso.Picasso
 

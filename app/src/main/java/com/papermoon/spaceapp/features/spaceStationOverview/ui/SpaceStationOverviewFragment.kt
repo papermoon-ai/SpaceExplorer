@@ -32,7 +32,7 @@ class SpaceStationOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentSpaceStationOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = SpaceStationAdapter() {
+        val adapter = SpaceStationAdapter {
             SpaceApp.INSTANCE.router.navigateTo(Screens.spaceStationScreen(it))
         }
         spaceStationOverviewViewModel.spaceStationsList.observe(viewLifecycleOwner) {

@@ -1,11 +1,11 @@
 package com.papermoon.spaceapp
 
-import android.net.Uri
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import com.papermoon.spaceapp.domain.model.Astronaut
-import com.papermoon.spaceapp.domain.model.CelestialBody
-import com.papermoon.spaceapp.domain.model.Launch
-import com.papermoon.spaceapp.domain.model.SpaceStation
+import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
+import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
+import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
+import com.papermoon.spaceapp.domain.model.launch.Launch
+import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import com.papermoon.spaceapp.features.astronaut.ui.AstronautFragment
 import com.papermoon.spaceapp.features.astronautOverview.ui.AstronautOverviewFragment
 import com.papermoon.spaceapp.features.celestialBody.ui.CelestialBodyFragment
@@ -30,5 +30,5 @@ object Screens {
     fun celestialBodyOverviewScreen() = FragmentScreen { CelestialBodyOverviewFragment() }
     fun celestialBodyScreen(celestialBody: CelestialBody) =
         FragmentScreen { CelestialBodyFragment(celestialBody) }
-    fun imageViewerScreen(images: List<Uri>) = FragmentScreen { ImageViewerFragment(images) }
+    fun imageViewerScreen(images: List<ImageWithDescription>) = FragmentScreen { ImageViewerFragment(images) }
 }

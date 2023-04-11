@@ -1,6 +1,6 @@
 package com.papermoon.spaceapp.domain.usecase
 
-import com.papermoon.spaceapp.domain.model.Launch
+import com.papermoon.spaceapp.domain.model.launch.Launch
 import com.papermoon.spaceapp.domain.repository.LaunchRepository
 import com.papermoon.spaceapp.domain.resource.Resource
 import kotlinx.coroutines.Dispatchers

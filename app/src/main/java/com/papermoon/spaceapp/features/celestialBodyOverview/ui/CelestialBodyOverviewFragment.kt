@@ -32,7 +32,7 @@ class CelestialBodyOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentCelestialBodyOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = CelestialBodyAdapter() {
+        val adapter = CelestialBodyAdapter {
             SpaceApp.INSTANCE.router.navigateTo(Screens.celestialBodyScreen(it))
         }
         binding.celestialBodyList.adapter = adapter

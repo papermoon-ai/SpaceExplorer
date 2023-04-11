@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.features.imageViewer.ui
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentImageViewerBinding
+import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.imageViewer.adapter.ImageViewerAdapter
 
-class ImageViewerFragment(val images: List<Uri>) : Fragment() {
+class ImageViewerFragment(private val images: List<ImageWithDescription>) : Fragment() {
 
     private var _binding: FragmentImageViewerBinding? = null
     val binding: FragmentImageViewerBinding
@@ -26,8 +26,10 @@ class ImageViewerFragment(val images: List<Uri>) : Fragment() {
         val adapter = ImageViewerAdapter(images) {
             if (binding.toolbar.visibility == View.GONE) {
                 binding.toolbar.visibility = View.VISIBLE
+                return@ImageViewerAdapter View.VISIBLE
             } else {
                 binding.toolbar.visibility = View.GONE
+                return@ImageViewerAdapter View.GONE
             }
         }
         binding.imagePager.adapter = adapter

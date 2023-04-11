@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.papermoon.spaceapp.R
-import com.papermoon.spaceapp.domain.model.MenuOption
+import com.papermoon.spaceapp.domain.model.menu.MenuOption
 
 class OverviewViewModel : ViewModel() {
 

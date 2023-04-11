@@ -2,7 +2,7 @@ package com.papermoon.spaceapp.data
 
 import com.papermoon.spaceapp.data.datasource.remote.astronaut.AstronautApiService
 import com.papermoon.spaceapp.data.datasource.remote.astronaut.model.asDomainObject
-import com.papermoon.spaceapp.domain.model.Astronaut
+import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import com.papermoon.spaceapp.domain.repository.AstronautRepository
 import com.papermoon.spaceapp.domain.resource.Resource
 
