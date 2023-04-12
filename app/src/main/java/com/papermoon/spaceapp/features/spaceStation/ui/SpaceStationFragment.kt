@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayoutMediator
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentSpaceStationBinding
 import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import com.papermoon.spaceapp.features.MainActivity
-import com.squareup.picasso.Picasso
+import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
 
 class SpaceStationFragment(
     private val spaceStation: SpaceStation
@@ -29,10 +30,18 @@ class SpaceStationFragment(
     ): View {
         _binding = FragmentSpaceStationBinding.inflate(inflater, container, false)
 
-        Picasso.get()
-            .load(spaceStation.images.first().imageUrl)
-            .fit()
-            .into(binding.imgSpaceStation)
+        val adapter = BaseViewPagerImageAdapter(spaceStation.images) { position ->
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(spaceStation.images, position))
+        }
+        binding.viewPagerSpaceStation.adapter = adapter
+
+        if (spaceStation.images.size > 1) {
+            TabLayoutMediator(
+                binding.tabLayoutCelestialBodyIndicator.root,
+                binding.viewPagerSpaceStation
+            ) { tab, position ->
+            }.attach()
+        }
 
         with(spaceStation) {
             binding.tvStationName.text = name
@@ -61,10 +70,6 @@ class SpaceStationFragment(
 
         binding.toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
-        }
-
-        binding.imgSpaceStation.setOnClickListener {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(spaceStation.images))
         }
 
         return binding.root

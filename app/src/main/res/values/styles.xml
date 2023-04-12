@@ -37,6 +37,16 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="AppTheme.Text.ImageCounter">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/rounded_corner</item>
+    </style>
+
     <!-- Texts Subtext -->
     <style name="AppTheme.Text.Subtext">
         <item name="android:textColor">?attr/colorOnSurfaceVariant</item>

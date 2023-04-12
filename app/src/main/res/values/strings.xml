@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">SpaceApp</string>
 
-    <!-- Shared -->
+    <!-- Commons -->
     <string name="label_name">Название</string>
     <string name="label_description">Краткое описание</string>
+    <string name="label_counter">%1$d/%2$d</string>
 
     <!-- Menu -->
     <string name="label_planets">Планеты</string>

@@ -18,27 +18,30 @@
             app:contentScrim="?attr/colorSurface"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
-                android:id="@+id/imgCelestialBody"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerCelestialBody"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/big_image_height"
-                android:scaleType="centerCrop"
+                android:background="@android:color/black"
                 app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.7"
-                tools:srcCompat="@drawable/ic_planet" />
+                app:layout_collapseParallaxMultiplier="0.7" />
+
+            <include
+                android:id="@+id/tabLayoutCelestialBodyIndicator"
+                layout="@layout/tab_layout" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/text_scrim_height"
                 android:background="@drawable/scrim_top"
-                app:layout_collapseMode="pin"/>
+                app:layout_collapseMode="pin" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/text_scrim_height"
-                android:layout_gravity="bottom"
                 android:layout_alignBottom="@+id/image_shot"
-                android:background="@drawable/scrim_bottom"/>
+                android:layout_gravity="bottom"
+                android:background="@drawable/scrim_bottom" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"

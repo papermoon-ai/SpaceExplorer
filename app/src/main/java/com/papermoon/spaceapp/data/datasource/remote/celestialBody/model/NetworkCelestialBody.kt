@@ -1,7 +1,7 @@
 package com.papermoon.spaceapp.data.datasource.remote.celestialBody.model
 
-import com.papermoon.spaceapp.data.datasource.remote.model.NetworkImageWithDescription
-import com.papermoon.spaceapp.data.datasource.remote.model.toDomainObject
+import com.papermoon.spaceapp.data.datasource.remote.commons.model.NetworkImageWithDescription
+import com.papermoon.spaceapp.data.datasource.remote.commons.model.toDomainObject
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
 
 data class NetworkCelestialBody(
