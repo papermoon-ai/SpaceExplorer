@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayoutMediator
+import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentAstronautBinding
 import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import com.papermoon.spaceapp.features.MainActivity
-import com.squareup.picasso.Picasso
+import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
 
 class AstronautFragment(
     private val astronaut: Astronaut
@@ -27,9 +29,18 @@ class AstronautFragment(
     ): View {
         _binding = FragmentAstronautBinding.inflate(inflater, container, false)
 
-        Picasso.get()
-            .load(astronaut.profileImage)
-            .into(binding.imgAstronaut)
+        val adapter = BaseViewPagerImageAdapter(astronaut.images) { position ->
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(astronaut.images, position))
+        }
+        binding.viewPagerAstronaut.adapter = adapter
+
+        if (astronaut.images.size > 1) {
+            TabLayoutMediator(
+                binding.tabLayoutCelestialBodyIndicator.root,
+                binding.viewPagerAstronaut
+            ) { tab, position ->
+            }.attach()
+        }
 
         binding.tvAstronautName.text = astronaut.name
         binding.tvAstronautCountry.text = astronaut.nationality

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.papermoon.spaceapp.databinding.ItemImagePageBinding
+import com.papermoon.spaceapp.databinding.ItemViewpagerImageDetailedBinding
 import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 import com.squareup.picasso.Picasso
 
@@ -17,7 +17,7 @@ class ImageViewerAdapter(
     private var descriptionVisibility = View.GONE
     private val viewes = ArrayList<PagerViewHolder>()
 
-    class PagerViewHolder(val binding: ItemImagePageBinding) : ViewHolder(binding.root) {
+    class PagerViewHolder(val binding: ItemViewpagerImageDetailedBinding) : ViewHolder(binding.root) {
         fun bind(image: ImageWithDescription) {
             Picasso.get()
                 .load(image.imageUrl)
@@ -30,7 +30,7 @@ class ImageViewerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return PagerViewHolder(ItemImagePageBinding.inflate(inflater, parent, false))
+        return PagerViewHolder(ItemViewpagerImageDetailedBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {

@@ -1,8 +1,8 @@
 package com.papermoon.spaceapp.data.datasource.remote.launches.model
 
 import com.google.gson.annotations.SerializedName
-import com.papermoon.spaceapp.data.datasource.remote.model.NetworkImageWithDescription
-import com.papermoon.spaceapp.data.datasource.remote.model.toDomainObject
+import com.papermoon.spaceapp.data.datasource.remote.commons.model.NetworkImageWithDescription
+import com.papermoon.spaceapp.data.datasource.remote.commons.model.toDomainObject
 import com.papermoon.spaceapp.domain.model.launch.Launch
 import org.joda.time.DateTime
 import java.util.*

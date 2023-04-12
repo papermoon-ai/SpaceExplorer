@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayoutMediator
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
@@ -12,7 +13,7 @@ import com.papermoon.spaceapp.databinding.FragmentCelestialBodyBinding
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
 import com.papermoon.spaceapp.domain.model.celestialbody.Period
 import com.papermoon.spaceapp.features.MainActivity
-import com.squareup.picasso.Picasso
+import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
 import java.text.DecimalFormat
 
 
@@ -30,6 +31,19 @@ class CelestialBodyFragment(
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCelestialBodyBinding.inflate(inflater, container, false)
+
+        val adapter = BaseViewPagerImageAdapter(celestialBody.images) { position ->
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(celestialBody.images, position))
+        }
+
+        if (celestialBody.images.size > 1) {
+            binding.viewPagerCelestialBody.adapter = adapter
+            TabLayoutMediator(
+                binding.tabLayoutCelestialBodyIndicator.root,
+                binding.viewPagerCelestialBody
+            ) { tab, position ->
+            }.attach()
+        }
 
         val formatter = DecimalFormat("#.####")
 
@@ -72,19 +86,11 @@ class CelestialBodyFragment(
         )
         binding.tvCelestialBodyDescription.text = celestialBody.description
 
-        Picasso.get()
-            .load(celestialBody.images.first().imageUrl)
-            .into(binding.imgCelestialBody)
-
         (activity as MainActivity).setSupportActionBar(binding.toolbar)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         binding.toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
-        }
-
-        binding.imgCelestialBody.setOnClickListener {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(celestialBody.images))
         }
 
         return binding.root

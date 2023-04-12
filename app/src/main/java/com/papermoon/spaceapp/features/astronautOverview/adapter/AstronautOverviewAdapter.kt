@@ -29,7 +29,7 @@ class AstronautOverviewAdapter(
             binding.astronautItemNationalityTextView.text = astronaut.nationality
 
             Picasso.get()
-                .load(astronaut.profileImage)
+                .load(astronaut.images.first().imageUrl)
                 .resize(
                     binding.root.context.resources.getDimension(R.dimen.base_photo_image_width)
                         .toInt(),
@@ -77,7 +77,7 @@ class DiffUtilCallback : DiffUtil.ItemCallback<Astronaut>() {
                 && oldItem.bio == newItem.bio
                 && oldItem.dateOfBirth == newItem.dateOfBirth
                 && oldItem.nationality == newItem.nationality
-                && oldItem.profileImage == newItem.profileImage
+                && oldItem.images == newItem.images
                 && oldItem.wikiUrl == newItem.wikiUrl
                 && oldItem.firstFlight == newItem.firstFlight
                 && oldItem.lastFlight == newItem.lastFlight

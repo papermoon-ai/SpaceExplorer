@@ -11,7 +11,10 @@ import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.imageViewer.adapter.ImageViewerAdapter
 
-class ImageViewerFragment(private val images: List<ImageWithDescription>) : Fragment() {
+class ImageViewerFragment(
+    private val images: List<ImageWithDescription>,
+    private val position: Int
+) : Fragment() {
 
     private var _binding: FragmentImageViewerBinding? = null
     val binding: FragmentImageViewerBinding
@@ -33,6 +36,8 @@ class ImageViewerFragment(private val images: List<ImageWithDescription>) : Frag
             }
         }
         binding.imagePager.adapter = adapter
+
+        binding.imagePager.setCurrentItem(position, false)
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)

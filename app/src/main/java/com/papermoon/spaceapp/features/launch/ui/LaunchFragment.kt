@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayoutMediator
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentLaunchBinding
 import com.papermoon.spaceapp.domain.model.launch.Launch
 import com.papermoon.spaceapp.features.MainActivity
-import com.squareup.picasso.Picasso
+import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
 
 class LaunchFragment(private val launch: Launch) : Fragment() {
     private var _binding: FragmentLaunchBinding? = null
@@ -25,10 +26,18 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
     ): View {
         _binding = FragmentLaunchBinding.inflate(inflater, container, false)
 
-        Picasso.get()
-            .load(launch.images.first().imageUrl)
-            .fit()
-            .into(binding.imgLaunch)
+        val adapter = BaseViewPagerImageAdapter(launch.images) { position ->
+            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(launch.images, position))
+        }
+        binding.viewPagerLaunch.adapter = adapter
+
+        if (launch.images.size > 1) {
+            TabLayoutMediator(
+                binding.tabLayoutCelestialBodyIndicator.root,
+                binding.viewPagerLaunch
+            ) { tab, position ->
+            }.attach()
+        }
 
         binding.tvLaunchName.text = launch.name
         binding.tvLaunchAgency.text = launch.launchServiceProvider
@@ -62,10 +71,6 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
 
         binding.toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
-        }
-
-        binding.imgLaunch.setOnClickListener {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(launch.images))
         }
 
         return binding.root

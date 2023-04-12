@@ -30,5 +30,5 @@ object Screens {
     fun celestialBodyOverviewScreen() = FragmentScreen { CelestialBodyOverviewFragment() }
     fun celestialBodyScreen(celestialBody: CelestialBody) =
         FragmentScreen { CelestialBodyFragment(celestialBody) }
-    fun imageViewerScreen(images: List<ImageWithDescription>) = FragmentScreen { ImageViewerFragment(images) }
+    fun imageViewerScreen(images: List<ImageWithDescription>, position: Int) = FragmentScreen { ImageViewerFragment(images, position) }
 }

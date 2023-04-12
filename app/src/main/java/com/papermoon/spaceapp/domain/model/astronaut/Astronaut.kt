@@ -1,13 +1,14 @@
 package com.papermoon.spaceapp.domain.model.astronaut
 
 import android.net.Uri
+import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 import org.joda.time.DateTime
 
 data class Astronaut(
     val name: String,
     val spacecraft: String,
     val dateOfBirth: DateTime,
-    val profileImage: Uri?,
+    val images: List<ImageWithDescription>,
     val bio: String,
     val nationality: String,
     val wikiUrl: Uri?,

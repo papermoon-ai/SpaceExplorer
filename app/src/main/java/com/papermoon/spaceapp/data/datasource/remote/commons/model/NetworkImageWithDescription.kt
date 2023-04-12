@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.data.datasource.remote.model
+package com.papermoon.spaceapp.data.datasource.remote.commons.model
 
 import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 

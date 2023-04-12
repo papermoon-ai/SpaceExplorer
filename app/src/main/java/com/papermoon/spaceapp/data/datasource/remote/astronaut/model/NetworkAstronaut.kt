@@ -2,6 +2,8 @@ package com.papermoon.spaceapp.data.datasource.remote.astronaut.model
 
 import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
+import com.papermoon.spaceapp.data.datasource.remote.commons.model.NetworkImageWithDescription
+import com.papermoon.spaceapp.data.datasource.remote.commons.model.toDomainObject
 import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import org.joda.time.DateTime
 import java.util.*
@@ -11,8 +13,7 @@ data class NetworkAstronaut(
     val spacecraft: String,
     @SerializedName("date_of_birth")
     val dateOfBirth: Date,
-    @SerializedName("profile_image")
-    val profileImage: String?,
+    val images: List<NetworkImageWithDescription>,
     val bio: String,
     val nationality: String,
     @SerializedName("wiki")
@@ -28,7 +29,7 @@ fun NetworkAstronaut.asDomainObject(): Astronaut {
         name,
         spacecraft,
         DateTime(dateOfBirth),
-        profileImage?.toUri(),
+        images.map { it.toDomainObject() },
         bio,
         nationality,
         wikiUrl?.toUri(),

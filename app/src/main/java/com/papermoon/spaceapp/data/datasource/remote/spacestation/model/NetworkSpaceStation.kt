@@ -1,8 +1,8 @@
 package com.papermoon.spaceapp.data.datasource.remote.spacestation.model
 
 import androidx.core.net.toUri
-import com.papermoon.spaceapp.data.datasource.remote.model.NetworkImageWithDescription
-import com.papermoon.spaceapp.data.datasource.remote.model.toDomainObject
+import com.papermoon.spaceapp.data.datasource.remote.commons.model.NetworkImageWithDescription
+import com.papermoon.spaceapp.data.datasource.remote.commons.model.toDomainObject
 import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import org.joda.time.DateTime
 import java.util.*
