@@ -1,13 +1,16 @@
 package com.papermoon.spaceapp.features.celestialBody.ui
 
+import android.app.ActionBar.LayoutParams
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.papermoon.spaceapp.R
-import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentCelestialBodyBinding
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
@@ -15,7 +18,6 @@ import com.papermoon.spaceapp.domain.model.celestialbody.Period
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
 import java.text.DecimalFormat
-
 
 class CelestialBodyFragment(
     private val celestialBody: CelestialBody
@@ -25,6 +27,8 @@ class CelestialBodyFragment(
     private val binding: FragmentCelestialBodyBinding
         get() = _binding!!
 
+    private var imageFullscreen = false
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,66 +36,37 @@ class CelestialBodyFragment(
     ): View {
         _binding = FragmentCelestialBodyBinding.inflate(inflater, container, false)
 
-        val adapter = BaseViewPagerImageAdapter(celestialBody.images) { position ->
-            SpaceApp.INSTANCE.router.navigateTo(Screens.imageViewerScreen(celestialBody.images, position))
+        val adapter = BaseViewPagerImageAdapter(celestialBody.images) {
+            if (!imageFullscreen) {
+                setPageViewerFullscreen()
+            } else {
+                with(binding.tvCelestialBodyImageDescription) {
+                    visibility = if (visibility == View.GONE) {
+                        View.VISIBLE
+                    } else {
+                        View.GONE
+                    }
+                }
+            }
         }
+        binding.viewPagerCelestialBody.adapter = adapter
 
-        if (celestialBody.images.size > 1) {
-            binding.viewPagerCelestialBody.adapter = adapter
-            TabLayoutMediator(
-                binding.tabLayoutCelestialBodyIndicator.root,
-                binding.viewPagerCelestialBody
-            ) { tab, position ->
-            }.attach()
-        }
-
-        val formatter = DecimalFormat("#.####")
-
-        binding.tvCelestialBodyName.text = celestialBody.englishName
-
-        if (celestialBody.discoverDate == null) {
-            binding.cardViewCelestialBodyDiscovery.visibility = View.GONE
-        } else {
-            binding.tvCelestialBodyDiscoveryDate.text = celestialBody.discoverDate
-            binding.tvCelestialBodyDiscoverer.text = celestialBody.discoveredBy
-        }
-
-        binding.tvCelestialBodySatellites.text = celestialBody.satelliteCount.toString()
-        binding.tvCelestialBodyArea.text =
-            getString(
-                R.string.description_area,
-                formatter.format(celestialBody.characteristics.area)
-            )
-        binding.tvCelestialBodyTemperature.text = getString(
-            R.string.description_temperatures,
-            getTemperatureString(celestialBody.characteristics.minTemperature),
-            getTemperatureString(celestialBody.characteristics.maxTemperature)
-        )
-        binding.tvCelestialBodyOrbitalSpeed.text =
-            getString(
-                R.string.description_orbital_speed,
-                formatter.format(celestialBody.characteristics.avgOrbitalSpeed)
-            )
-        binding.tvCelestialBodyRotationAxis.text =
-            getPeriodString(celestialBody.characteristics.rotationAroundAxis)
-        binding.tvCelestialBodyRotationSun.text =
-            getPeriodString(celestialBody.characteristics.rotationAroundSun)
-        binding.tvCelestialBodyGravity.text = getString(
-            R.string.description_gravity,
-            formatter.format(celestialBody.characteristics.gravity)
-        )
-        binding.tvCelestialBodyDensity.text = getString(
-            R.string.description_density,
-            formatter.format(celestialBody.characteristics.density)
-        )
-        binding.tvCelestialBodyDescription.text = celestialBody.description
+        setUiValues()
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         binding.toolbar.setNavigationOnClickListener {
-            SpaceApp.INSTANCE.router.exit()
+            onBackPressedCallback()
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    onBackPressedCallback()
+                }
+            })
 
         return binding.root
     }
@@ -104,6 +79,120 @@ class CelestialBodyFragment(
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setPageViewerFullscreen() {
+        binding.nestedScrollViewCelestialBody.visibility = View.GONE
+        binding.appBarCelestialBody.layoutParams.height = LayoutParams.MATCH_PARENT
+        binding.appBarCelestialBody.setExpanded(true)
+
+        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
+        scrollingToolbarParams.scrollFlags = 0
+        scrollingToolbarParams.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
+
+        if (celestialBody.images.size > 1) {
+            binding.tabLayoutCelestialBodyIndicator.root.visibility = View.GONE
+            binding.tvCelestialBodyCounter.visibility = View.GONE
+        }
+        binding.collapsingToolBar.isTitleEnabled = false
+
+        imageFullscreen = true
+    }
+
+    private fun setPageViewerNormalSize() {
+        binding.nestedScrollViewCelestialBody.visibility = View.VISIBLE
+        binding.appBarCelestialBody.layoutParams.height = resources.getDimension(R.dimen.big_image_height).toInt()
+
+        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
+        scrollingToolbarParams.scrollFlags = 0
+        scrollingToolbarParams.scrollFlags =
+            AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL + AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
+
+        if (celestialBody.images.size > 1) {
+            binding.tabLayoutCelestialBodyIndicator.root.visibility = View.VISIBLE
+            binding.tvCelestialBodyCounter.visibility = View.VISIBLE
+        }
+
+        binding.tvCelestialBodyImageDescription.visibility = View.GONE
+        binding.collapsingToolBar.isTitleEnabled = true
+
+        imageFullscreen = false
+    }
+
+    private fun setUiValues() {
+        val formatter = DecimalFormat("#.####")
+
+        with(binding) {
+            tvCelestialBodyName.text = celestialBody.englishName
+
+            if (celestialBody.discoverDate == null) {
+                cardViewCelestialBodyDiscovery.visibility = View.GONE
+            } else {
+                tvCelestialBodyDiscoveryDate.text = celestialBody.discoverDate
+                tvCelestialBodyDiscoverer.text = celestialBody.discoveredBy
+            }
+
+            tvCelestialBodySatellites.text = celestialBody.satelliteCount.toString()
+            tvCelestialBodyArea.text = getString(
+                    R.string.description_area,
+                    formatter.format(celestialBody.characteristics.area)
+                )
+            tvCelestialBodyTemperature.text = getString(
+                R.string.description_temperatures,
+                getTemperatureString(celestialBody.characteristics.minTemperature),
+                getTemperatureString(celestialBody.characteristics.maxTemperature)
+            )
+            tvCelestialBodyOrbitalSpeed.text = getString(
+                    R.string.description_orbital_speed,
+                    formatter.format(celestialBody.characteristics.avgOrbitalSpeed)
+                )
+            tvCelestialBodyRotationAxis.text = getPeriodString(celestialBody.characteristics.rotationAroundAxis)
+            tvCelestialBodyRotationSun.text = getPeriodString(celestialBody.characteristics.rotationAroundSun)
+            tvCelestialBodyGravity.text = getString(
+                R.string.description_gravity,
+                formatter.format(celestialBody.characteristics.gravity)
+            )
+            tvCelestialBodyDensity.text = getString(
+                R.string.description_density,
+                formatter.format(celestialBody.characteristics.density)
+            )
+            tvCelestialBodyDescription.text = celestialBody.description
+            tvCelestialBodyCounter.text = getString(
+                R.string.label_counter, 1, celestialBody.images.size
+            )
+
+            if (celestialBody.images.size > 1) {
+                TabLayoutMediator(
+                    tabLayoutCelestialBodyIndicator.root,
+                    viewPagerCelestialBody
+                ) { tab, position ->
+                }.attach()
+            } else {
+                tvCelestialBodyCounter.visibility = View.GONE
+            }
+
+            viewPagerCelestialBody.registerOnPageChangeCallback(object: OnPageChangeCallback() {
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                    tvCelestialBodyImageDescription.text = celestialBody.images[position].description
+                    tvCelestialBodyCounter.text = getString(
+                        R.string.label_counter, position + 1, celestialBody.images.size
+                    )
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                }
+            })
+        }
+    }
+
+    private fun onBackPressedCallback() {
+        if (imageFullscreen) {
+            setPageViewerNormalSize()
+        } else {
+            SpaceApp.INSTANCE.router.exit()
+        }
     }
 
     private fun getTemperatureString(temperature: Double): String {
