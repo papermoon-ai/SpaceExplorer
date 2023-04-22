@@ -70,11 +70,6 @@ class AstronautFragment(
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        activity!!.title = astronaut.name
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -116,6 +111,7 @@ class AstronautFragment(
                 tvAstronautCounter.visibility = View.GONE
             }
 
+            toolbar.title = astronaut.name
             viewPagerAstronaut.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
                 override fun onPageScrolled(
                     position: Int,
