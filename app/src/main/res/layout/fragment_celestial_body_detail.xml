@@ -126,7 +126,7 @@
                         android:text="@string/label_name"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
                         android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btnCelestialBodyOpenWeb"
                         app:layout_constraintStart_toEndOf="@+id/imgCelestialBodyPlanetIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -138,10 +138,20 @@
                         android:layout_marginEnd="@dimen/base_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btnCelestialBodyOpenWeb"
                         app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyNameLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyNameLabel"
                         tools:text="Earth" />
+
+                    <ImageButton
+                        android:id="@+id/btnCelestialBodyOpenWeb"
+                        style="@style/RoundImageButton"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:src="@drawable/ic_wikipedia"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="?attr/colorPrimary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

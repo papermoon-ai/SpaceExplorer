@@ -1,6 +1,7 @@
 package com.papermoon.spaceapp.features.celestialBodyDetail.ui
 
 import android.app.ActionBar.LayoutParams
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -164,6 +165,11 @@ class CelestialBodyFragment(
             tvCelestialBodyCounter.text = getString(
                 R.string.label_counter, 1, celestialBody.images.size
             )
+
+            btnCelestialBodyOpenWeb.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, celestialBody.wikiUrl)
+                startActivity(intent)
+            }
 
             if (celestialBody.images.size > 1) {
                 TabLayoutMediator(
