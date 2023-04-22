@@ -75,11 +75,6 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        activity!!.title = launch.name
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -126,6 +121,7 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
                 btnLaunchOpenMap.visibility = View.GONE
             }
 
+            toolbar.title = launch.name
             viewPagerLaunch.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
                 override fun onPageScrolled(
                     position: Int,

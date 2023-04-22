@@ -61,11 +61,6 @@ class SpaceStationFragment(
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        activity!!.title = spaceStation.name
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -119,6 +114,7 @@ class SpaceStationFragment(
                 tvSpaceStationCounter.visibility = View.GONE
             }
 
+            toolbar.title = spaceStation.name
             if (spaceStation.wikiUrl != null) {
                 btnStationOpenInWeb.setOnClickListener {
                     val intent = Intent(Intent.ACTION_VIEW, spaceStation.wikiUrl)
