@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.features.launch.ui
+package com.papermoon.spaceapp.features.launchDetail.ui
 
 import android.app.ActionBar
 import android.content.Intent
@@ -13,14 +13,14 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.SpaceApp
-import com.papermoon.spaceapp.databinding.FragmentLaunchBinding
+import com.papermoon.spaceapp.databinding.FragmentLaunchDetailBinding
 import com.papermoon.spaceapp.domain.model.launch.Launch
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
 
 class LaunchFragment(private val launch: Launch) : Fragment() {
-    private var _binding: FragmentLaunchBinding? = null
-    private val binding: FragmentLaunchBinding
+    private var _binding: FragmentLaunchDetailBinding? = null
+    private val binding: FragmentLaunchDetailBinding
         get() = _binding!!
 
     private var imageFullscreen = false
@@ -30,8 +30,33 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLaunchBinding.inflate(inflater, container, false)
+        _binding = FragmentLaunchDetailBinding.inflate(inflater, container, false)
 
+        setupAdapter()
+        setUiValues()
+        setupToolbar()
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    onBackPressedCallback()
+                }
+            })
+
+        return binding.root
+    }
+
+    private fun setupToolbar() {
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressedCallback()
+        }
+    }
+
+    private fun setupAdapter() {
         val adapter = BaseViewPagerImageAdapter(launch.images) { position ->
             if (!imageFullscreen) {
                 setPageViewerFullscreen()
@@ -46,25 +71,6 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
             }
         }
         binding.viewPagerLaunch.adapter = adapter
-
-        setUiValues()
-
-        (activity as MainActivity).setSupportActionBar(binding.toolbar)
-        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressedCallback()
-        }
-
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    onBackPressedCallback()
-                }
-            })
-
-        return binding.root
     }
 
     private fun onBackPressedCallback() {
@@ -139,6 +145,8 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
     }
 
     private fun setPageViewerFullscreen() {
+        binding.toolbar.title = ""
+
         binding.nestedScrollViewLaunch.visibility = View.GONE
         binding.appBarLaunch.layoutParams.height = ActionBar.LayoutParams.MATCH_PARENT
         binding.appBarLaunch.setExpanded(true)
@@ -159,6 +167,8 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
     }
 
     private fun setPageViewerNormalSize() {
+        binding.toolbar.title = launch.name
+
         binding.nestedScrollViewLaunch.visibility = View.VISIBLE
         binding.appBarLaunch.layoutParams.height =
             resources.getDimension(R.dimen.big_image_height).toInt()

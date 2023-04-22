@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.features.astronaut.ui
+package com.papermoon.spaceapp.features.astronautDetail.ui
 
 import android.app.ActionBar
 import android.content.Intent
@@ -13,7 +13,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.SpaceApp
-import com.papermoon.spaceapp.databinding.FragmentAstronautBinding
+import com.papermoon.spaceapp.databinding.FragmentAstronautDetailBinding
 import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
@@ -22,8 +22,8 @@ class AstronautFragment(
     private val astronaut: Astronaut
 ) : Fragment() {
 
-    private var _binding: FragmentAstronautBinding? = null
-    private val binding: FragmentAstronautBinding
+    private var _binding: FragmentAstronautDetailBinding? = null
+    private val binding: FragmentAstronautDetailBinding
         get() = _binding!!
 
     private var imageFullscreen = false
@@ -33,8 +33,32 @@ class AstronautFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAstronautBinding.inflate(inflater, container, false)
+        _binding = FragmentAstronautDetailBinding.inflate(inflater, container, false)
 
+        setupAdapter()
+        setUiValues()
+        setupToolbar()
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    onBackPressedCallback()
+                }
+            })
+
+        return binding.root
+    }
+
+    private fun setupToolbar() {
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressedCallback()
+        }
+    }
+
+    private fun setupAdapter() {
         val adapter = BaseViewPagerImageAdapter(astronaut.images) { position ->
             if (!imageFullscreen) {
                 setPageViewerFullscreen()
@@ -49,25 +73,6 @@ class AstronautFragment(
             }
         }
         binding.viewPagerAstronaut.adapter = adapter
-
-        setUiValues()
-
-        (activity as MainActivity).setSupportActionBar(binding.toolbar)
-        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    onBackPressedCallback()
-                }
-            })
-
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressedCallback()
-        }
-
-        return binding.root
     }
 
     override fun onDestroyView() {
@@ -129,6 +134,8 @@ class AstronautFragment(
     }
 
     private fun setPageViewerFullscreen() {
+        binding.toolbar.title = ""
+
         binding.nestedScrollViewAstronaut.visibility = View.GONE
         binding.appBarAstronaut.layoutParams.height = ActionBar.LayoutParams.MATCH_PARENT
         binding.appBarAstronaut.setExpanded(true)
@@ -147,6 +154,8 @@ class AstronautFragment(
     }
 
     private fun setPageViewerNormalSize() {
+        binding.toolbar.title = astronaut.name
+
         binding.nestedScrollViewAstronaut.visibility = View.VISIBLE
         binding.appBarAstronaut.layoutParams.height = resources.getDimension(R.dimen.big_image_height).toInt()
 
