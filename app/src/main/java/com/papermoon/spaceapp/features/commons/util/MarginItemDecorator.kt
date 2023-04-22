@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.features.util
+package com.papermoon.spaceapp.features.commons.util
 
 import android.graphics.Rect
 import android.view.View

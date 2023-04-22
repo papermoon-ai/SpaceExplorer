@@ -32,14 +32,13 @@ class SpaceStationOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentSpaceStationOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = SpaceStationAdapter {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.spaceStationScreen(it))
-        }
-        spaceStationOverviewViewModel.spaceStationsList.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-        }
-        binding.spaceStationList.adapter = adapter
+        setupAdapter()
+        setupToolbar()
 
+        return binding.root
+    }
+
+    private fun setupToolbar() {
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setHasOptionsMenu(true)
@@ -47,8 +46,16 @@ class SpaceStationOverviewFragment : Fragment() {
         binding.toolbar.root.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
         }
+    }
 
-        return binding.root
+    private fun setupAdapter() {
+        val adapter = SpaceStationAdapter {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.spaceStationScreen(it))
+        }
+        spaceStationOverviewViewModel.spaceStationsList.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
+        binding.spaceStationList.adapter = adapter
     }
 
     override fun onResume() {

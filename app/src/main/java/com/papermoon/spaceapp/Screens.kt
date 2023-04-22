@@ -5,14 +5,14 @@ import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
 import com.papermoon.spaceapp.domain.model.launch.Launch
 import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
-import com.papermoon.spaceapp.features.astronaut.ui.AstronautFragment
+import com.papermoon.spaceapp.features.astronautDetail.ui.AstronautFragment
 import com.papermoon.spaceapp.features.astronautOverview.ui.AstronautOverviewFragment
-import com.papermoon.spaceapp.features.celestialBody.ui.CelestialBodyFragment
+import com.papermoon.spaceapp.features.celestialBodyDetail.ui.CelestialBodyFragment
 import com.papermoon.spaceapp.features.celestialBodyOverview.ui.CelestialBodyOverviewFragment
-import com.papermoon.spaceapp.features.launch.ui.LaunchFragment
+import com.papermoon.spaceapp.features.launchDetail.ui.LaunchFragment
 import com.papermoon.spaceapp.features.launchOverview.ui.LaunchOverviewFragment
 import com.papermoon.spaceapp.features.overview.ui.OverviewFragment
-import com.papermoon.spaceapp.features.spaceStation.ui.SpaceStationFragment
+import com.papermoon.spaceapp.features.spaceStationDetail.ui.SpaceStationFragment
 import com.papermoon.spaceapp.features.spaceStationOverview.ui.SpaceStationOverviewFragment
 
 object Screens {

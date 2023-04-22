@@ -32,16 +32,18 @@ class AstronautOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentAstronautOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = AstronautOverviewAdapter {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.astronautScreen(it))
-        }
-
-        binding.astronautsList.adapter = adapter
+        val adapter = setupAdapter()
 
         astronautViewModel.astronautList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
 
+        setupToolbar()
+
+        return binding.root
+    }
+
+    private fun setupToolbar() {
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setHasOptionsMenu(true)
@@ -49,8 +51,14 @@ class AstronautOverviewFragment : Fragment() {
         binding.toolbar.root.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
         }
+    }
 
-        return binding.root
+    private fun setupAdapter(): AstronautOverviewAdapter {
+        val adapter = AstronautOverviewAdapter {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.astronautScreen(it))
+        }
+        binding.astronautsList.adapter = adapter
+        return adapter
     }
 
     override fun onResume() {

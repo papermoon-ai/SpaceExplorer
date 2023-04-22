@@ -32,15 +32,26 @@ class CelestialBodyOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentCelestialBodyOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = CelestialBodyAdapter {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.celestialBodyScreen(it))
-        }
-        binding.celestialBodyList.adapter = adapter
+        val adapter = setupAdapter()
 
         celestialBodyOverviewViewModel.planets.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
 
+        setupToolbar()
+
+        return binding.root
+    }
+
+    private fun setupAdapter(): CelestialBodyAdapter {
+        val adapter = CelestialBodyAdapter {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.celestialBodyScreen(it))
+        }
+        binding.celestialBodyList.adapter = adapter
+        return adapter
+    }
+
+    private fun setupToolbar() {
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setHasOptionsMenu(true)
@@ -48,8 +59,6 @@ class CelestialBodyOverviewFragment : Fragment() {
         binding.toolbar.root.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
         }
-
-        return binding.root
     }
 
     override fun onResume() {

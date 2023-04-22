@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.features.celestialBody.ui
+package com.papermoon.spaceapp.features.celestialBodyDetail.ui
 
 import android.app.ActionBar.LayoutParams
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.SpaceApp
-import com.papermoon.spaceapp.databinding.FragmentCelestialBodyBinding
+import com.papermoon.spaceapp.databinding.FragmentCelestialBodyDetailBinding
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
 import com.papermoon.spaceapp.domain.model.celestialbody.Period
 import com.papermoon.spaceapp.features.MainActivity
@@ -23,8 +23,8 @@ class CelestialBodyFragment(
     private val celestialBody: CelestialBody
 ) : Fragment() {
 
-    private var _binding: FragmentCelestialBodyBinding? = null
-    private val binding: FragmentCelestialBodyBinding
+    private var _binding: FragmentCelestialBodyDetailBinding? = null
+    private val binding: FragmentCelestialBodyDetailBinding
         get() = _binding!!
 
     private var imageFullscreen = false
@@ -34,8 +34,29 @@ class CelestialBodyFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCelestialBodyBinding.inflate(inflater, container, false)
+        _binding = FragmentCelestialBodyDetailBinding.inflate(inflater, container, false)
 
+        setupAdapter()
+        setUiValues()
+        setupToolbar()
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    onBackPressedCallback()
+                }
+            })
+
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setupAdapter() {
         val adapter = BaseViewPagerImageAdapter(celestialBody.images) {
             if (!imageFullscreen) {
                 setPageViewerFullscreen()
@@ -50,38 +71,20 @@ class CelestialBodyFragment(
             }
         }
         binding.viewPagerCelestialBody.adapter = adapter
+    }
 
-        setUiValues()
-
+    private fun setupToolbar() {
         (activity as MainActivity).setSupportActionBar(binding.toolbar)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         binding.toolbar.setNavigationOnClickListener {
             onBackPressedCallback()
         }
-
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    onBackPressedCallback()
-                }
-            })
-
-        return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
-        activity!!.title = celestialBody.englishName
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun setPageViewerFullscreen() {
+        binding.toolbar.title = ""
+
         binding.nestedScrollViewCelestialBody.visibility = View.GONE
         binding.appBarCelestialBody.layoutParams.height = LayoutParams.MATCH_PARENT
         binding.appBarCelestialBody.setExpanded(true)
@@ -100,6 +103,8 @@ class CelestialBodyFragment(
     }
 
     private fun setPageViewerNormalSize() {
+        binding.toolbar.title = celestialBody.englishName
+
         binding.nestedScrollViewCelestialBody.visibility = View.VISIBLE
         binding.appBarCelestialBody.layoutParams.height = resources.getDimension(R.dimen.big_image_height).toInt()
 
@@ -121,7 +126,6 @@ class CelestialBodyFragment(
 
     private fun setUiValues() {
         val formatter = DecimalFormat("#.####")
-
         with(binding) {
             tvCelestialBodyName.text = celestialBody.englishName
 

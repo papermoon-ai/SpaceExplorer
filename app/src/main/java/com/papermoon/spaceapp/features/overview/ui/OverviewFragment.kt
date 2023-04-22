@@ -11,17 +11,17 @@ import com.papermoon.spaceapp.Screens.celestialBodyOverviewScreen
 import com.papermoon.spaceapp.Screens.launchOverviewScreen
 import com.papermoon.spaceapp.Screens.spaceStationOverviewScreen
 import com.papermoon.spaceapp.SpaceApp
-import com.papermoon.spaceapp.databinding.FragmentOverviewBinding
+import com.papermoon.spaceapp.databinding.FragmentMenuBinding
 import com.papermoon.spaceapp.features.MainActivity
-import com.papermoon.spaceapp.features.util.MarginItemDecoration
 import com.papermoon.spaceapp.features.overview.adapter.OnClickListener
 import com.papermoon.spaceapp.features.overview.adapter.OverviewAdapter
 import com.papermoon.spaceapp.features.overview.vm.OverviewViewModel
+import com.papermoon.spaceapp.features.commons.util.MarginItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OverviewFragment : Fragment() {
 
-    private var _binding: FragmentOverviewBinding? = null
+    private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
 
     private val overviewViewModel: OverviewViewModel by viewModel()
@@ -31,8 +31,20 @@ class OverviewFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentOverviewBinding.inflate(inflater, container, false)
+        _binding = FragmentMenuBinding.inflate(inflater, container, false)
 
+        val adapter = setupAdapter()
+
+        overviewViewModel.options.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
+
+        (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
+
+        return binding.root
+    }
+
+    private fun setupAdapter(): OverviewAdapter {
         val adapter = OverviewAdapter(OnClickListener {
             when (it.name) {
                 "Launches" -> SpaceApp.INSTANCE.router.navigateTo(launchOverviewScreen())
@@ -41,20 +53,13 @@ class OverviewFragment : Fragment() {
                 "Planets" -> SpaceApp.INSTANCE.router.navigateTo(celestialBodyOverviewScreen())
             }
         })
-
-        overviewViewModel.options.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-        }
-
         binding.optionsList.adapter = adapter
 
         binding.optionsList.addItemDecoration(
             MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.little_margin))
         )
 
-        (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
-
-        return binding.root
+        return adapter
     }
 
     override fun onResume() {

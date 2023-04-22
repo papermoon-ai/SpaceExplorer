@@ -33,16 +33,18 @@ class LaunchOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentLaunchOverviewBinding.inflate(inflater, container, false)
 
-        val adapter = LaunchOverviewAdapter(OnClickListener {
-            SpaceApp.INSTANCE.router.navigateTo(Screens.launchScreen(it))
-        })
+        val adapter = setupAdapter()
 
         launchViewModel.upcomingLaunches.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
 
-        binding.launchesList.adapter = adapter
+        setupToolbar()
 
+        return binding.root
+    }
+
+    private fun setupToolbar() {
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setHasOptionsMenu(true)
@@ -50,8 +52,14 @@ class LaunchOverviewFragment : Fragment() {
         binding.toolbar.root.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
         }
+    }
 
-        return binding.root
+    private fun setupAdapter(): LaunchOverviewAdapter {
+        val adapter = LaunchOverviewAdapter(OnClickListener {
+            SpaceApp.INSTANCE.router.navigateTo(Screens.launchScreen(it))
+        })
+        binding.launchesList.adapter = adapter
+        return adapter
     }
 
     override fun onResume() {

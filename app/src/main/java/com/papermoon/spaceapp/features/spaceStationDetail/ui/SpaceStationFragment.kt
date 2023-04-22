@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.features.spaceStation.ui
+package com.papermoon.spaceapp.features.spaceStationDetail.ui
 
 import android.app.ActionBar
 import android.content.Intent
@@ -12,7 +12,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.SpaceApp
-import com.papermoon.spaceapp.databinding.FragmentSpaceStationBinding
+import com.papermoon.spaceapp.databinding.FragmentSpaceStationDetailBinding
 import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
@@ -21,8 +21,8 @@ class SpaceStationFragment(
     private val spaceStation: SpaceStation
 ) : Fragment() {
 
-    private var _binding: FragmentSpaceStationBinding? = null
-    private val binding: FragmentSpaceStationBinding
+    private var _binding: FragmentSpaceStationDetailBinding? = null
+    private val binding: FragmentSpaceStationDetailBinding
         get() = _binding!!
 
     private var imageFullscreen = false
@@ -32,8 +32,25 @@ class SpaceStationFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSpaceStationBinding.inflate(inflater, container, false)
+        _binding = FragmentSpaceStationDetailBinding.inflate(inflater, container, false)
 
+        setupAdapter()
+        setUiValues()
+        setupToolbar()
+
+        return binding.root
+    }
+
+    private fun setupToolbar() {
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressedCallback()
+        }
+    }
+
+    private fun setupAdapter() {
         val adapter = BaseViewPagerImageAdapter(spaceStation.images) { position ->
             if (!imageFullscreen) {
                 setPageViewerFullscreen()
@@ -48,17 +65,6 @@ class SpaceStationFragment(
             }
         }
         binding.viewPagerSpaceStation.adapter = adapter
-
-        setUiValues()
-
-        (activity as MainActivity).setSupportActionBar(binding.toolbar)
-        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressedCallback()
-        }
-
-        return binding.root
     }
 
     override fun onDestroyView() {
@@ -127,6 +133,8 @@ class SpaceStationFragment(
     }
 
     private fun setPageViewerFullscreen() {
+        binding.toolbar.title = ""
+
         binding.nestedScrollViewSpaceStation.visibility = View.GONE
         binding.appBarSpaceStation.layoutParams.height = ActionBar.LayoutParams.MATCH_PARENT
         binding.appBarSpaceStation.setExpanded(true)
@@ -145,6 +153,8 @@ class SpaceStationFragment(
     }
 
     private fun setPageViewerNormalSize() {
+        binding.toolbar.title = spaceStation.name
+
         binding.nestedScrollViewSpaceStation.visibility = View.VISIBLE
         binding.appBarSpaceStation.layoutParams.height =
             resources.getDimension(R.dimen.big_image_height).toInt()
