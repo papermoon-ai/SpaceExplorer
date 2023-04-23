@@ -12,7 +12,7 @@
     <string name="label_space_stations">Космические станции</string>
     <string name="label_orbital_launches">Орбитальные запуски</string>
     <string name="description_planets_option">Explore real-time planet data</string>
-    <string name="description_space_stations_option">Observe real-time data of International Space Station</string>
+    <string name="description_space_stations_option">Observe real-time data of space stations</string>
     <string name="description_astronauts_option">Explore who is in space right now</string>
     <string name="description_orbital_launches_option">Look what rockets are about to launch</string>
 
@@ -109,5 +109,5 @@
 
     <!-- Error messages -->
     <string name="message_error_unable_to_update">Не удалось обновить данные. Проверьте подключение к интернету и попробуйте снова.</string>
-    <string name="button_try_again">Обновить данные</string>
+    <string name="button_try_again">Попробовать снова</string>
 </resources>

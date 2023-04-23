@@ -68,7 +68,7 @@
         <item name="contentPadding">@dimen/base_padding</item>
         <item name="cardBackgroundColor">?colorSurfaceVariant</item>
         <item name="android:elevation">@dimen/base_elevation</item>
-        <item name="cardCornerRadius">@dimen/base_card_view_corner_radius</item>
+        <item name="cardCornerRadius">@dimen/little_card_view_corner_radius</item>
     </style>
 
     <style name="CardViewItemStyle" parent="CardViewStyle">
@@ -85,6 +85,15 @@
         <item name="cardBackgroundColor">?colorSurfaceVariant</item>
         <item name="android:elevation">@dimen/base_elevation</item>
         <item name="cardCornerRadius">@dimen/big_card_view_corner_radius</item>
+    </style>
+
+    <style name="CardViewItemStyleV2" parent="CardView">
+        <item name="android:layout_marginStart">@dimen/base_margin</item>
+        <item name="android:layout_marginTop">@dimen/base_margin</item>
+        <item name="android:layout_marginEnd">@dimen/base_margin</item>
+        <item name="android:layout_marginBottom">@dimen/little_margin</item>
+        <item name="android:elevation">@dimen/base_elevation</item>
+        <item name="cardCornerRadius">@dimen/base_card_view_corner_radius</item>
     </style>
 
     <!-- ImageButton -->

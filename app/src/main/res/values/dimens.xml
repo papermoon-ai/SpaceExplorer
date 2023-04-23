@@ -13,9 +13,11 @@
     <!-- Elevation -->
     <dimen name="base_elevation">4dp</dimen>
 
-    <!-- CardView corner radius -->
-    <dimen name="base_card_view_corner_radius">8dp</dimen>
+    <!-- CardView -->
+    <dimen name="little_card_view_corner_radius">8dp</dimen>
+    <dimen name="base_card_view_corner_radius">16dp</dimen>
     <dimen name="big_card_view_corner_radius">32dp</dimen>
+    <dimen name="base_card_view_height">150dp</dimen>
 
     <!-- ImageSize -->
     <dimen name="small_image_width">30dp</dimen>
