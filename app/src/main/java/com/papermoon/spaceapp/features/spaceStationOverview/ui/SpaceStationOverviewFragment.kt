@@ -34,14 +34,20 @@ class SpaceStationOverviewFragment : Fragment() {
 
         binding.shimmerLayout.startShimmer()
 
-        setupAdapter()
         setupToolbar()
+        setupErrorUi()
 
-        spaceStationOverviewViewModel.showLoadingMessage.observe(viewLifecycleOwner) { showMessage ->
+        val adapter = setupAdapter()
+        spaceStationOverviewViewModel.spaceStationsList.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+            hideShimmer()
+            binding.spaceStationList.visibility = View.VISIBLE
+        }
+
+        spaceStationOverviewViewModel.showShimmer.observe(viewLifecycleOwner) { showMessage ->
             if (showMessage) {
                 if (binding.spaceStationList.visibility == View.GONE) {
-                    binding.shimmerLayout.visibility = View.VISIBLE
-                    binding.shimmerLayout.startShimmer()
+                    showShimmer()
                     binding.viewGroupError.visibility = View.GONE
                 }
                 spaceStationOverviewViewModel.doneLoadingMessage()
@@ -50,15 +56,19 @@ class SpaceStationOverviewFragment : Fragment() {
 
         spaceStationOverviewViewModel.showUnableToLoadRateMessage.observe(viewLifecycleOwner) { showMessage ->
             if (showMessage) {
-                binding.shimmerLayout.stopShimmer()
-                binding.shimmerLayout.visibility = View.GONE
+                hideShimmer()
                 binding.spaceStationList.visibility = View.GONE
-
-                setupErrorUi()
+                binding.viewGroupError.visibility = View.VISIBLE
+                spaceStationOverviewViewModel.doneUnableToLoadMessage()
             }
         }
 
         return binding.root
+    }
+
+    private fun showShimmer() {
+        binding.shimmerLayout.visibility = View.VISIBLE
+        binding.shimmerLayout.startShimmer()
     }
 
     private fun setupErrorUi() {
@@ -67,7 +77,6 @@ class SpaceStationOverviewFragment : Fragment() {
         binding.btnRetry.setOnClickListener {
             spaceStationOverviewViewModel.updateSpaceStationsList()
         }
-        binding.viewGroupError.visibility = View.VISIBLE
     }
 
     private fun setupToolbar() {
@@ -80,18 +89,17 @@ class SpaceStationOverviewFragment : Fragment() {
         }
     }
 
-    private fun setupAdapter() {
+    private fun setupAdapter(): SpaceStationAdapter {
         val adapter = SpaceStationAdapter {
             SpaceApp.INSTANCE.router.navigateTo(Screens.spaceStationScreen(it))
         }
-        spaceStationOverviewViewModel.spaceStationsList.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-
-            binding.shimmerLayout.stopShimmer()
-            binding.shimmerLayout.visibility = View.GONE
-            binding.spaceStationList.visibility = View.VISIBLE
-        }
         binding.spaceStationList.adapter = adapter
+        return adapter
+    }
+
+    private fun hideShimmer() {
+        binding.shimmerLayout.stopShimmer()
+        binding.shimmerLayout.visibility = View.GONE
     }
 
     override fun onResume() {

@@ -40,5 +40,6 @@
 
     <!-- Shimmer -->
     <dimen name="shimmer_little_placeholder_width">100dp</dimen>
-    <dimen name="shimmer_base_placeholder_width">200dp</dimen>
+    <dimen name="shimmer_base_placeholder_width">150dp</dimen>
+    <dimen name="shimmer_big_placeholder_width">200dp</dimen>
 </resources>

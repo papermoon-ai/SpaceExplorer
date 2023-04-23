@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/launchItemNameTextView"
-            android:layout_width="@dimen/shimmer_base_placeholder_width"
+            android:layout_width="@dimen/shimmer_big_placeholder_width"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/base_margin"
             android:layout_marginTop="@dimen/base_margin"
@@ -62,6 +62,7 @@
             android:id="@+id/launchItemLocationTextView"
             android:layout_width="@dimen/shimmer_base_placeholder_width"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/little_margin"
             android:layout_marginEnd="@dimen/base_margin"
             android:background="?colorOnSecondary"
             android:textAppearance="@style/AppTheme.Text.Description.H3"

@@ -22,9 +22,9 @@ class LaunchOverviewViewModel(
     val showUnableToLoadRateMessage: LiveData<Boolean>
         get() = _showUnableToUpdateMessage
 
-    private val _showLoadingMessage = MutableLiveData(false)
-    val showLoadingMessage: LiveData<Boolean>
-        get() = _showLoadingMessage
+    private val _showShimmer = MutableLiveData(false)
+    val showShimmer: LiveData<Boolean>
+        get() = _showShimmer
 
     init {
         updateUpcomingLaunches()
@@ -32,7 +32,7 @@ class LaunchOverviewViewModel(
 
     fun updateUpcomingLaunches() {
         viewModelScope.launch {
-            _showLoadingMessage.value = true
+            _showShimmer.value = true
 
             val result = getUpcomingLaunchesFromNetworkUserCase.execute(Unit)
 
@@ -46,7 +46,7 @@ class LaunchOverviewViewModel(
     }
 
     fun doneLoadingMessage() {
-        _showLoadingMessage.value = false
+        _showShimmer.value = false
     }
 
     fun doneUnableToLoadMessage() {
