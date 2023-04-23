@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.features.astronautOverview.vm
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,19 +18,37 @@ class AstronautOverviewViewModel(
     val astronautList: LiveData<List<Astronaut>>
         get() = _astronautList
 
+    private val _showUnableToUpdateMessage = MutableLiveData(false)
+    val showUnableToLoadRateMessage: LiveData<Boolean>
+        get() = _showUnableToUpdateMessage
+
+    private val _showLoadingMessage = MutableLiveData(false)
+    val showLoadingMessage: LiveData<Boolean>
+        get() = _showLoadingMessage
+
     init {
         updateAstronauts()
     }
 
     fun updateAstronauts() {
         viewModelScope.launch {
+            _showLoadingMessage.value = true
+
             val result = getAstronautsFromNetworkUseCase.execute(Unit)
             result.doOnSuccess {
                 _astronautList.value = result.data
             }
             result.doOnFailure {
-                Log.e("Astronauts", it.toString())
+                _showUnableToUpdateMessage.value = true
             }
         }
+    }
+
+    fun doneLoadingMessage() {
+        _showLoadingMessage.value = false
+    }
+
+    fun doneUnableToLoadMessage() {
+        _showUnableToUpdateMessage.value = false
     }
 }

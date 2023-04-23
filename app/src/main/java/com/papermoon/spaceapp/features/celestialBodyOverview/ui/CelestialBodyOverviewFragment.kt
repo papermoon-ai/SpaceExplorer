@@ -32,15 +32,50 @@ class CelestialBodyOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentCelestialBodyOverviewBinding.inflate(inflater, container, false)
 
+        binding.shimmerLayout.startShimmer()
+
         val adapter = setupAdapter()
 
         celestialBodyOverviewViewModel.planets.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+            binding.shimmerLayout.stopShimmer()
+            binding.shimmerLayout.visibility = View.GONE
+            binding.celestialBodyList.visibility = View.VISIBLE
+        }
+
+        celestialBodyOverviewViewModel.showLoadingMessage.observe(viewLifecycleOwner) { showMessage ->
+            if (showMessage) {
+                if (binding.celestialBodyList.visibility == View.GONE) {
+                    binding.shimmerLayout.visibility = View.VISIBLE
+                    binding.shimmerLayout.startShimmer()
+                    binding.viewGroupError.visibility = View.GONE
+                }
+                celestialBodyOverviewViewModel.doneLoadingMessage()
+            }
+        }
+
+        celestialBodyOverviewViewModel.showUnableToLoadRateMessage.observe(viewLifecycleOwner) { showMessage ->
+            if (showMessage) {
+                binding.shimmerLayout.stopShimmer()
+                binding.shimmerLayout.visibility = View.GONE
+                binding.celestialBodyList.visibility = View.GONE
+
+                setupErrorUi()
+            }
         }
 
         setupToolbar()
 
         return binding.root
+    }
+
+    private fun setupErrorUi() {
+        binding.tvErrorMessage.text = getString(R.string.message_error_unable_to_update)
+        binding.btnRetry.text = getString(R.string.button_try_again)
+        binding.btnRetry.setOnClickListener {
+            celestialBodyOverviewViewModel.updatePlanets()
+        }
+        binding.viewGroupError.visibility = View.VISIBLE
     }
 
     private fun setupAdapter(): CelestialBodyAdapter {
