@@ -1,13 +1,12 @@
 package com.papermoon.spaceapp.features.spaceStationOverview.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.color.MaterialColors
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
@@ -36,17 +35,18 @@ class SpaceStationOverviewFragment : Fragment() {
 
         setupToolbar()
         setupErrorUi()
+        setupSwipeToRefresh()
 
         val adapter = setupAdapter()
         spaceStationOverviewViewModel.spaceStationsList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
             hideShimmer()
-            binding.spaceStationList.visibility = View.VISIBLE
+            binding.swipeToRefresh.visibility = View.VISIBLE
         }
 
         spaceStationOverviewViewModel.showShimmer.observe(viewLifecycleOwner) { showMessage ->
             if (showMessage) {
-                if (binding.spaceStationList.visibility == View.GONE) {
+                if (binding.swipeToRefresh  .visibility == View.GONE) {
                     showShimmer()
                     binding.viewGroupError.visibility = View.GONE
                 }
@@ -57,10 +57,15 @@ class SpaceStationOverviewFragment : Fragment() {
         spaceStationOverviewViewModel.showUnableToLoadRateMessage.observe(viewLifecycleOwner) { showMessage ->
             if (showMessage) {
                 hideShimmer()
-                binding.spaceStationList.visibility = View.GONE
+                binding.swipeToRefresh.visibility = View.GONE
                 binding.viewGroupError.visibility = View.VISIBLE
                 spaceStationOverviewViewModel.doneUnableToLoadMessage()
             }
+        }
+
+        binding.swipeToRefresh.setOnRefreshListener {
+            spaceStationOverviewViewModel.updateSpaceStationsList()
+            binding.swipeToRefresh.isRefreshing = false
         }
 
         return binding.root
@@ -82,10 +87,24 @@ class SpaceStationOverviewFragment : Fragment() {
     private fun setupToolbar() {
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        setHasOptionsMenu(true)
 
         binding.toolbar.root.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
+        }
+    }
+
+    private fun setupSwipeToRefresh() {
+        val swipeLayout = binding.swipeToRefresh
+
+        val colorPrimary = MaterialColors.getColor(context!!, com.google.android.material.R.attr.colorPrimary, Color.BLACK)
+        val colorSurface = MaterialColors.getColor(context!!, com.google.android.material.R.attr.colorSurface, Color.WHITE)
+
+        swipeLayout.setColorSchemeColors(colorPrimary)
+        swipeLayout.setProgressBackgroundColorSchemeColor(colorSurface)
+
+        swipeLayout.setOnRefreshListener {
+            spaceStationOverviewViewModel.updateSpaceStationsList()
+            binding.swipeToRefresh.isRefreshing = false
         }
     }
 
@@ -105,18 +124,6 @@ class SpaceStationOverviewFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity!!.title = getString(R.string.label_space_stations)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.update_info_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_update) {
-            spaceStationOverviewViewModel.updateSpaceStationsList()
-        }
-        return true
     }
 
     override fun onDestroyView() {
