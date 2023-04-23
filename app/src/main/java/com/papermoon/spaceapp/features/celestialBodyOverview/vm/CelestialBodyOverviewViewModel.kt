@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.features.celestialBodyOverview.vm
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,19 +18,37 @@ class CelestialBodyOverviewViewModel(
     val planets: LiveData<List<CelestialBody>>
         get() = _planets
 
+    private val _showUnableToUpdateMessage = MutableLiveData(false)
+    val showUnableToLoadRateMessage: LiveData<Boolean>
+        get() = _showUnableToUpdateMessage
+
+    private val _showLoadingMessage = MutableLiveData(false)
+    val showLoadingMessage: LiveData<Boolean>
+        get() = _showLoadingMessage
+
     init {
         updatePlanets()
     }
 
     fun updatePlanets() {
         viewModelScope.launch {
+            _showLoadingMessage.value = true
+
             val result = getPlanetsFromNetworkUseCase.execute(Unit)
             result.doOnSuccess {
                 _planets.value = result.data
             }
             result.doOnFailure {
-                Log.e("Planets", it.toString())
+                _showUnableToUpdateMessage.value = true
             }
         }
+    }
+
+    fun doneLoadingMessage() {
+        _showLoadingMessage.value = false
+    }
+
+    fun doneUnableToLoadMessage() {
+        _showUnableToUpdateMessage.value = false
     }
 }

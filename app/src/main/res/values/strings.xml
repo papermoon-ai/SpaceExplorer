@@ -24,7 +24,6 @@
     <string name="label_launch_date_title">Дата запуска</string>
     <string name="label_launched">Запущено!</string>
 
-
     <!-- Astronaut item -->
     <string name="description_spacecraft">Аппарат: %1$s</string>
 
@@ -103,4 +102,12 @@
     </plurals>
 
     <string name="hint_update">Обновить данные</string>
+
+    <!-- Toast text -->
+    <string name="toast_loading">Обновление данных…</string>
+    <string name="toast_unable_to_update">Не удалось обновить данные</string>
+
+    <!-- Error messages -->
+    <string name="message_error_unable_to_update">Не удалось обновить данные. Проверьте подключение к интернету и попробуйте снова.</string>
+    <string name="button_try_again">Обновить данные</string>
 </resources>

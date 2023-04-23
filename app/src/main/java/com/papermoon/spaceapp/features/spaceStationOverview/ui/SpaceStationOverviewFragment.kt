@@ -32,10 +32,42 @@ class SpaceStationOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentSpaceStationOverviewBinding.inflate(inflater, container, false)
 
+        binding.shimmerLayout.startShimmer()
+
         setupAdapter()
         setupToolbar()
 
+        spaceStationOverviewViewModel.showLoadingMessage.observe(viewLifecycleOwner) { showMessage ->
+            if (showMessage) {
+                if (binding.spaceStationList.visibility == View.GONE) {
+                    binding.shimmerLayout.visibility = View.VISIBLE
+                    binding.shimmerLayout.startShimmer()
+                    binding.viewGroupError.visibility = View.GONE
+                }
+                spaceStationOverviewViewModel.doneLoadingMessage()
+            }
+        }
+
+        spaceStationOverviewViewModel.showUnableToLoadRateMessage.observe(viewLifecycleOwner) { showMessage ->
+            if (showMessage) {
+                binding.shimmerLayout.stopShimmer()
+                binding.shimmerLayout.visibility = View.GONE
+                binding.spaceStationList.visibility = View.GONE
+
+                setupErrorUi()
+            }
+        }
+
         return binding.root
+    }
+
+    private fun setupErrorUi() {
+        binding.tvErrorMessage.text = getString(R.string.message_error_unable_to_update)
+        binding.btnRetry.text = getString(R.string.button_try_again)
+        binding.btnRetry.setOnClickListener {
+            spaceStationOverviewViewModel.updateSpaceStationsList()
+        }
+        binding.viewGroupError.visibility = View.VISIBLE
     }
 
     private fun setupToolbar() {
@@ -54,6 +86,10 @@ class SpaceStationOverviewFragment : Fragment() {
         }
         spaceStationOverviewViewModel.spaceStationsList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+
+            binding.shimmerLayout.stopShimmer()
+            binding.shimmerLayout.visibility = View.GONE
+            binding.spaceStationList.visibility = View.VISIBLE
         }
         binding.spaceStationList.adapter = adapter
     }

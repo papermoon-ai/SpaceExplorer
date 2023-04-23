@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/base_margin"
+    android:layout_marginTop="@dimen/base_margin"
+    android:layout_marginRight="@dimen/base_margin"
+    android:layout_marginBottom="@dimen/base_margin"
+    app:cardBackgroundColor="?colorSurfaceVariant"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="@dimen/base_image_width"
+            android:layout_height="@dimen/base_image_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/launchItemImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="?colorOnSecondary"
+                android:scaleType="centerCrop" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/launchItemNameTextView"
+            android:layout_width="@dimen/shimmer_base_placeholder_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/base_margin"
+            android:layout_marginTop="@dimen/base_margin"
+            android:layout_marginEnd="@dimen/base_margin"
+            android:background="?colorOnSecondary"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/relativeLayout"
+            app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
+
+        <TextView
+            android:id="@+id/launchItemDateTextView"
+            android:layout_width="@dimen/shimmer_little_placeholder_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/base_margin"
+            android:background="?colorOnSecondary"
+            android:textAppearance="@style/AppTheme.Text.Description.H3"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/launchItemLocationTextView"
+            app:layout_constraintTop_toBottomOf="@+id/launchItemLocationTextView" />
+
+        <TextView
+            android:id="@+id/launchItemLocationTextView"
+            android:layout_width="@dimen/shimmer_base_placeholder_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/base_margin"
+            android:background="?colorOnSecondary"
+            android:textAppearance="@style/AppTheme.Text.Description.H3"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/launchItemNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/launchItemNameTextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

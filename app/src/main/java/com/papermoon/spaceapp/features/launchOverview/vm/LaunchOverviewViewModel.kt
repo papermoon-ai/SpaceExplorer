@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.features.launchOverview.vm
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,21 +18,38 @@ class LaunchOverviewViewModel(
     val upcomingLaunches: LiveData<List<Launch>>
         get() = _upcomingLaunches
 
+    private val _showUnableToUpdateMessage = MutableLiveData(false)
+    val showUnableToLoadRateMessage: LiveData<Boolean>
+        get() = _showUnableToUpdateMessage
+
+    private val _showLoadingMessage = MutableLiveData(false)
+    val showLoadingMessage: LiveData<Boolean>
+        get() = _showLoadingMessage
+
     init {
-        _upcomingLaunches.value = emptyList()
         updateUpcomingLaunches()
     }
 
     fun updateUpcomingLaunches() {
         viewModelScope.launch {
+            _showLoadingMessage.value = true
+
             val result = getUpcomingLaunchesFromNetworkUserCase.execute(Unit)
 
             result.doOnSuccess {
                 _upcomingLaunches.value = result.data
             }
             result.doOnFailure {
-                Log.e("Launches", it.toString())
+                _showUnableToUpdateMessage.value = true
             }
         }
+    }
+
+    fun doneLoadingMessage() {
+        _showLoadingMessage.value = false
+    }
+
+    fun doneUnableToLoadMessage() {
+        _showUnableToUpdateMessage.value = false
     }
 }

@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.features.spaceStationOverview.vm
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,19 +20,37 @@ class SpaceStationOverviewViewModel(
     val spaceStationsList: LiveData<List<SpaceStation>>
         get() = _spaceStationsList
 
+    private val _showUnableToUpdateMessage = MutableLiveData(false)
+    val showUnableToLoadRateMessage: LiveData<Boolean>
+        get() = _showUnableToUpdateMessage
+
+    private val _showLoadingMessage = MutableLiveData(false)
+    val showLoadingMessage: LiveData<Boolean>
+        get() = _showLoadingMessage
+
     init {
         updateSpaceStationsList()
     }
 
     fun updateSpaceStationsList() {
         viewModelScope.launch {
+            _showLoadingMessage.value = true
+
             val result = getSpaceStationsFromNetworkUseCase.execute(Unit)
             result.doOnSuccess {
                 _spaceStationsList.value = result.data
             }
             result.doOnFailure {
-                Log.e("SpaceStations", it.toString())
+                _showUnableToUpdateMessage.value = true
             }
         }
+    }
+
+    fun doneLoadingMessage() {
+        _showLoadingMessage.value = false
+    }
+
+    fun doneUnableToLoadMessage() {
+        _showUnableToUpdateMessage.value = false
     }
 }

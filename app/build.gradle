@@ -60,6 +60,8 @@ dependencies {
 
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
+    implementation "com.facebook.shimmer:shimmer:$facebook_shimmer_version"
+
     testImplementation "junit:junit:$junit_version"
 
     androidTestImplementation "androidx.test.ext:junit:$test_ext_junit_version"
