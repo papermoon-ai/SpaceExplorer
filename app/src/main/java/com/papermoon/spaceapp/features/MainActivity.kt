@@ -20,12 +20,14 @@ class MainActivity : AppCompatActivity() {
             currentFragment: Fragment?,
             nextFragment: Fragment
         ) {
-            fragmentTransaction.setCustomAnimations(
-                R.anim.slide_in,
-                R.anim.fade_out,
-                R.anim.fade_in,
-                R.anim.slide_out
-            )
+            if (currentFragment != null) {
+                fragmentTransaction.setCustomAnimations(
+                    R.anim.slide_in,
+                    R.anim.fade_out,
+                    R.anim.fade_in,
+                    R.anim.slide_out
+                )
+            }
         }
     }
 
