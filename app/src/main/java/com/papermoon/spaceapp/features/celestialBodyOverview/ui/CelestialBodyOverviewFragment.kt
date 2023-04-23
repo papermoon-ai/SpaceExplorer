@@ -32,22 +32,22 @@ class CelestialBodyOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentCelestialBodyOverviewBinding.inflate(inflater, container, false)
 
-        binding.shimmerLayout.startShimmer()
+        showShimmer()
+
+        setupToolbar()
+        setupErrorUi()
 
         val adapter = setupAdapter()
-
         celestialBodyOverviewViewModel.planets.observe(viewLifecycleOwner) {
             adapter.submitList(it)
-            binding.shimmerLayout.stopShimmer()
-            binding.shimmerLayout.visibility = View.GONE
+            hideShimmer()
             binding.celestialBodyList.visibility = View.VISIBLE
         }
 
-        celestialBodyOverviewViewModel.showLoadingMessage.observe(viewLifecycleOwner) { showMessage ->
-            if (showMessage) {
+        celestialBodyOverviewViewModel.showShimmer.observe(viewLifecycleOwner) { showShimmer ->
+            if (showShimmer) {
                 if (binding.celestialBodyList.visibility == View.GONE) {
-                    binding.shimmerLayout.visibility = View.VISIBLE
-                    binding.shimmerLayout.startShimmer()
+                    showShimmer()
                     binding.viewGroupError.visibility = View.GONE
                 }
                 celestialBodyOverviewViewModel.doneLoadingMessage()
@@ -56,17 +56,25 @@ class CelestialBodyOverviewFragment : Fragment() {
 
         celestialBodyOverviewViewModel.showUnableToLoadRateMessage.observe(viewLifecycleOwner) { showMessage ->
             if (showMessage) {
-                binding.shimmerLayout.stopShimmer()
-                binding.shimmerLayout.visibility = View.GONE
+                hideShimmer()
                 binding.celestialBodyList.visibility = View.GONE
+                binding.viewGroupError.visibility = View.VISIBLE
 
-                setupErrorUi()
+                celestialBodyOverviewViewModel.doneUnableToLoadMessage()
             }
         }
 
-        setupToolbar()
-
         return binding.root
+    }
+
+    private fun showShimmer() {
+        binding.shimmerLayout.visibility = View.VISIBLE
+        binding.shimmerLayout.startShimmer()
+    }
+
+    private fun hideShimmer() {
+        binding.shimmerLayout.stopShimmer()
+        binding.shimmerLayout.visibility = View.GONE
     }
 
     private fun setupErrorUi() {
@@ -75,7 +83,6 @@ class CelestialBodyOverviewFragment : Fragment() {
         binding.btnRetry.setOnClickListener {
             celestialBodyOverviewViewModel.updatePlanets()
         }
-        binding.viewGroupError.visibility = View.VISIBLE
     }
 
     private fun setupAdapter(): CelestialBodyAdapter {

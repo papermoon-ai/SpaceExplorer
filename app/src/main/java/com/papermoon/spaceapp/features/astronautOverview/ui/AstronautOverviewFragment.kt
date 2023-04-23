@@ -32,22 +32,22 @@ class AstronautOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentAstronautOverviewBinding.inflate(inflater, container, false)
 
-        binding.shimmerLayout.startShimmer()
+        showShimmer()
+
+        setupToolbar()
+        setupErrorUi()
 
         val adapter = setupAdapter()
-
         astronautViewModel.astronautList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
-            binding.shimmerLayout.stopShimmer()
-            binding.shimmerLayout.visibility = View.GONE
+            hideShimmer()
             binding.astronautsList.visibility = View.VISIBLE
         }
 
-        astronautViewModel.showLoadingMessage.observe(viewLifecycleOwner) { showMessage ->
-            if (showMessage) {
+        astronautViewModel.showShimmer.observe(viewLifecycleOwner) { showShimmer ->
+            if (showShimmer) {
                 if (binding.astronautsList.visibility == View.GONE) {
-                    binding.shimmerLayout.visibility = View.VISIBLE
-                    binding.shimmerLayout.startShimmer()
+                    showShimmer()
                     binding.viewGroupError.visibility = View.GONE
                 }
                 astronautViewModel.doneLoadingMessage()
@@ -56,15 +56,13 @@ class AstronautOverviewFragment : Fragment() {
 
         astronautViewModel.showUnableToLoadRateMessage.observe(viewLifecycleOwner) { showMessage ->
             if (showMessage) {
-                binding.shimmerLayout.stopShimmer()
-                binding.shimmerLayout.visibility = View.GONE
+                hideShimmer()
                 binding.astronautsList.visibility = View.GONE
+                binding.viewGroupError.visibility = View.VISIBLE
 
-                setupErrorUi()
+                astronautViewModel.doneUnableToLoadMessage()
             }
         }
-
-        setupToolbar()
 
         return binding.root
     }
@@ -75,7 +73,16 @@ class AstronautOverviewFragment : Fragment() {
         binding.btnRetry.setOnClickListener {
             astronautViewModel.updateAstronauts()
         }
-        binding.viewGroupError.visibility = View.VISIBLE
+    }
+
+    private fun showShimmer() {
+        binding.shimmerLayout.visibility = View.VISIBLE
+        binding.shimmerLayout.startShimmer()
+    }
+
+    private fun hideShimmer() {
+        binding.shimmerLayout.stopShimmer()
+        binding.shimmerLayout.visibility = View.GONE
     }
 
     private fun setupToolbar() {

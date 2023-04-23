@@ -22,9 +22,9 @@ class CelestialBodyOverviewViewModel(
     val showUnableToLoadRateMessage: LiveData<Boolean>
         get() = _showUnableToUpdateMessage
 
-    private val _showLoadingMessage = MutableLiveData(false)
-    val showLoadingMessage: LiveData<Boolean>
-        get() = _showLoadingMessage
+    private val _showShimmer = MutableLiveData(false)
+    val showShimmer: LiveData<Boolean>
+        get() = _showShimmer
 
     init {
         updatePlanets()
@@ -32,7 +32,7 @@ class CelestialBodyOverviewViewModel(
 
     fun updatePlanets() {
         viewModelScope.launch {
-            _showLoadingMessage.value = true
+            _showShimmer.value = true
 
             val result = getPlanetsFromNetworkUseCase.execute(Unit)
             result.doOnSuccess {
@@ -45,7 +45,7 @@ class CelestialBodyOverviewViewModel(
     }
 
     fun doneLoadingMessage() {
-        _showLoadingMessage.value = false
+        _showShimmer.value = false
     }
 
     fun doneUnableToLoadMessage() {

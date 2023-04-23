@@ -33,22 +33,23 @@ class LaunchOverviewFragment : Fragment() {
     ): View {
         _binding = FragmentLaunchOverviewBinding.inflate(inflater, container, false)
 
-        binding.shimmerLayout.startShimmer()
+        showShimmer()
+
+        setupToolbar()
+        setupErrorUi()
 
         val adapter = setupAdapter()
 
         launchViewModel.upcomingLaunches.observe(viewLifecycleOwner) {
             adapter.submitList(it)
-            binding.shimmerLayout.stopShimmer()
-            binding.shimmerLayout.visibility = View.GONE
+            hideShimmer()
             binding.launchesList.visibility = View.VISIBLE
         }
 
-        launchViewModel.showLoadingMessage.observe(viewLifecycleOwner) { showMessage ->
-            if (showMessage) {
+        launchViewModel.showShimmer.observe(viewLifecycleOwner) { showShimmer ->
+            if (showShimmer) {
                 if (binding.launchesList.visibility == View.GONE) {
-                    binding.shimmerLayout.visibility = View.VISIBLE
-                    binding.shimmerLayout.startShimmer()
+                    showShimmer()
                     binding.viewGroupError.visibility = View.GONE
                 }
                 launchViewModel.doneLoadingMessage()
@@ -57,17 +58,24 @@ class LaunchOverviewFragment : Fragment() {
 
         launchViewModel.showUnableToLoadRateMessage.observe(viewLifecycleOwner) { showMessage ->
             if (showMessage) {
-                binding.shimmerLayout.stopShimmer()
-                binding.shimmerLayout.visibility = View.GONE
+                hideShimmer()
                 binding.launchesList.visibility = View.GONE
-
-                setupErrorUi()
+                binding.viewGroupError.visibility = View.VISIBLE
+                launchViewModel.doneUnableToLoadMessage()
             }
         }
 
-        setupToolbar()
-
         return binding.root
+    }
+
+    private fun hideShimmer() {
+        binding.shimmerLayout.stopShimmer()
+        binding.shimmerLayout.visibility = View.GONE
+    }
+
+    private fun showShimmer() {
+        binding.shimmerLayout.visibility = View.VISIBLE
+        binding.shimmerLayout.startShimmer()
     }
 
     private fun setupErrorUi() {
@@ -76,7 +84,6 @@ class LaunchOverviewFragment : Fragment() {
         binding.btnRetry.setOnClickListener {
             launchViewModel.updateUpcomingLaunches()
         }
-        binding.viewGroupError.visibility = View.VISIBLE
     }
 
     private fun setupToolbar() {

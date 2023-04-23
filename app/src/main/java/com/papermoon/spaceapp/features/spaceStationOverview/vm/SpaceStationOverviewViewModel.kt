@@ -24,9 +24,9 @@ class SpaceStationOverviewViewModel(
     val showUnableToLoadRateMessage: LiveData<Boolean>
         get() = _showUnableToUpdateMessage
 
-    private val _showLoadingMessage = MutableLiveData(false)
-    val showLoadingMessage: LiveData<Boolean>
-        get() = _showLoadingMessage
+    private val _showShimmer = MutableLiveData(false)
+    val showShimmer: LiveData<Boolean>
+        get() = _showShimmer
 
     init {
         updateSpaceStationsList()
@@ -34,7 +34,7 @@ class SpaceStationOverviewViewModel(
 
     fun updateSpaceStationsList() {
         viewModelScope.launch {
-            _showLoadingMessage.value = true
+            _showShimmer.value = true
 
             val result = getSpaceStationsFromNetworkUseCase.execute(Unit)
             result.doOnSuccess {
@@ -47,7 +47,7 @@ class SpaceStationOverviewViewModel(
     }
 
     fun doneLoadingMessage() {
-        _showLoadingMessage.value = false
+        _showShimmer.value = false
     }
 
     fun doneUnableToLoadMessage() {
