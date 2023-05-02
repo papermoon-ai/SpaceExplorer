@@ -9,9 +9,11 @@ import com.papermoon.spaceapp.features.astronautDetail.ui.AstronautFragment
 import com.papermoon.spaceapp.features.astronautOverview.ui.AstronautOverviewFragment
 import com.papermoon.spaceapp.features.celestialBodyDetail.ui.CelestialBodyFragment
 import com.papermoon.spaceapp.features.celestialBodyOverview.ui.CelestialBodyOverviewFragment
+import com.papermoon.spaceapp.features.languageSelector.ui.LanguageSelectorFragment
 import com.papermoon.spaceapp.features.launchDetail.ui.LaunchFragment
 import com.papermoon.spaceapp.features.launchOverview.ui.LaunchOverviewFragment
 import com.papermoon.spaceapp.features.overview.ui.OverviewFragment
+import com.papermoon.spaceapp.features.settings.SettingsFragment
 import com.papermoon.spaceapp.features.spaceStationDetail.ui.SpaceStationFragment
 import com.papermoon.spaceapp.features.spaceStationOverview.ui.SpaceStationOverviewFragment
 
@@ -28,4 +30,7 @@ object Screens {
     fun celestialBodyOverviewScreen() = FragmentScreen { CelestialBodyOverviewFragment() }
     fun celestialBodyScreen(celestialBody: CelestialBody) =
         FragmentScreen { CelestialBodyFragment(celestialBody) }
+
+    fun settingsScreen() = FragmentScreen { SettingsFragment() }
+    fun languageSelectorScreen() = FragmentScreen { LanguageSelectorFragment() }
 }

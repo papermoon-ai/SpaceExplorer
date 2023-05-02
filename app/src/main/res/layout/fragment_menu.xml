@@ -55,9 +55,19 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
                         android:text="@string/description_planets_option"
                         android:textAppearance="@style/AppTheme.Text.Subtext.H4"
                         android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvPlanetsOptionName" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvPlanetsOptionName" />
@@ -98,12 +108,21 @@
 
                     <TextView
                         android:id="@+id/tvLaunchOptionDescription"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/item_description_textView_width"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
                         android:text="@string/description_orbital_launches_option"
                         android:textAppearance="@style/AppTheme.Text.Subtext.H4"
                         android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvLaunchOptionName" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvLaunchOptionName" />
@@ -124,7 +143,8 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
+                        android:background="@android:color/black"
+                        android:scaleType="fitEnd"
                         android:src="@drawable/img_astronaut"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -149,9 +169,19 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
                         android:text="@string/description_astronauts_option"
                         android:textAppearance="@style/AppTheme.Text.Subtext.H4"
                         android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvAstronautOptionName" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom_darker"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvAstronautOptionName" />
@@ -195,9 +225,19 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
                         android:text="@string/description_space_stations_option"
                         android:textAppearance="@style/AppTheme.Text.Subtext.H4"
                         android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvSpaceStationOptionName" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom_darker"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvSpaceStationOptionName" />

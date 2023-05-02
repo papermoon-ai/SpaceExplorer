@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="current_language">Русский</string>
+    <string name="current_language_tag">ru</string>
+
+    <!-- Settings -->
+    <string name="settings">Настройки</string>
+    <string name="language">Язык</string>
+    <string name="dark_mode">Темная тема</string>
+    <string name="only_work_via_wifi">Работать только с Wi-Fi</string>
+
+    <!-- Commons -->
+    <string name="label_name">Название</string>
+    <string name="label_description">Краткое описание</string>
+    <string name="label_counter">%1$d/%2$d</string>
+
+    <!-- Menu -->
+    <string name="label_planets">Планеты</string>
+    <string name="label_astronauts">Космонавты</string>
+    <string name="label_space_stations">Космические станции</string>
+    <string name="label_orbital_launches">Орбитальные запуски</string>
+    <string name="description_planets_option">Исследуйте планеты Солнечной системы</string>
+    <string name="description_space_stations_option">Изучите данные о космических станциях</string>
+    <string name="description_astronauts_option">Узнайте, кто сейчас находится в космосе</string>
+    <string name="description_orbital_launches_option">Посмотрите, какие космические ракеты собираются запустить</string>
+
+    <!-- -Drawer menu -->
+    <string name="title_language">Язык</string>
+    <string name="title_data">Данные</string>
+    <string name="title_camera">Камера</string>
+    <string name="title_settings">Настройки</string>
+
+    <!-- Launch -->
+    <string name="label_mission">Миссия</string>
+    <string name="label_location">Местоположение</string>
+    <string name="label_pad">Стартовый комплекс</string>
+    <string name="label_organization">Организация</string>
+    <string name="label_launch_date_title">Дата запуска</string>
+    <string name="label_launched">Запущено!</string>
+
+    <!-- Astronaut item -->
+    <string name="description_spacecraft">Аппарат: %1$s</string>
+
+    <!-- Astronaut -->
+    <string name="label_name_surname">Имя и фамилия</string>
+    <string name="label_country">Страна</string>
+    <string name="label_date_of_birth">Дата рождения</string>
+    <string name="label_first_flight_date">Первый полет</string>
+    <string name="label_last_flight_date">Крайний полет</string>
+    <string name="label_short_biography">Краткая биография</string>
+    <string name="label_spacecraft_name">Аппарат</string>
+
+    <!-- Space station item -->
+    <string name="description_date_of_operation">Начало эксплуатации %1$s</string>
+
+    <!-- Space station -->
+    <string name="label_space_station_name">Название станции</string>
+    <string name="label_date_of_operation">Начало эксплуатации</string>
+    <string name="label_owners">Собственники</string>
+    <string name="label_status">Статус</string>
+    <string name="label_active">Активно</string>
+    <string name="label_deactivated">Неактивно</string>
+
+    <!-- Celestial Body -->
+    <string name="label_date_of_discovery">Дата открытия</string>
+    <string name="label_discoverer">Первооткрыватель</string>
+    <string name="label_gravity">Гравитация</string>
+    <string name="label_density">Плотность</string>
+    <string name="label_area">Площадь поверхности</string>
+    <string name="label_temperature">Температура</string>
+    <string name="label_day_period">Длительность суток</string>
+    <string name="label_year_period">Длительность года</string>
+    <string name="label_orbital_speed">Орбитальная скорость</string>
+    <string name="label_satellites_count">Количество спутников</string>
+    <string name="description_temperatures">%1$s ~ %2$s°C</string>
+    <string name="description_gravity">%1$s м/с²</string>
+    <string name="description_density">%1$s г/см³</string>
+    <string name="description_year_period">%1$s, %2$s, %3$s</string>
+    <string name="description_area">%1$s · 10⁷ км²</string>
+    <string name="description_orbital_speed">%1$s км/с</string>
+
+    <plurals name="years">
+        <item quantity="one">%1$d год</item>
+        <item quantity="few">%1$d года</item>
+        <item quantity="many">%1$d лет</item>
+        <item quantity="other">%1$d лет</item>
+    </plurals>
+
+    <plurals name="days">
+        <item quantity="one">%1$d день</item>
+        <item quantity="few">%1$d дня</item>
+        <item quantity="many">%1$d дней</item>
+        <item quantity="other">%1$d дней</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%1$d час</item>
+        <item quantity="few">%1$d часа</item>
+        <item quantity="many">%1$d часов</item>
+        <item quantity="other">%1$d часов</item>
+    </plurals>
+
+    <plurals name="minutes">
+        <item quantity="one">%1$d минута</item>
+        <item quantity="few">%1$d минуты</item>
+        <item quantity="many">%1$d минут</item>
+        <item quantity="other">%1$d минут</item>
+    </plurals>
+
+    <string name="hint_update">Обновить данные</string>
+
+    <!-- Toast text -->
+    <string name="toast_loading">Обновление данных…</string>
+    <string name="toast_unable_to_update">Не удалось обновить данные</string>
+
+    <!-- Error messages -->
+    <string name="message_error_unable_to_update">Не удалось обновить данные. Проверьте подключение к интернету и попробуйте снова.</string>
+    <string name="button_try_again">Попробовать снова</string>
+</resources>

@@ -104,4 +104,23 @@
         <item name="android:padding">@dimen/image_button_padding</item>
         <item name="android:scaleType">fitCenter</item>
     </style>
+
+    <!-- Bottom Navigation -->
+    <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="backgroundTint">@android:color/black</item>
+        <item name="itemTextColor">?colorOnSurface</item>
+        <item name="itemTextAppearanceActive">?attr/textAppearanceCaption</item>
+        <item name="itemTextAppearanceInactive">?attr/textAppearanceCaption</item>
+        <item name="labelVisibilityMode">unlabeled</item>
+
+    </style>
+
+    <!-- Radio Button -->
+    <style name="RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:layout_marginStart">@dimen/base_margin</item>
+        <item name="android:layout_marginTop">@dimen/base_margin</item>
+        <item name="android:layout_marginBottom">@dimen/base_margin</item>
+        <item name="android:paddingStart">@dimen/base_padding</item>
+        <item name="android:paddingEnd">@dimen/base_padding</item>
+    </style>
 </resources>
