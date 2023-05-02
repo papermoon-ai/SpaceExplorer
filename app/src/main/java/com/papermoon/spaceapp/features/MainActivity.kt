@@ -3,6 +3,7 @@ package com.papermoon.spaceapp.features
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.github.terrakok.cicerone.androidx.AppNavigator
@@ -12,7 +13,7 @@ import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.ActivityMainBinding
 import com.papermoon.spaceapp.features.overview.ui.OverviewFragment
-import com.papermoon.spaceapp.features.settings.SettingsFragment
+import com.papermoon.spaceapp.features.settings.ui.SettingsFragment
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -52,25 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            val currentFragment = supportFragmentManager.fragments.last()
-
-            when (item.itemId) {
-                R.id.dataOption -> {
-                    if (currentFragment !is OverviewFragment) {
-                        router.replaceScreen(Screens.overviewScreen())
-                    }
-                }
-                R.id.settingsOption -> {
-                    if (currentFragment !is SettingsFragment) {
-                        router.replaceScreen(Screens.settingsScreen())
-                    }
-                }
-                else -> return@setOnItemSelectedListener false
-            }
-
-            return@setOnItemSelectedListener true
-        }
+        setBottomNavigation()
 
         window.statusBarColor = getColor(R.color.light_gray)
 
@@ -79,10 +62,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setBottomNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            val currentFragment = supportFragmentManager.fragments.last()
+
+            when (item.itemId) {
+                R.id.dataOption -> {
+                    if (currentFragment !is OverviewFragment) {
+                        router.newRootScreen(Screens.overviewScreen())
+                    }
+                }
+                R.id.settingsOption -> {
+                    if (currentFragment !is SettingsFragment) {
+                        router.newRootScreen(Screens.settingsScreen())
+                    }
+                }
+                else -> return@setOnItemSelectedListener false
+            }
+            return@setOnItemSelectedListener true
+        }
+    }
+
     fun setLocale(languageCode: String) {
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
-        val config: Configuration = resources.configuration
+        val config = resources.configuration
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
     }

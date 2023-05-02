@@ -13,7 +13,7 @@ import com.papermoon.spaceapp.features.languageSelector.ui.LanguageSelectorFragm
 import com.papermoon.spaceapp.features.launchDetail.ui.LaunchFragment
 import com.papermoon.spaceapp.features.launchOverview.ui.LaunchOverviewFragment
 import com.papermoon.spaceapp.features.overview.ui.OverviewFragment
-import com.papermoon.spaceapp.features.settings.SettingsFragment
+import com.papermoon.spaceapp.features.settings.ui.SettingsFragment
 import com.papermoon.spaceapp.features.spaceStationDetail.ui.SpaceStationFragment
 import com.papermoon.spaceapp.features.spaceStationOverview.ui.SpaceStationOverviewFragment
 
