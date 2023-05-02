@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewLanguage"
+        style="@style/CardViewStyleV2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgLanguage"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginBottom="@dimen/base_margin"
+                    android:src="@drawable/ic_language"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?colorPrimary" />
+
+                <TextView
+                    android:id="@+id/titleLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:text="@string/language"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintBottom_toBottomOf="@id/imgLanguage"
+                    app:layout_constraintStart_toEndOf="@id/imgLanguage"
+                    app:layout_constraintTop_toTopOf="@id/imgLanguage" />
+
+                <TextView
+                    android:id="@+id/currentLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Subtext.H3"
+                    android:textColor="?colorOnSurfaceVariant"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgLanguageArrow"
+                    app:layout_constraintEnd_toStartOf="@id/imgLanguageArrow"
+                    app:layout_constraintTop_toTopOf="@id/imgLanguageArrow"
+                    tools:text="English" />
+
+                <ImageView
+                    android:id="@+id/imgLanguageArrow"
+                    android:layout_width="@dimen/small_icon_width"
+                    android:layout_height="@dimen/small_icon_height"
+                    android:src="@drawable/ic_arrow_forward"
+                    app:layout_constraintBottom_toBottomOf="@id/imgLanguage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/imgLanguage"
+                    app:tint="?colorPrimary" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewStyleV2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgTheme"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginBottom="@dimen/base_margin"
+                    android:src="@drawable/ic_dark_mode"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?colorPrimary" />
+
+                <TextView
+                    android:id="@+id/titleTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:text="@string/dark_mode"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintBottom_toBottomOf="@id/imgTheme"
+                    app:layout_constraintStart_toEndOf="@id/imgTheme"
+                    app:layout_constraintTop_toTopOf="@id/imgTheme" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchDarkMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgTheme"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imgTheme" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewStyleV2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgWifi"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:layout_marginTop="@dimen/base_margin"
+                    android:layout_marginBottom="@dimen/base_margin"
+                    android:src="@drawable/ic_wifi"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:tint="?colorPrimary" />
+
+                <TextView
+                    android:id="@+id/titleOnlyWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:text="@string/only_work_via_wifi"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintBottom_toBottomOf="@id/imgWifi"
+                    app:layout_constraintStart_toEndOf="@id/imgWifi"
+                    app:layout_constraintTop_toTopOf="@id/imgWifi" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchOnlyWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgWifi"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imgWifi" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

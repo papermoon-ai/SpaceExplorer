@@ -1,113 +1,121 @@
 <resources>
-    <string name="app_name">SpaceApp</string>
+    <string name="app_name" translatable="false">SpaceApp</string>
+
+    <!-- Languages -->
+    <string name="current_language">English</string>
+    <string name="current_language_tag">en</string>
+    <string name="english" translatable="false">English</string>
+    <string name="english_code" translatable="false">en</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="russian_code" translatable="false">ru</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="only_work_via_wifi">Only work via Wi-Fi</string>
 
     <!-- Commons -->
-    <string name="label_name">Название</string>
-    <string name="label_description">Краткое описание</string>
+    <string name="label_name">Name</string>
+    <string name="label_description">Short description</string>
     <string name="label_counter">%1$d/%2$d</string>
 
     <!-- Menu -->
-    <string name="label_planets">Планеты</string>
-    <string name="label_astronauts">Космонавты</string>
-    <string name="label_space_stations">Космические станции</string>
-    <string name="label_orbital_launches">Орбитальные запуски</string>
-    <string name="description_planets_option">Explore real-time planet data</string>
-    <string name="description_space_stations_option">Observe real-time data of space stations</string>
+    <string name="label_planets">Planets</string>
+    <string name="label_astronauts">Astronauts</string>
+    <string name="label_space_stations">Space stations</string>
+    <string name="label_orbital_launches">Orbital launches</string>
+    <string name="description_planets_option">Explore planet data of Solar System</string>
+    <string name="description_space_stations_option">Observe space station data</string>
     <string name="description_astronauts_option">Explore who is in space right now</string>
     <string name="description_orbital_launches_option">Look what rockets are about to launch</string>
 
+    <!-- Drawer menu -->
+    <string name="title_language">Language</string>
+    <string name="title_data">Data</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Drawer toggle -->
+    <string name="nav_open" translatable="false">Open</string>
+    <string name="nav_close" translatable="false">Close</string>
+
     <!-- Launch -->
-    <string name="label_mission">Миссия</string>
-    <string name="label_location">Местоположение</string>
-    <string name="label_pad">Стартовый комплекс</string>
-    <string name="label_organization">Организация</string>
-    <string name="label_launch_date_title">Дата запуска</string>
-    <string name="label_launched">Запущено!</string>
+    <string name="label_mission">Mission</string>
+    <string name="label_location">Location</string>
+    <string name="label_pad">Pad</string>
+    <string name="label_organization">Organization</string>
+    <string name="label_launch_date_title">Launch date</string>
+    <string name="label_launched">Launched!</string>
 
     <!-- Astronaut item -->
-    <string name="description_spacecraft">Аппарат: %1$s</string>
+    <string name="description_spacecraft">Spacecraft: %1$s</string>
 
     <!-- Astronaut -->
-    <string name="label_name_surname">Имя и фамилия</string>
-    <string name="label_country">Страна</string>
-    <string name="label_date_of_birth">Дата рождения</string>
-    <string name="label_first_flight_date">Первый полет</string>
-    <string name="label_last_flight_date">Крайний полет</string>
-    <string name="label_short_biography">Краткая биография</string>
-    <string name="label_spacecraft_name">Аппарат</string>
+    <string name="label_name_surname">First and last name</string>
+    <string name="label_country">Country</string>
+    <string name="label_date_of_birth">Date of birth</string>
+    <string name="label_first_flight_date">First flight</string>
+    <string name="label_last_flight_date">Last flight</string>
+    <string name="label_short_biography">Short biography</string>
+    <string name="label_spacecraft_name">Spacecraft</string>
 
     <!-- Space station item -->
-    <string name="description_date_of_operation">Начало эксплуатации %1$s</string>
+    <string name="description_date_of_operation">Date of operation %1$s</string>
 
     <!-- Space station -->
-    <string name="label_space_station_name">Название станции</string>
-    <string name="label_date_of_operation">Начало эксплуатации</string>
-    <string name="label_owners">Собственники</string>
-    <string name="label_status">Статус</string>
-    <string name="label_active">Активно</string>
-    <string name="label_deactivated">Неактивно</string>
+    <string name="label_space_station_name">Space station name</string>
+    <string name="label_date_of_operation">Date of operation</string>
+    <string name="label_owners">Owners</string>
+    <string name="label_status">Status</string>
+    <string name="label_active">Active</string>
+    <string name="label_deactivated">Not active</string>
 
     <!-- Celestial Body -->
-    <string name="label_date_of_discovery">Дата открытия</string>
-    <string name="label_discoverer">Первооткрыватель</string>
-    <string name="label_gravity">Гравитация</string>
-    <string name="label_density">Плотность</string>
-    <string name="label_area">Площадь поверхности</string>
-    <string name="label_temperature">Температура</string>
-    <string name="label_day_period">Длительность суток</string>
-    <string name="label_year_period">Длительность года</string>
-    <string name="label_orbital_speed">Орбитальная скорость</string>
-    <string name="label_satellites_count">Количество спутников</string>
+    <string name="label_date_of_discovery">Date of discovery</string>
+    <string name="label_discoverer">Discoverer</string>
+    <string name="label_gravity">Gravity</string>
+    <string name="label_density">Density</string>
+    <string name="label_area">Area</string>
+    <string name="label_temperature">Temperature</string>
+    <string name="label_day_period">Day period</string>
+    <string name="label_year_period">Year period</string>
+    <string name="label_orbital_speed">Orbital speed</string>
+    <string name="label_satellites_count">Satellites count</string>
     <string name="description_temperatures">%1$s ~ %2$s°C</string>
-    <string name="description_gravity">%1$s м/с²</string>
-    <string name="description_density">%1$s г/см³</string>
+    <string name="description_gravity">%1$s m/s²</string>
+    <string name="description_density">%1$s g/cm³</string>
     <string name="description_year_period">%1$s, %2$s, %3$s</string>
-    <string name="description_area">%1$s · 10⁷ км²</string>
-    <string name="description_orbital_speed">%1$s км/с</string>
+    <string name="description_area">%1$s · 10⁷ km²</string>
+    <string name="description_orbital_speed">%1$s km/s</string>
 
     <plurals name="years">
-        <item quantity="zero">%1$d лет</item>
-        <item quantity="one">%1$d год</item>
-        <item quantity="two">%1$d года</item>
-        <item quantity="few">%1$d года</item>
-        <item quantity="many">%1$d лет</item>
-        <item quantity="other">%1$d лет</item>
+        <item quantity="one">%1$d year</item>
+        <item quantity="other">%1$d years</item>
     </plurals>
 
     <plurals name="days">
-        <item quantity="zero">%1$d дней</item>
-        <item quantity="one">%1$d день</item>
-        <item quantity="two">%1$d дня</item>
-        <item quantity="few">%1$d дня</item>
-        <item quantity="many">%1$d дней</item>
-        <item quantity="other">%1$d дней</item>
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="zero">%1$d часов</item>
-        <item quantity="one">%1$d час</item>
-        <item quantity="two">%1$d часа</item>
-        <item quantity="few">%1$d часа</item>
-        <item quantity="many">%1$d часов</item>
-        <item quantity="other">%1$d часов</item>
+        <item quantity="one">%1$d hour</item>
+        <item quantity="other">%1$d hours</item>
     </plurals>
 
     <plurals name="minutes">
-        <item quantity="zero">%1$d минут</item>
-        <item quantity="one">%1$d минута</item>
-        <item quantity="two">%1$d минуты</item>
-        <item quantity="few">%1$d минуты</item>
-        <item quantity="many">%1$d минут</item>
-        <item quantity="other">%1$d минут</item>
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
     </plurals>
 
-    <string name="hint_update">Обновить данные</string>
+    <string name="hint_update">Update data</string>
 
     <!-- Toast text -->
-    <string name="toast_loading">Обновление данных…</string>
-    <string name="toast_unable_to_update">Не удалось обновить данные</string>
+    <string name="toast_loading">Updating data…</string>
+    <string name="toast_unable_to_update">Unable to update data</string>
 
     <!-- Error messages -->
-    <string name="message_error_unable_to_update">Не удалось обновить данные. Проверьте подключение к интернету и попробуйте снова.</string>
-    <string name="button_try_again">Попробовать снова</string>
+    <string name="message_error_unable_to_update">Unable to update data. Check internet connection and try again.</string>
+    <string name="button_try_again">Try again</string>
 </resources>
