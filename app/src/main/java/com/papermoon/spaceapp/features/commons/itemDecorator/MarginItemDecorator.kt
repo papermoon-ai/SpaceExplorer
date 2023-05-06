@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.features.commons.util
+package com.papermoon.spaceapp.features.commons.itemDecorator
 
 import android.graphics.Rect
 import android.view.View

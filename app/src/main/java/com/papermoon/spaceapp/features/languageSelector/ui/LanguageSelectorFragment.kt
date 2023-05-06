@@ -1,5 +1,6 @@
 package com.papermoon.spaceapp.features.languageSelector.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentLanguageSelectorBinding
 import com.papermoon.spaceapp.features.MainActivity
+import com.papermoon.spaceapp.features.commons.locale.changeLocale
 
 class LanguageSelectorFragment : Fragment() {
     private lateinit var binding: FragmentLanguageSelectorBinding
@@ -22,16 +24,14 @@ class LanguageSelectorFragment : Fragment() {
         setupToolbar()
 
         checkCurrentLanguageRadioButton()
-        
+
         binding.radioGroupLanguages.setOnCheckedChangeListener { _, checkedId ->
-            when(checkedId) {
+            when (checkedId) {
                 binding.btnEnglishOption.id -> {
-                    (activity as MainActivity).setLocale(getString(R.string.english_code))
-                    activity!!.recreate()
+                    changeLocale(getString(R.string.english_code))
                 }
                 binding.btnRussianOption.id -> {
-                    (activity as MainActivity).setLocale(getString(R.string.russian_code))
-                    activity!!.recreate()
+                    changeLocale(getString(R.string.russian_code))
                 }
             }
         }
@@ -40,7 +40,7 @@ class LanguageSelectorFragment : Fragment() {
     }
 
     private fun checkCurrentLanguageRadioButton() {
-        when(getString(R.string.current_language)) {
+        when (getString(R.string.current_language)) {
             getString(R.string.english) -> {
                 binding.btnEnglishOption.isChecked = true
             }
@@ -59,5 +59,10 @@ class LanguageSelectorFragment : Fragment() {
         toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        binding.toolbar.root.title = getString(R.string.language)
+        super.onConfigurationChanged(newConfig)
     }
 }
