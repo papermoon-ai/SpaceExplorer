@@ -1,9 +1,7 @@
 package com.papermoon.spaceapp.features
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.github.terrakok.cicerone.androidx.AppNavigator
@@ -14,7 +12,6 @@ import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.ActivityMainBinding
 import com.papermoon.spaceapp.features.overview.ui.OverviewFragment
 import com.papermoon.spaceapp.features.settings.ui.SettingsFragment
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -81,14 +78,6 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnItemSelectedListener true
         }
-    }
-
-    fun setLocale(languageCode: String) {
-        val locale = Locale(languageCode)
-        Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
     }
 
     override fun onResume() {
