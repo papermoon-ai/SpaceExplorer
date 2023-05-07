@@ -2,13 +2,18 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/CardViewItemStyle"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/base_margin"
+    android:layout_marginTop="@dimen/base_margin"
+    android:layout_marginRight="@dimen/base_margin"
+    android:layout_marginBottom="@dimen/base_margin"
+    app:cardBackgroundColor="?colorSurfaceVariant"
+    app:cardCornerRadius="@dimen/base_card_view_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -19,16 +24,16 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/astronautItemImageView"
+                android:id="@+id/imgItemEvent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_astronaut" />
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_rocket" />
 
             <ProgressBar
-                android:id="@+id/astronautItemProgressBar"
+                android:id="@+id/eventItemProgressBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
@@ -37,38 +42,46 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/astronautItemNameTextView"
-            android:layout_width="0dp"
+            android:id="@+id/tvItemEventName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/base_margin"
             android:layout_marginTop="@dimen/base_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textAppearance="@style/AppTheme.Text.Title.H4"
-            android:textColor="?colorOnSurface"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/relativeLayout"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Thomas Pesquet" />
+            app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+            tools:text="Crew-6 Crew Dragon Relocation" />
 
         <TextView
-            android:id="@+id/astronautItemSpacecraftTextView"
+            android:id="@+id/tvItemEventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_margin"
             android:textAppearance="@style/AppTheme.Text.Description.H3"
-            android:textColor="?colorOutline"
-            app:layout_constraintStart_toStartOf="@+id/astronautItemNameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/astronautItemNameTextView"
-            tools:text="Станция: Orion" />
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvItemEventType"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemEventType"
+            tools:text="01:25:11" />
 
         <TextView
-            android:id="@+id/astronautItemNationalityTextView"
+            android:id="@+id/tvItemEventType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textAppearance="@style/AppTheme.Text.Description.H3"
             android:textColor="?colorOutline"
-            app:layout_constraintStart_toStartOf="@+id/astronautItemSpacecraftTextView"
-            app:layout_constraintTop_toBottomOf="@+id/astronautItemSpacecraftTextView"
-            tools:text="Страна: French" />
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvItemEventName"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemEventName"
+            tools:text="Spacecraft Relocation" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

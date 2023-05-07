@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLaunch"
+        android:id="@+id/appBarEvent"
         android:layout_width="match_parent"
         android:layout_height="@dimen/big_image_height"
         android:fitsSystemWindows="true">
@@ -20,7 +20,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerLaunch"
+                android:id="@+id/viewPagerEvent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/black"
@@ -28,7 +28,7 @@
                 app:layout_collapseParallaxMultiplier="0.7" />
 
             <include
-                android:id="@+id/tabLayoutLaunchIndicator"
+                android:id="@+id/tabLayoutEventIndicator"
                 layout="@layout/tab_layout" />
 
             <View
@@ -55,7 +55,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tvLaunchCounter"
+                    android:id="@+id/tvEventCounter"
                     style="@style/AppTheme.Text.ImageCounter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                     tools:text="1/3" />
 
                 <TextView
-                    android:id="@+id/tvLaunchImageDescription"
+                    android:id="@+id/tvEventImageDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/base_margin"
@@ -86,7 +86,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollViewLaunch"
+        android:id="@+id/nestedScrollViewEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/imgLaunchRocketIcon"
+                        android:id="@+id/imgEventRocketIcon"
                         android:layout_width="@dimen/small_image_width"
                         android:layout_height="@dimen/small_image_height"
                         android:layout_marginStart="@dimen/base_margin"
@@ -117,7 +117,7 @@
                         app:tint="?attr/colorPrimary" />
 
                     <TextView
-                        android:id="@+id/tvLaunchNameLabel"
+                        android:id="@+id/tvEventNameLabel"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
@@ -125,70 +125,34 @@
                         android:text="@string/label_name"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
                         android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imgLaunchRocketIcon"
+                        app:layout_constraintEnd_toStartOf="@+id/btnEventNews"
+                        app:layout_constraintStart_toEndOf="@+id/imgEventRocketIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tvLaunchName"
+                        android:id="@+id/tvEventName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tvLaunchNameLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLaunchNameLabel"
-                        tools:text="Falcon 9" />
+                        app:layout_constraintEnd_toStartOf="@+id/btnEventNews"
+                        app:layout_constraintStart_toStartOf="@+id/tvEventNameLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tvEventNameLabel"
+                        tools:text="Crew-6 Crew Dragon Relocation" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imgLaunchAgencyIcon"
-                        android:layout_width="@dimen/small_image_width"
-                        android:layout_height="@dimen/small_image_height"
-                        android:layout_marginStart="@dimen/base_margin"
-                        android:src="@drawable/ic_group"
+                    <ImageButton
+                        android:id="@+id/btnEventNews"
+                        style="@style/RoundImageButton"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:padding="@dimen/base_padding"
+                        android:src="@drawable/ic_open_in_web"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="?attr/colorPrimary" />
 
-                    <TextView
-                        android:id="@+id/tvLaunchAgencyLabel"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="@string/label_organization"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imgLaunchAgencyIcon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvLaunchAgency"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/little_margin"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
-                        android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tvLaunchAgencyLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLaunchAgencyLabel"
-                        tools:text="SpaceX" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -202,7 +166,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/imgLaunchCalendarIcon"
+                        android:id="@+id/imgEventCalendarIcon"
                         android:layout_width="@dimen/small_image_width"
                         android:layout_height="@dimen/small_image_height"
                         android:layout_marginStart="@dimen/base_margin"
@@ -213,27 +177,27 @@
                         app:tint="?attr/colorPrimary" />
 
                     <TextView
-                        android:id="@+id/tvLaunchDateLabel"
+                        android:id="@+id/tvEventDateLabel"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/label_launch_date_title"
+                        android:text="@string/label_event_date_title"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
                         android:textColor="?colorOnSurface"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imgLaunchCalendarIcon"
+                        app:layout_constraintStart_toEndOf="@+id/imgEventCalendarIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tvLaunchDate"
+                        android:id="@+id/tvEventDate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tvLaunchDateLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLaunchDateLabel"
+                        app:layout_constraintStart_toStartOf="@+id/tvEventDateLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tvEventDateLabel"
                         tools:text="15.12.2023" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -249,123 +213,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/imgLaunchLocationIcon"
-                        android:layout_width="@dimen/small_image_width"
-                        android:layout_height="@dimen/small_image_height"
-                        android:layout_marginStart="@dimen/base_margin"
-                        android:src="@drawable/ic_world"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
-
-                    <TextView
-                        android:id="@+id/tvLaunchLocationLabel"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="@dimen/base_margin"
-                        android:text="@string/label_location"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenMap"
-                        app:layout_constraintStart_toEndOf="@+id/imgLaunchLocationIcon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvLaunchLocation"
-                        style="@style/AppTheme.Text.Description.H3.Bold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/little_margin"
-                        android:layout_marginEnd="@dimen/base_margin"
-                        android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenMap"
-                        app:layout_constraintStart_toStartOf="@+id/tvLaunchLocationLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLaunchLocationLabel"
-                        tools:text="Plesetsk Cosmodrome, Russian Federation, 43/4 (43R)" />
-
-                    <ImageButton
-                        android:id="@+id/btnLaunchOpenMap"
-                        style="@style/RoundImageButton"
-                        android:layout_marginEnd="@dimen/base_margin"
-                        android:src="@drawable/ic_location"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imgLaunchPadIcon"
-                        android:layout_width="@dimen/small_image_width"
-                        android:layout_height="@dimen/small_image_height"
-                        android:layout_marginStart="@dimen/base_margin"
-                        android:src="@drawable/ic_flag"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
-
-                    <TextView
-                        android:id="@+id/tvLaunchPadNameLabel"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="@dimen/base_margin"
-                        android:text="@string/label_pad"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3"
-                        android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenWeb"
-                        app:layout_constraintStart_toEndOf="@+id/imgLaunchPadIcon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvLaunchPadName"
-                        style="@style/AppTheme.Text.Description.H3.Bold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/little_margin"
-                        android:layout_marginEnd="@dimen/base_margin"
-                        android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenWeb"
-                        app:layout_constraintStart_toStartOf="@+id/tvLaunchPadNameLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLaunchPadNameLabel"
-                        tools:text="43/4 (43R)" />
-
-                    <ImageButton
-                        android:id="@+id/btnLaunchOpenWeb"
-                        style="@style/RoundImageButton"
-                        android:layout_marginEnd="@dimen/base_margin"
-                        android:src="@drawable/ic_wikipedia"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imgLaunchMissionIcon"
+                        android:id="@+id/imgEventTypeIcon"
                         android:layout_width="@dimen/small_image_width"
                         android:layout_height="@dimen/small_image_height"
                         android:layout_marginStart="@dimen/base_margin"
@@ -376,28 +224,80 @@
                         app:tint="?attr/colorPrimary" />
 
                     <TextView
-                        android:id="@+id/tvLaunchMissionLabel"
+                        android:id="@+id/tvEventTypeLabel"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/label_mission"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:text="@string/label_event_type_title"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
                         android:textColor="?colorOnSurface"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imgLaunchMissionIcon"
+                        app:layout_constraintStart_toEndOf="@+id/imgEventTypeIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tvLaunchMission"
+                        android:id="@+id/tvEventType"
+                        style="@style/AppTheme.Text.Description.H3.Bold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
-                        android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                        android:layout_marginEnd="@dimen/base_margin"
                         android:textColor="?colorOnSurface"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tvLaunchMissionLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLaunchMissionLabel"
-                        tools:text="Mission name" />
+                        app:layout_constraintStart_toStartOf="@+id/tvEventTypeLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tvEventTypeLabel"
+                        tools:text="Undocking" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/CardViewStyleV2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imgEventLocationIcon"
+                        android:layout_width="@dimen/small_image_width"
+                        android:layout_height="@dimen/small_image_height"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:src="@drawable/ic_world"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="?attr/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/tvEventLocationLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:text="@string/label_location"
+                        android:textAppearance="@style/AppTheme.Text.Description.H3"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imgEventLocationIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvEventLocation"
+                        style="@style/AppTheme.Text.Description.H3.Bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/little_margin"
+                        android:layout_marginEnd="@dimen/base_margin"
+                        android:textColor="?colorOnSurface"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvEventLocationLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tvEventLocationLabel"
+                        tools:text="Plesetsk Cosmodrome, Russian Federation, 43/4 (43R)" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -412,7 +312,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/tvLaunchDescriptionLabel"
+                        android:id="@+id/tvEventDescriptionLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
@@ -425,7 +325,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tvLaunchDescription"
+                        android:id="@+id/tvEventDescription"
                         style="@style/AppTheme.Text.Description.H3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -433,8 +333,8 @@
                         android:layout_marginEnd="@dimen/base_margin"
                         android:textColor="?colorOnSurface"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tvLaunchDescriptionLabel"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLaunchDescriptionLabel"
+                        app:layout_constraintStart_toStartOf="@+id/tvEventDescriptionLabel"
+                        app:layout_constraintTop_toBottomOf="@+id/tvEventDescriptionLabel"
                         tools:text="A batch of satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system." />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

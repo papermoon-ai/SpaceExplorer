@@ -24,12 +24,12 @@ class SettingsFragment : Fragment() {
     ): View {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
-        setupUI()
+        setupUi()
 
         return binding.root
     }
 
-    private fun setupUI() {
+    private fun setupUi() {
         binding.toolbar.root.title = getString(R.string.settings)
         binding.currentLanguage.text = getString(R.string.current_language)
 

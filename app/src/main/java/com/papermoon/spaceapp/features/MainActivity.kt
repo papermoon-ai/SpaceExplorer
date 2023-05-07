@@ -10,7 +10,7 @@ import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.ActivityMainBinding
-import com.papermoon.spaceapp.features.overview.ui.OverviewFragment
+import com.papermoon.spaceapp.features.home.ui.HomeFragment
 import com.papermoon.spaceapp.features.settings.ui.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 return
             }
             // Bottom navigation transition animation disable
-            else if (nextFragment is SettingsFragment || nextFragment is OverviewFragment) {
+            else if (nextFragment is SettingsFragment || nextFragment is HomeFragment) {
                 return
             }
             else {
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
             when (item.itemId) {
                 R.id.dataOption -> {
-                    if (currentFragment !is OverviewFragment) {
+                    if (currentFragment !is HomeFragment) {
                         router.newRootScreen(Screens.overviewScreen())
                     }
                 }

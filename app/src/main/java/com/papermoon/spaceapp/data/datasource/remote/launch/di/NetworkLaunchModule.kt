@@ -1,6 +1,6 @@
-package com.papermoon.spaceapp.data.datasource.remote.launches.di
+package com.papermoon.spaceapp.data.datasource.remote.launch.di
 
-import com.papermoon.spaceapp.data.datasource.remote.launches.LaunchApiService
+import com.papermoon.spaceapp.data.datasource.remote.launch.LaunchApiService
 import org.koin.dsl.module
 import retrofit2.Retrofit
 

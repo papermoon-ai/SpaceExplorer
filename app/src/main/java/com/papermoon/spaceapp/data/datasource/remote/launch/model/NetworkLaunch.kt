@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.data.datasource.remote.launches.model
+package com.papermoon.spaceapp.data.datasource.remote.launch.model
 
 import com.google.gson.annotations.SerializedName
 import com.papermoon.spaceapp.data.datasource.remote.commons.model.NetworkImageWithDescription

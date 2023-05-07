@@ -190,6 +190,62 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewEventOption"
+                style="@style/CardViewItemStyleV2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base_card_view_height">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_event"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvEventOptionName"
+                        style="@style/AppTheme.Text.Title.H3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:text="@string/label_events"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/tvEventOptionDescription"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvEventOptionDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
+                        android:text="@string/description_events_option"
+                        android:textAppearance="@style/AppTheme.Text.Subtext.H4"
+                        android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvEventOptionName" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvEventOptionName" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewSpaceStationOption"
                 style="@style/CardViewItemStyleV2"
                 android:layout_width="match_parent"
@@ -244,6 +300,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

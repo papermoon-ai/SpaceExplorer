@@ -4,7 +4,8 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.papermoon.spaceapp.BuildConfig
 import com.papermoon.spaceapp.data.datasource.remote.astronaut.di.networkAstronautModule
 import com.papermoon.spaceapp.data.datasource.remote.celestialBody.di.networkCelestialBodyModule
-import com.papermoon.spaceapp.data.datasource.remote.launches.di.networkLaunchModule
+import com.papermoon.spaceapp.data.datasource.remote.event.di.networkEventModule
+import com.papermoon.spaceapp.data.datasource.remote.launch.di.networkLaunchModule
 import com.papermoon.spaceapp.data.datasource.remote.spacestation.di.networkSpaceStationModule
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -21,7 +22,8 @@ val networkModule = module {
         networkLaunchModule,
         networkAstronautModule,
         networkSpaceStationModule,
-        networkCelestialBodyModule
+        networkCelestialBodyModule,
+        networkEventModule
     )
 }
 
