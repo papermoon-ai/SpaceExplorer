@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.data.datasource.remote.launches.model
+package com.papermoon.spaceapp.data.datasource.remote.launch.model
 
 import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName

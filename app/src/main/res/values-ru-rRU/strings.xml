@@ -19,10 +19,12 @@
     <string name="label_astronauts">Космонавты</string>
     <string name="label_space_stations">Космические станции</string>
     <string name="label_orbital_launches">Орбитальные запуски</string>
+    <string name="label_events">События</string>
     <string name="description_planets_option">Исследуйте планеты Солнечной системы</string>
     <string name="description_space_stations_option">Изучите данные о космических станциях</string>
     <string name="description_astronauts_option">Узнайте, кто сейчас находится в космосе</string>
     <string name="description_orbital_launches_option">Посмотрите, какие космические ракеты собираются запустить</string>
+    <string name="description_events_option">Посмотрите, какие события скоро произойдут</string>
 
     <!-- -Drawer menu -->
     <string name="title_language">Язык</string>
@@ -36,7 +38,7 @@
     <string name="label_pad">Стартовый комплекс</string>
     <string name="label_organization">Организация</string>
     <string name="label_launch_date_title">Дата запуска</string>
-    <string name="label_launched">Запущено!</string>
+    <string name="label_launched">Запущено</string>
 
     <!-- Astronaut item -->
     <string name="description_spacecraft">Аппарат: %1$s</string>
@@ -78,6 +80,11 @@
     <string name="description_year_period">%1$s, %2$s, %3$s</string>
     <string name="description_area">%1$s · 10⁷ км²</string>
     <string name="description_orbital_speed">%1$s км/с</string>
+
+    <!-- Event -->
+    <string name="label_event_completed">Событие завершено</string>
+    <string name="label_event_date_title">Дата события</string>
+    <string name="label_event_type_title">Тип события</string>
 
     <plurals name="years">
         <item quantity="one">%1$d год</item>

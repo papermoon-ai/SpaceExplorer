@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CardViewItemStyle"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/base_margin"
+    android:layout_marginTop="@dimen/base_margin"
+    android:layout_marginRight="@dimen/base_margin"
+    android:layout_marginBottom="@dimen/base_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,37 +41,28 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/spaceStationFoundedTextView"
-            style="@style/AppTheme.Text.Description.H4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/spaceStationItemRelativeLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/spaceStationItemRelativeLayout"
-            app:layout_constraintTop_toTopOf="@+id/spaceStationItemRelativeLayout"
-            tools:text="Начало эксплуатации: 20.11.1998" />
-
-        <TextView
             android:id="@+id/spaceStationItemNameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/base_margin"
+            android:layout_marginBottom="@dimen/base_margin"
             android:textAppearance="@style/AppTheme.Text.Title.H4"
             android:textColor="?colorOnSurface"
-            app:layout_constraintBottom_toTopOf="@+id/spaceStationFoundedTextView"
+            app:layout_constraintBottom_toTopOf="@+id/spaceStationIsActiveTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/spaceStationFoundedTextView"
+            app:layout_constraintStart_toEndOf="@+id/spaceStationItemRelativeLayout"
             tools:text="МКС" />
 
         <TextView
             android:id="@+id/spaceStationIsActiveTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textAppearance="@style/AppTheme.Text.Subtext.H4"
-            app:layout_constraintStart_toStartOf="@+id/spaceStationFoundedTextView"
-            app:layout_constraintTop_toBottomOf="@+id/spaceStationFoundedTextView"
+            android:layout_marginTop="@dimen/base_margin"
+            android:textAppearance="@style/AppTheme.Text.Subtext.H3"
+            android:textColor="?colorOutline"
+            app:layout_constraintBottom_toBottomOf="@+id/spaceStationItemRelativeLayout"
+            app:layout_constraintStart_toStartOf="@+id/spaceStationItemNameTextView"
+            app:layout_constraintTop_toTopOf="@+id/spaceStationItemRelativeLayout"
             tools:text="Активно" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -68,7 +68,7 @@
         <item name="contentPadding">@dimen/base_padding</item>
         <item name="cardBackgroundColor">?colorSurfaceVariant</item>
         <item name="android:elevation">@dimen/base_elevation</item>
-        <item name="cardCornerRadius">@dimen/little_card_view_corner_radius</item>
+        <item name="cardCornerRadius">@dimen/base_card_view_corner_radius</item>
     </style>
 
     <style name="CardViewItemStyle" parent="CardViewStyle">

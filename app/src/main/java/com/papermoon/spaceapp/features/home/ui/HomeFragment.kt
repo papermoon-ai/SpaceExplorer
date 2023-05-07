@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.features.overview.ui
+package com.papermoon.spaceapp.features.home.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,15 +8,16 @@ import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens.astronautOverviewScreen
 import com.papermoon.spaceapp.Screens.celestialBodyOverviewScreen
+import com.papermoon.spaceapp.Screens.eventOverviewScreen
 import com.papermoon.spaceapp.Screens.launchOverviewScreen
 import com.papermoon.spaceapp.Screens.spaceStationOverviewScreen
 import com.papermoon.spaceapp.SpaceApp
-import com.papermoon.spaceapp.databinding.FragmentMenuBinding
+import com.papermoon.spaceapp.databinding.FragmentHomeBinding
 import com.papermoon.spaceapp.features.MainActivity
 
-class OverviewFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private var _binding: FragmentMenuBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,7 +25,7 @@ class OverviewFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMenuBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
 
@@ -39,6 +40,9 @@ class OverviewFragment : Fragment() {
         }
         binding.cardViewSpaceStationOption.setOnClickListener {
             SpaceApp.INSTANCE.router.navigateTo(spaceStationOverviewScreen())
+        }
+        binding.cardViewEventOption.setOnClickListener {
+            SpaceApp.INSTANCE.router.navigateTo(eventOverviewScreen())
         }
 
         return binding.root

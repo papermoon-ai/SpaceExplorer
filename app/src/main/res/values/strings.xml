@@ -25,10 +25,12 @@
     <string name="label_astronauts">Astronauts</string>
     <string name="label_space_stations">Space stations</string>
     <string name="label_orbital_launches">Orbital launches</string>
+    <string name="label_events">Events</string>
     <string name="description_planets_option">Explore planet data of Solar System</string>
     <string name="description_space_stations_option">Observe space station data</string>
     <string name="description_astronauts_option">Explore who is in space right now</string>
     <string name="description_orbital_launches_option">Look what rockets are about to launch</string>
+    <string name="description_events_option">Study upcoming events</string>
 
     <!-- Drawer menu -->
     <string name="title_language">Language</string>
@@ -46,7 +48,7 @@
     <string name="label_pad">Pad</string>
     <string name="label_organization">Organization</string>
     <string name="label_launch_date_title">Launch date</string>
-    <string name="label_launched">Launched!</string>
+    <string name="label_launched">Launched</string>
 
     <!-- Astronaut item -->
     <string name="description_spacecraft">Spacecraft: %1$s</string>
@@ -88,6 +90,11 @@
     <string name="description_year_period">%1$s, %2$s, %3$s</string>
     <string name="description_area">%1$s · 10⁷ km²</string>
     <string name="description_orbital_speed">%1$s km/s</string>
+
+    <!-- Event -->
+    <string name="label_event_completed">Event is completed</string>
+    <string name="label_event_date_title">Event date</string>
+    <string name="label_event_type_title">Event type</string>
 
     <plurals name="years">
         <item quantity="one">%1$d year</item>
