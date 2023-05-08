@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/CardViewItemStyle"
+    style="@style/CardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -22,9 +22,6 @@
                 android:id="@+id/astronautItemImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_astronaut" />
 
             <ProgressBar
@@ -41,34 +38,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/base_margin"
-            android:layout_marginTop="@dimen/base_margin"
+            android:layout_marginBottom="@dimen/base_margin"
             android:textAppearance="@style/AppTheme.Text.Title.H4"
             android:textColor="?colorOnSurface"
+            app:layout_constraintBottom_toTopOf="@+id/astronautItemNationalityTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/relativeLayout"
-            app:layout_constraintTop_toTopOf="parent"
             tools:text="Thomas Pesquet" />
-
-        <TextView
-            android:id="@+id/astronautItemSpacecraftTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_margin"
-            android:textAppearance="@style/AppTheme.Text.Description.H3"
-            android:textColor="?colorOutline"
-            app:layout_constraintStart_toStartOf="@+id/astronautItemNameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/astronautItemNameTextView"
-            tools:text="Станция: Orion" />
 
         <TextView
             android:id="@+id/astronautItemNationalityTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin"
-            android:textAppearance="@style/AppTheme.Text.Description.H3"
-            android:textColor="?colorOutline"
-            app:layout_constraintStart_toStartOf="@+id/astronautItemSpacecraftTextView"
-            app:layout_constraintTop_toBottomOf="@+id/astronautItemSpacecraftTextView"
-            tools:text="Страна: French" />
+            android:textAppearance="@style/AppTheme.Text.Subtext.H4"
+            app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+            app:layout_constraintStart_toStartOf="@+id/astronautItemNameTextView"
+            app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+            tools:text="Страна: France" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

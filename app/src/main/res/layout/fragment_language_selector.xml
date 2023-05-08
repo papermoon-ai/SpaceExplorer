@@ -9,7 +9,7 @@
         layout="@layout/toolbar" />
 
     <androidx.cardview.widget.CardView
-        style="@style/CardViewItemStyle"
+        style="@style/CardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

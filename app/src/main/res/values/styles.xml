@@ -8,6 +8,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="AppTheme.Text.Title.H1">
+        <item name="android:textSize">26sp</item>
+    </style>
+
     <style name="AppTheme.Text.Title.H2">
         <item name="android:textSize">22sp</item>
     </style>
@@ -63,37 +67,17 @@
     <!-- CardView -->
     <style name="CardViewStyle" parent="CardView">
         <item name="android:layout_marginStart">@dimen/base_margin</item>
-        <item name="android:layout_marginTop">@dimen/big_margin</item>
-        <item name="android:layout_marginEnd">@dimen/base_margin</item>
-        <item name="contentPadding">@dimen/base_padding</item>
-        <item name="cardBackgroundColor">?colorSurfaceVariant</item>
-        <item name="android:elevation">@dimen/base_elevation</item>
-        <item name="cardCornerRadius">@dimen/base_card_view_corner_radius</item>
-    </style>
-
-    <style name="CardViewItemStyle" parent="CardViewStyle">
-        <item name="contentPadding">0dp</item>
-        <item name="backgroundColor">?colorSurfaceVariant</item>
-    </style>
-
-    <style name="CardViewStyleV2" parent="CardView">
-        <item name="android:layout_marginStart">@dimen/base_margin</item>
         <item name="android:layout_marginTop">@dimen/base_margin</item>
         <item name="android:layout_marginEnd">@dimen/base_margin</item>
         <item name="android:layout_marginBottom">@dimen/little_margin</item>
-        <item name="contentPadding">@dimen/base_padding</item>
-        <item name="cardBackgroundColor">?colorSurfaceVariant</item>
         <item name="android:elevation">@dimen/base_elevation</item>
+        <item name="cardCornerRadius">@dimen/base_card_view_corner_radius</item>
+        <item name="cardBackgroundColor">?colorSurfaceVariant</item>
+    </style>
+
+    <style name="CardViewDescriptionStyle" parent="CardViewStyle">
+        <item name="contentPadding">@dimen/base_padding</item>
         <item name="cardCornerRadius">@dimen/big_card_view_corner_radius</item>
-    </style>
-
-    <style name="CardViewItemStyleV2" parent="CardView">
-        <item name="android:layout_marginStart">@dimen/base_margin</item>
-        <item name="android:layout_marginTop">@dimen/base_margin</item>
-        <item name="android:layout_marginEnd">@dimen/base_margin</item>
-        <item name="android:layout_marginBottom">@dimen/little_margin</item>
-        <item name="android:elevation">@dimen/base_elevation</item>
-        <item name="cardCornerRadius">@dimen/base_card_view_corner_radius</item>
     </style>
 
     <!-- ImageButton -->

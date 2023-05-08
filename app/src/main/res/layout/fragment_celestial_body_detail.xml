@@ -97,7 +97,7 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -121,7 +121,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_name"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -136,8 +136,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/btnCelestialBodyOpenWeb"
                         app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyNameLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyNameLabel"
@@ -158,7 +160,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewCelestialBodyDiscovery"
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -182,7 +184,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_date_of_discovery"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -235,8 +237,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyDiscovererLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyDiscovererLabel"
@@ -246,7 +250,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -270,7 +274,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_satellites_count"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -285,8 +289,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvCelestialBodySatellitesLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodySatellitesLabel"
@@ -296,7 +302,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -320,7 +326,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_area"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -564,8 +570,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyDensityLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyDensityLabel"
@@ -575,7 +583,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -588,7 +596,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_description"
                         android:textAppearance="@style/AppTheme.Text.Title.H3"
@@ -603,7 +611,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/big_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvCelestialBodyDescriptionLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvCelestialBodyDescriptionLabel"

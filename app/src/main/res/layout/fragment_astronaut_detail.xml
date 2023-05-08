@@ -100,7 +100,7 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -124,7 +124,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_name_surname"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -139,8 +139,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnAstronautOpenWeb"
                         app:layout_constraintStart_toStartOf="@+id/tvAstronautNameLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvAstronautNameLabel"
@@ -160,7 +162,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -184,7 +186,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_date_of_birth"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -199,8 +201,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvAstronautLaunchNameLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvAstronautLaunchNameLabel"
@@ -210,7 +214,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -234,7 +238,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_country"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -249,8 +253,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvAstronautCountryLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvAstronautCountryLabel"
@@ -260,7 +266,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -284,7 +290,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_spacecraft_name"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -300,8 +306,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvAstronautSpacecraftLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvAstronautSpacecraftLabel"
@@ -311,7 +319,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -332,26 +340,28 @@
 
                     <TextView
                         android:id="@+id/tvAstronautFirstFlightLabel"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_first_flight_date"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
                         android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toStartOf="@+id/tvAstronautLastFlightLabel"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/imgAstronautFlightDateIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tvAstronautFirstFlight"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toStartOf="@+id/tvAstronautLastFlight"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/tvAstronautFirstFlightLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvAstronautFirstFlightLabel"
                         tools:text="25.05.2000" />
@@ -360,20 +370,20 @@
                         android:id="@+id/tvAstronautLastFlightLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/great_margin"
                         android:text="@string/label_last_flight_date"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
                         android:textColor="?colorOnSurface"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvAstronautLastFlight"
                         app:layout_constraintTop_toTopOf="@+id/tvAstronautFirstFlightLabel" />
 
                     <TextView
                         android:id="@+id/tvAstronautLastFlight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/great_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
-                        app:layout_constraintStart_toStartOf="@+id/tvAstronautLastFlightLabel"
+                        app:layout_constraintStart_toEndOf="@+id/tvAstronautFirstFlight"
                         app:layout_constraintTop_toTopOf="@+id/tvAstronautFirstFlight"
                         tools:text="30.03.2023" />
 
@@ -381,7 +391,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -394,7 +404,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_short_biography"
                         android:textAppearance="@style/AppTheme.Text.Title.H3"
@@ -411,7 +421,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/big_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvAstronautBiographyLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvAstronautBiographyLabel"
