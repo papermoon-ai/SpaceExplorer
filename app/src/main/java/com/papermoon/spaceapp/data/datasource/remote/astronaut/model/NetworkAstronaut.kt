@@ -15,7 +15,8 @@ data class NetworkAstronaut(
     val dateOfBirth: Date,
     val images: List<NetworkImageWithDescription>,
     val bio: String,
-    val nationality: String,
+    @SerializedName("nationality")
+    val country: String,
     @SerializedName("wiki")
     val wikiUrl: String?,
     @SerializedName("first_flight")
@@ -31,7 +32,7 @@ fun NetworkAstronaut.asDomainObject(): Astronaut {
         DateTime(dateOfBirth),
         images.map { it.toDomainObject() },
         bio,
-        nationality,
+        country,
         wikiUrl?.toUri(),
         DateTime(firstFlight),
         DateTime(lastFlight)
