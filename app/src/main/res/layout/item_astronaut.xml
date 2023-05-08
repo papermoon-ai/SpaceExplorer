@@ -41,13 +41,13 @@
             android:layout_marginBottom="@dimen/base_margin"
             android:textAppearance="@style/AppTheme.Text.Title.H4"
             android:textColor="?colorOnSurface"
-            app:layout_constraintBottom_toTopOf="@+id/astronautItemNationalityTextView"
+            app:layout_constraintBottom_toTopOf="@+id/astronautItemCountryTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/relativeLayout"
             tools:text="Thomas Pesquet" />
 
         <TextView
-            android:id="@+id/astronautItemNationalityTextView"
+            android:id="@+id/astronautItemCountryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin"

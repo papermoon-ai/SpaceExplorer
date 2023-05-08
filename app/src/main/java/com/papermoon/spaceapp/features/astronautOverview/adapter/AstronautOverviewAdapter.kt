@@ -14,15 +14,14 @@ import com.squareup.picasso.Picasso
 
 class AstronautOverviewAdapter(
     private val onClickListener: (Astronaut) -> Unit
-) :
-    ListAdapter<Astronaut, AstronautOverviewAdapter.AstronautViewHolder>(DiffUtilCallback()) {
+) : ListAdapter<Astronaut, AstronautOverviewAdapter.AstronautViewHolder>(DiffUtilCallback()) {
 
     class AstronautViewHolder(private val binding: ItemAstronautBinding) :
         ViewHolder(binding.root) {
 
         fun bind(astronaut: Astronaut) {
             binding.astronautItemNameTextView.text = astronaut.name
-            binding.astronautItemNationalityTextView.text = astronaut.nationality
+            binding.astronautItemCountryTextView.text = astronaut.country
 
             Picasso.get()
                 .load(astronaut.images.first().imageUrl)
@@ -72,7 +71,7 @@ class DiffUtilCallback : DiffUtil.ItemCallback<Astronaut>() {
                 && oldItem.spacecraft == newItem.spacecraft
                 && oldItem.bio == newItem.bio
                 && oldItem.dateOfBirth == newItem.dateOfBirth
-                && oldItem.nationality == newItem.nationality
+                && oldItem.country == newItem.country
                 && oldItem.images == newItem.images
                 && oldItem.wikiUrl == newItem.wikiUrl
                 && oldItem.firstFlight == newItem.firstFlight

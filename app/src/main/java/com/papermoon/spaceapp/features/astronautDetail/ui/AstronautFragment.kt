@@ -91,7 +91,7 @@ class AstronautFragment(
     private fun setUiValues() {
         with(binding) {
             tvAstronautName.text = astronaut.name
-            tvAstronautCountry.text = astronaut.nationality
+            tvAstronautCountry.text = astronaut.country
             tvAstronautSpacecraft.text = astronaut.spacecraft
             tvAstronautDateOfBirth.text = astronaut.dateOfBirth.toString("dd.MM.yyyy")
             tvAstronautFirstFlight.text = astronaut.firstFlight.toString("dd.MM.yyyy")

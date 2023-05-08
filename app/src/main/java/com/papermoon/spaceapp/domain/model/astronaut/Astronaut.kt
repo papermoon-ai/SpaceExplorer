@@ -10,7 +10,7 @@ data class Astronaut(
     val dateOfBirth: DateTime,
     val images: List<ImageWithDescription>,
     val bio: String,
-    val nationality: String,
+    val country: String,
     val wikiUrl: Uri?,
     val firstFlight: DateTime,
     val lastFlight: DateTime
