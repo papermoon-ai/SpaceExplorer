@@ -85,10 +85,10 @@ class SpaceStationOverviewFragment : Fragment() {
     }
 
     private fun setupToolbar() {
-        (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        binding.toolbar.root.setNavigationOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
         }
     }
@@ -119,11 +119,6 @@ class SpaceStationOverviewFragment : Fragment() {
     private fun hideShimmer() {
         binding.shimmerLayout.stopShimmer()
         binding.shimmerLayout.visibility = View.GONE
-    }
-
-    override fun onResume() {
-        super.onResume()
-        activity!!.title = getString(R.string.label_space_stations)
     }
 
     override fun onDestroyView() {

@@ -97,7 +97,7 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -121,6 +121,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_name"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -135,8 +136,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvLaunchNameLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvLaunchNameLabel"
@@ -146,7 +149,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -170,6 +173,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:text="@string/label_organization"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
                         android:textColor="?colorOnSurface"
@@ -182,8 +186,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvLaunchAgencyLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvLaunchAgencyLabel"
@@ -193,7 +199,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -217,6 +223,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:text="@string/label_launch_date_title"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
                         android:textColor="?colorOnSurface"
@@ -229,8 +236,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvLaunchDateLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvLaunchDateLabel"
@@ -240,7 +249,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -264,6 +273,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_location"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -279,7 +289,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenMap"
                         app:layout_constraintStart_toStartOf="@+id/tvLaunchLocationLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvLaunchLocationLabel"
@@ -298,7 +310,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -322,6 +334,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_pad"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
@@ -337,7 +350,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnLaunchOpenWeb"
                         app:layout_constraintStart_toStartOf="@+id/tvLaunchPadNameLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvLaunchPadNameLabel"
@@ -356,7 +371,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -380,6 +395,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:text="@string/label_mission"
                         android:textAppearance="@style/AppTheme.Text.Description.H3"
                         android:textColor="?colorOnSurface"
@@ -392,8 +408,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/little_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvLaunchMissionLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvLaunchMissionLabel"
@@ -403,7 +421,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                style="@style/CardViewStyleV2"
+                style="@style/CardViewDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -416,7 +434,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/big_margin"
-                        android:layout_marginTop="@dimen/base_margin"
+                        android:layout_marginTop="@dimen/little_margin"
                         android:layout_marginEnd="@dimen/base_margin"
                         android:text="@string/label_description"
                         android:textAppearance="@style/AppTheme.Text.Title.H3"
@@ -431,7 +449,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/big_margin"
                         android:layout_marginEnd="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/little_margin"
                         android:textColor="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvLaunchDescriptionLabel"
                         app:layout_constraintTop_toBottomOf="@+id/tvLaunchDescriptionLabel"

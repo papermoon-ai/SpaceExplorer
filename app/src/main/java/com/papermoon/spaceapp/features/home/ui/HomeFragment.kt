@@ -13,7 +13,6 @@ import com.papermoon.spaceapp.Screens.launchOverviewScreen
 import com.papermoon.spaceapp.Screens.spaceStationOverviewScreen
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentHomeBinding
-import com.papermoon.spaceapp.features.MainActivity
 
 class HomeFragment : Fragment() {
 
@@ -26,8 +25,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
-        (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
 
         binding.cardViewPlanetsOption.setOnClickListener {
             SpaceApp.INSTANCE.router.navigateTo(celestialBodyOverviewScreen())

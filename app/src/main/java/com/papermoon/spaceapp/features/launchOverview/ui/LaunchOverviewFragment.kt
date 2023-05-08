@@ -102,10 +102,9 @@ class LaunchOverviewFragment : Fragment() {
     }
 
     private fun setupToolbar() {
-        (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        binding.toolbar.root.setNavigationOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
         }
     }
@@ -116,11 +115,6 @@ class LaunchOverviewFragment : Fragment() {
         })
         binding.launchesList.adapter = adapter
         return adapter
-    }
-
-    override fun onResume() {
-        super.onResume()
-        activity!!.title = getString(R.string.label_orbital_launches)
     }
 
     override fun onDestroyView() {

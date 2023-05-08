@@ -20,8 +20,8 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            // 10.25.44.47 192.168.72.32
-            buildConfigField "String", "API_URL", "\"http://192.168.72.32:8080/\""
+            // Wifi: 10.25.44.47 Mobile: 192.168.72.32
+            buildConfigField "String", "API_URL", "\"http://10.25.44.47:8080/\""
             debuggable true
         }
         release {

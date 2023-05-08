@@ -22,10 +22,6 @@ class AstronautOverviewAdapter(
 
         fun bind(astronaut: Astronaut) {
             binding.astronautItemNameTextView.text = astronaut.name
-            binding.astronautItemSpacecraftTextView.text = binding.root.context.getString(
-                R.string.description_spacecraft,
-                astronaut.spacecraft.ifEmpty { "-" }
-            )
             binding.astronautItemNationalityTextView.text = astronaut.nationality
 
             Picasso.get()

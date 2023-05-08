@@ -21,11 +21,11 @@ class SpaceStationAdapter(
         ViewHolder(binding.root) {
         fun bind(spaceStation: SpaceStation) {
             binding.spaceStationItemNameTextView.text = spaceStation.name
-            binding.spaceStationIsActiveTextView.text =
-                if (spaceStation.isActive)
-                    binding.root.context.getString(R.string.label_active)
-                else
-                    binding.root.context.getString(R.string.label_deactivated)
+            binding.spaceStationFoundedTextView.text =
+                binding.root.context.getString(
+                    R.string.description_date_of_operation,
+                    spaceStation.founded.toString("dd.MM.yyyy")
+                )
 
             Picasso.get()
                 .load(spaceStation.images.first().imageUrl)
