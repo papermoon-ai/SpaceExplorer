@@ -13,6 +13,6 @@ data class NetworkPad(
     val wikiUrl: String?
 )
 
-fun NetworkPad.asDomainObject(): Pad {
+fun NetworkPad.toDomainObject(): Pad {
     return Pad(name, location, mapUrl?.toUri(), wikiUrl?.toUri())
 }

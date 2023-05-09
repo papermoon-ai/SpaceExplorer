@@ -9,7 +9,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
-    viewModel { LaunchOverviewViewModel(get()) }
+    viewModel { LaunchOverviewViewModel(get(), get(), get()) }
     viewModel { AstronautOverviewViewModel(get(), get(), get()) }
     viewModel { SpaceStationOverviewViewModel(get(), get()) }
     viewModel { CelestialBodyOverviewViewModel(get(), get(), get()) }

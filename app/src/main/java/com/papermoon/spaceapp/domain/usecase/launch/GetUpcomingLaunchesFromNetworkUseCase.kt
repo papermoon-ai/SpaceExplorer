@@ -8,11 +8,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class GetUpcomingLaunchesFromNetworkUseCase(
-    private val networkLaunchRepository: LaunchRepository
+    private val launchRepository: LaunchRepository
 ) : UseCase<List<Launch>, Unit> {
     override suspend fun execute(params: Unit): Resource<List<Launch>> {
         return withContext(Dispatchers.IO) {
-            networkLaunchRepository.getUpcomingLaunches()
+            launchRepository.getUpcomingLaunchesFromNetwork()
         }
     }
 }

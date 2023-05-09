@@ -9,9 +9,11 @@ import com.papermoon.spaceapp.data.datasource.local.celestialBody.dao.CelestialB
 import com.papermoon.spaceapp.data.datasource.local.celestialBody.model.LocalCelestialBody
 import com.papermoon.spaceapp.data.datasource.local.common.converter.DateConverter
 import com.papermoon.spaceapp.data.datasource.local.common.converter.LocalImageWithDescriptionConverter
+import com.papermoon.spaceapp.data.datasource.local.launch.dao.LaunchDao
+import com.papermoon.spaceapp.data.datasource.local.launch.model.LocalLaunch
 
 @Database(
-    entities = [LocalCelestialBody::class, LocalAstronaut::class],
+    entities = [LocalCelestialBody::class, LocalAstronaut::class, LocalLaunch::class],
     version = 1,
     exportSchema = false
 )
@@ -19,4 +21,5 @@ import com.papermoon.spaceapp.data.datasource.local.common.converter.LocalImageW
 abstract class AppDatabase : RoomDatabase() {
     abstract fun celestialBodyDao(): CelestialBodyDao
     abstract fun astronautDao(): AstronautDao
+    abstract fun launchDao(): LaunchDao
 }

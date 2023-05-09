@@ -7,6 +7,6 @@ data class NetworkMission(
     val description: String
 )
 
-fun NetworkMission.asDomainObject(): Mission {
+fun NetworkMission.toDomainObject(): Mission {
     return Mission(name, description)
 }

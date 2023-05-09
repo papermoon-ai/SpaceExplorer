@@ -17,17 +17,17 @@ data class NetworkLaunch(
     val mission: NetworkMission?
 )
 
-fun NetworkLaunch.asDomainObject(): Launch {
+fun NetworkLaunch.toDomainObject(): Launch {
     return Launch(
         name,
         DateTime(launchDate),
         launchServiceProvider,
         images.map { it.toDomainObject() },
-        pad.asDomainObject(),
-        mission?.asDomainObject()
+        pad.toDomainObject(),
+        mission?.toDomainObject()
     )
 }
 
-fun List<NetworkLaunch>.asDomainObject(): List<Launch> {
-    return this.map { it.asDomainObject() }
+fun List<NetworkLaunch>.toDomainObject(): List<Launch> {
+    return this.map { it.toDomainObject() }
 }
