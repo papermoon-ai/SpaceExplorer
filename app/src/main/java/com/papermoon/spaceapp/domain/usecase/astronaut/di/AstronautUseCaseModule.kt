@@ -12,14 +12,14 @@ val astronautUseCaseModule = module {
     single { provideSaveAstronautsToLocalUseCase(get()) }
 }
 
-fun provideGetAstronautsFromNetworkUseCase(astronautRepository: AstronautRepository): GetAstronautsFromNetworkUseCase {
-    return GetAstronautsFromNetworkUseCase(astronautRepository)
+fun provideGetAstronautsFromNetworkUseCase(repository: AstronautRepository): GetAstronautsFromNetworkUseCase {
+    return GetAstronautsFromNetworkUseCase(repository)
 }
 
-fun provideGetAstronautsFromLocalUseCase(astronautRepository: AstronautRepository): GetAstronautsFromLocalUseCase {
-    return GetAstronautsFromLocalUseCase(astronautRepository)
+fun provideGetAstronautsFromLocalUseCase(repository: AstronautRepository): GetAstronautsFromLocalUseCase {
+    return GetAstronautsFromLocalUseCase(repository)
 }
 
-fun provideSaveAstronautsToLocalUseCase(astronautRepository: AstronautRepository): SaveAstronautsToLocalUseCase {
-    return SaveAstronautsToLocalUseCase(astronautRepository)
+fun provideSaveAstronautsToLocalUseCase(repository: AstronautRepository): SaveAstronautsToLocalUseCase {
+    return SaveAstronautsToLocalUseCase(repository)
 }

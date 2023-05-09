@@ -12,14 +12,14 @@ val launchUseCaseModule = module {
     single { provideSaveUpcomingLaunchesToLocalUseCase(get()) }
 }
 
-fun provideGetUpcomingLaunchesFromNetworkUseCase(launchRepository: LaunchRepository): GetUpcomingLaunchesFromNetworkUseCase {
-    return GetUpcomingLaunchesFromNetworkUseCase(launchRepository)
+fun provideGetUpcomingLaunchesFromNetworkUseCase(repository: LaunchRepository): GetUpcomingLaunchesFromNetworkUseCase {
+    return GetUpcomingLaunchesFromNetworkUseCase(repository)
 }
 
-fun provideGetUpcomingLaunchesFromLocalUseCase(launchRepository: LaunchRepository): GetUpcomingLaunchesFromLocalUseCase {
-    return GetUpcomingLaunchesFromLocalUseCase(launchRepository)
+fun provideGetUpcomingLaunchesFromLocalUseCase(repository: LaunchRepository): GetUpcomingLaunchesFromLocalUseCase {
+    return GetUpcomingLaunchesFromLocalUseCase(repository)
 }
 
-fun provideSaveUpcomingLaunchesToLocalUseCase(launchRepository: LaunchRepository): SaveUpcomingLaunchesToLocalUseCase {
-    return SaveUpcomingLaunchesToLocalUseCase(launchRepository)
+fun provideSaveUpcomingLaunchesToLocalUseCase(repository: LaunchRepository): SaveUpcomingLaunchesToLocalUseCase {
+    return SaveUpcomingLaunchesToLocalUseCase(repository)
 }

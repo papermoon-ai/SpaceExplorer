@@ -8,6 +8,7 @@ import com.papermoon.spaceapp.data.SpaceStationRepositoryImpl
 import com.papermoon.spaceapp.data.datasource.local.astronaut.dao.AstronautDao
 import com.papermoon.spaceapp.data.datasource.local.celestialBody.dao.CelestialBodyDao
 import com.papermoon.spaceapp.data.datasource.local.launch.dao.LaunchDao
+import com.papermoon.spaceapp.data.datasource.local.spacestation.dao.SpaceStationDao
 import com.papermoon.spaceapp.data.datasource.remote.astronaut.AstronautApiService
 import com.papermoon.spaceapp.data.datasource.remote.celestialBody.CelestialBodyApiService
 import com.papermoon.spaceapp.data.datasource.remote.event.EventApiService
@@ -23,21 +24,30 @@ import org.koin.dsl.module
 val repositoryModule = module {
     single { provideLaunchRepository(get(), get()) }
     single { provideAstronautRepository(get(), get()) }
-    single { provideSpaceStationRepository(get()) }
+    single { provideSpaceStationRepository(get(), get()) }
     single { provideCelestialBodyRepository(get(), get()) }
     single { provideEventRepository(get()) }
 }
 
-fun provideLaunchRepository(launchApiService: LaunchApiService, launchDao: LaunchDao): LaunchRepository {
+fun provideLaunchRepository(
+    launchApiService: LaunchApiService,
+    launchDao: LaunchDao
+): LaunchRepository {
     return LaunchRepositoryImpl(launchApiService, launchDao)
 }
 
-fun provideAstronautRepository(astronautApiService: AstronautApiService, astronautDao: AstronautDao): AstronautRepository {
+fun provideAstronautRepository(
+    astronautApiService: AstronautApiService,
+    astronautDao: AstronautDao
+): AstronautRepository {
     return AstronautRepositoryImpl(astronautApiService, astronautDao)
 }
 
-fun provideSpaceStationRepository(spaceStationApiService: SpaceStationApiService): SpaceStationRepository {
-    return SpaceStationRepositoryImpl(spaceStationApiService)
+fun provideSpaceStationRepository(
+    spaceStationApiService: SpaceStationApiService,
+    spaceStationDao: SpaceStationDao
+): SpaceStationRepository {
+    return SpaceStationRepositoryImpl(spaceStationApiService, spaceStationDao)
 }
 
 fun provideCelestialBodyRepository(

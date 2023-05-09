@@ -5,5 +5,6 @@ import com.papermoon.spaceapp.domain.resource.Resource
 
 interface SpaceStationRepository {
     suspend fun getSpaceStationsFromNetwork(): Resource<List<SpaceStation>>
-    suspend fun getActiveSpaceStationsFromNetwork(): Resource<List<SpaceStation>>
+    suspend fun getSpaceStationsFromLocal(): Resource<List<SpaceStation>>
+    suspend fun saveSpaceStationsToLocal(stations: List<SpaceStation>): Resource<Unit>
 }
