@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
-import com.papermoon.spaceapp.domain.usecase.GetActiveSpaceStationsFromNetworkUseCase
-import com.papermoon.spaceapp.domain.usecase.GetSpaceStationsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.spacestation.GetActiveSpaceStationsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.spacestation.GetSpaceStationsFromNetworkUseCase
 import kotlinx.coroutines.launch
 
 class SpaceStationOverviewViewModel(

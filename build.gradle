@@ -27,4 +27,5 @@ ext {
     espresso_vore_version = "3.5.1"
     facebook_shimmer_version = "0.5.0"
     swipe_refresh_layout_version = "1.2.0-alpha01"
+    room_version = "2.5.1"
 }

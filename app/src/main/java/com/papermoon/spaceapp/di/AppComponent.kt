@@ -12,6 +12,6 @@ val appModule = module {
     viewModel { LaunchOverviewViewModel(get()) }
     viewModel { AstronautOverviewViewModel(get()) }
     viewModel { SpaceStationOverviewViewModel(get(), get()) }
-    viewModel { CelestialBodyOverviewViewModel(get()) }
+    viewModel { CelestialBodyOverviewViewModel(get(), get(), get()) }
     viewModel { EventOverviewViewModel(get()) }
 }

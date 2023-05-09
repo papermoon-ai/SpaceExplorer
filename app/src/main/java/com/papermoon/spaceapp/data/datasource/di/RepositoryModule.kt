@@ -5,6 +5,7 @@ import com.papermoon.spaceapp.data.CelestialBodyRepositoryImpl
 import com.papermoon.spaceapp.data.EventRepositoryImpl
 import com.papermoon.spaceapp.data.LaunchRepositoryImpl
 import com.papermoon.spaceapp.data.SpaceStationRepositoryImpl
+import com.papermoon.spaceapp.data.datasource.local.celestialBody.dao.CelestialBodyDao
 import com.papermoon.spaceapp.data.datasource.remote.astronaut.AstronautApiService
 import com.papermoon.spaceapp.data.datasource.remote.celestialBody.CelestialBodyApiService
 import com.papermoon.spaceapp.data.datasource.remote.event.EventApiService
@@ -21,7 +22,7 @@ val repositoryModule = module {
     single { provideLaunchRepository(get()) }
     single { provideAstronautRepository(get()) }
     single { provideSpaceStationRepository(get()) }
-    single { provideCelestialBodyRepository(get()) }
+    single { provideCelestialBodyRepository(get(), get()) }
     single { provideEventRepository(get()) }
 }
 
@@ -37,8 +38,11 @@ fun provideSpaceStationRepository(spaceStationApiService: SpaceStationApiService
     return SpaceStationRepositoryImpl(spaceStationApiService)
 }
 
-fun provideCelestialBodyRepository(celestialBodyApiService: CelestialBodyApiService): CelestialBodyRepository {
-    return CelestialBodyRepositoryImpl(celestialBodyApiService)
+fun provideCelestialBodyRepository(
+    celestialBodyApiService: CelestialBodyApiService,
+    celestialBodyDao: CelestialBodyDao
+): CelestialBodyRepository {
+    return CelestialBodyRepositoryImpl(celestialBodyApiService, celestialBodyDao)
 }
 
 fun provideEventRepository(eventApiService: EventApiService): EventRepository {

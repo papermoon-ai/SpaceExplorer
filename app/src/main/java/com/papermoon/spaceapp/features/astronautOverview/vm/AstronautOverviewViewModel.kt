@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
-import com.papermoon.spaceapp.domain.usecase.GetAstronautsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.astronaut.GetAstronautsFromNetworkUseCase
 import kotlinx.coroutines.launch
 
 class AstronautOverviewViewModel(
