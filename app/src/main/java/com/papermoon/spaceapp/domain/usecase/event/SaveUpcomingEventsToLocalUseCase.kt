@@ -7,12 +7,12 @@ import com.papermoon.spaceapp.domain.usecase.UseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class GetUpcomingEventsFromNetworkUseCase(
+class SaveUpcomingEventsToLocalUseCase(
     private val eventRepository: EventRepository
-) : UseCase<List<Event>, Unit> {
-    override suspend fun execute(params: Unit): Resource<List<Event>> {
+) : UseCase<Unit, List<Event>> {
+    override suspend fun execute(params: List<Event>): Resource<Unit> {
         return withContext(Dispatchers.IO) {
-            eventRepository.getUpcomingEventsFromNetwork()
+            eventRepository.saveUpcomingEventsToLocal(params)
         }
     }
 }
