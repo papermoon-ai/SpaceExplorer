@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.data.datasource.di
+package com.papermoon.spaceapp.data.di
 
 import com.papermoon.spaceapp.data.AstronautRepositoryImpl
 import com.papermoon.spaceapp.data.CelestialBodyRepositoryImpl
@@ -7,6 +7,7 @@ import com.papermoon.spaceapp.data.LaunchRepositoryImpl
 import com.papermoon.spaceapp.data.SpaceStationRepositoryImpl
 import com.papermoon.spaceapp.data.datasource.local.astronaut.dao.AstronautDao
 import com.papermoon.spaceapp.data.datasource.local.celestialBody.dao.CelestialBodyDao
+import com.papermoon.spaceapp.data.datasource.local.launch.dao.LaunchDao
 import com.papermoon.spaceapp.data.datasource.remote.astronaut.AstronautApiService
 import com.papermoon.spaceapp.data.datasource.remote.celestialBody.CelestialBodyApiService
 import com.papermoon.spaceapp.data.datasource.remote.event.EventApiService
@@ -20,15 +21,15 @@ import com.papermoon.spaceapp.domain.repository.SpaceStationRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single { provideLaunchRepository(get()) }
+    single { provideLaunchRepository(get(), get()) }
     single { provideAstronautRepository(get(), get()) }
     single { provideSpaceStationRepository(get()) }
     single { provideCelestialBodyRepository(get(), get()) }
     single { provideEventRepository(get()) }
 }
 
-fun provideLaunchRepository(launchApiService: LaunchApiService): LaunchRepository {
-    return LaunchRepositoryImpl(launchApiService)
+fun provideLaunchRepository(launchApiService: LaunchApiService, launchDao: LaunchDao): LaunchRepository {
+    return LaunchRepositoryImpl(launchApiService, launchDao)
 }
 
 fun provideAstronautRepository(astronautApiService: AstronautApiService, astronautDao: AstronautDao): AstronautRepository {

@@ -5,13 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.papermoon.spaceapp.domain.model.launch.Launch
-import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
+import com.papermoon.spaceapp.domain.usecase.launch.GetUpcomingLaunchesFromLocalUseCase
 import com.papermoon.spaceapp.domain.usecase.launch.GetUpcomingLaunchesFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.launch.SaveUpcomingLaunchesToLocalUseCase
 import kotlinx.coroutines.launch
 
 class LaunchOverviewViewModel(
-    private val getUpcomingLaunchesFromNetworkUseCase: GetUpcomingLaunchesFromNetworkUseCase
+    private val getUpcomingLaunchesFromNetworkUseCase: GetUpcomingLaunchesFromNetworkUseCase,
+    private val getUpcomingLaunchesFromLocalUseCase: GetUpcomingLaunchesFromLocalUseCase,
+    private val saveUpcomingLaunchesToLocalUseCase: SaveUpcomingLaunchesToLocalUseCase
 ) : ViewModel() {
 
     private val _upcomingLaunches = MutableLiveData<List<Launch>>()
@@ -31,18 +34,34 @@ class LaunchOverviewViewModel(
     }
 
     fun updateUpcomingLaunches() {
+        _showShimmer.value = true
         viewModelScope.launch {
-            _showShimmer.value = true
+            updateLaunchesFromNetwork()
+            _upcomingLaunches.value ?: updateLaunchesFromLocal()
 
-            val result = getUpcomingLaunchesFromNetworkUseCase.execute(Unit)
-
-            result.doOnSuccess {
-                _upcomingLaunches.value = result.data
-            }
-            result.doOnFailure {
+            if (_upcomingLaunches.value == null || _upcomingLaunches.value!!.isEmpty()) {
                 _showUnableToUpdateMessage.value = true
             }
         }
+    }
+
+    private suspend fun updateLaunchesFromNetwork() {
+        val result = getUpcomingLaunchesFromNetworkUseCase.execute(Unit)
+        result.doOnSuccess {
+            _upcomingLaunches.value = result.data
+            saveLaunchesToLocal()
+        }
+    }
+
+    private suspend fun updateLaunchesFromLocal() {
+        val result = getUpcomingLaunchesFromLocalUseCase.execute(Unit)
+        result.doOnSuccess {
+            _upcomingLaunches.value = result.data
+        }
+    }
+
+    private suspend fun saveLaunchesToLocal() {
+        saveUpcomingLaunchesToLocalUseCase.execute(_upcomingLaunches.value!!)
     }
 
     fun doneLoadingMessage() {

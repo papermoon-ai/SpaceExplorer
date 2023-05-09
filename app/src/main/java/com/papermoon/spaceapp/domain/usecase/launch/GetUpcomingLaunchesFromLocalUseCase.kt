@@ -7,12 +7,12 @@ import com.papermoon.spaceapp.domain.usecase.UseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class GetUpcomingLaunchesFromNetworkUseCase(
+class GetUpcomingLaunchesFromLocalUseCase(
     private val launchRepository: LaunchRepository
 ) : UseCase<List<Launch>, Unit> {
     override suspend fun execute(params: Unit): Resource<List<Launch>> {
         return withContext(Dispatchers.IO) {
-            launchRepository.getUpcomingLaunchesFromNetwork()
+            launchRepository.getUpcomingLaunchesFromLocal()
         }
     }
 }

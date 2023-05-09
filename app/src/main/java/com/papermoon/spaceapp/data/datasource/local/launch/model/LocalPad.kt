@@ -1,18 +1,15 @@
-package com.papermoon.spaceapp.data.datasource.remote.launch.model
+package com.papermoon.spaceapp.data.datasource.local.launch.model
 
 import androidx.core.net.toUri
-import com.google.gson.annotations.SerializedName
 import com.papermoon.spaceapp.domain.model.launch.Pad
 
-data class NetworkPad(
+data class LocalPad(
     val name: String,
     val location: String,
-    @SerializedName("map_url")
     val mapUrl: String?,
-    @SerializedName("wiki_url")
     val wikiUrl: String?
 )
 
-fun NetworkPad.toDomainObject(): Pad {
+fun LocalPad.toDomainObject(): Pad {
     return Pad(name, location, mapUrl?.toUri(), wikiUrl?.toUri())
 }

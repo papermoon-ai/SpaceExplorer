@@ -1,12 +1,12 @@
-package com.papermoon.spaceapp.data.datasource.remote.launch.model
+package com.papermoon.spaceapp.data.datasource.local.launch.model
 
 import com.papermoon.spaceapp.domain.model.launch.Mission
 
-data class NetworkMission(
+data class LocalMission(
     val name: String,
     val description: String
 )
 
-fun NetworkMission.toDomainObject(): Mission {
+fun LocalMission.toDomainObject(): Mission {
     return Mission(name, description)
 }
