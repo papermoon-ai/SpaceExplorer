@@ -6,7 +6,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.papermoon.spaceapp.data.datasource.local.celestialBody.converter.LocalPhysicCharacteristicsConverter
-import com.papermoon.spaceapp.data.datasource.local.common.converter.LocalImageWithDescriptionConverter
 import com.papermoon.spaceapp.data.datasource.local.common.model.LocalImageWithDescription
 import com.papermoon.spaceapp.data.datasource.local.common.model.toDomainObject
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
@@ -28,7 +27,6 @@ data class LocalCelestialBody(
     val shortDescription: String,
     @ColumnInfo("wiki_url")
     val wikiUrl: String,
-    @field:TypeConverters(LocalImageWithDescriptionConverter::class)
     val images: List<LocalImageWithDescription>,
     @field:TypeConverters(LocalPhysicCharacteristicsConverter::class)
     val characteristics: LocalPhysicCharacteristics

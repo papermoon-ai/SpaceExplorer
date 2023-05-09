@@ -5,13 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
-import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
+import com.papermoon.spaceapp.domain.usecase.astronaut.GetAstronautsFromLocalUseCase
 import com.papermoon.spaceapp.domain.usecase.astronaut.GetAstronautsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.astronaut.SaveAstronautsToLocalUseCase
 import kotlinx.coroutines.launch
 
 class AstronautOverviewViewModel(
-    private val getAstronautsFromNetworkUseCase: GetAstronautsFromNetworkUseCase
+    private val getAstronautsFromNetworkUseCase: GetAstronautsFromNetworkUseCase,
+    private val getAstronautsFromLocalUseCase: GetAstronautsFromLocalUseCase,
+    private val saveAstronautsToLocalUseCase: SaveAstronautsToLocalUseCase,
 ) : ViewModel() {
 
     private var _astronautList = MutableLiveData<List<Astronaut>>()
@@ -31,17 +34,34 @@ class AstronautOverviewViewModel(
     }
 
     fun updateAstronauts() {
+        _showShimmer.value = true
         viewModelScope.launch {
-            _showShimmer.value = true
+            updateAstronautsFromNetwork()
+            _astronautList.value ?: updateAstronautsFromLocal()
 
-            val result = getAstronautsFromNetworkUseCase.execute(Unit)
-            result.doOnSuccess {
-                _astronautList.value = result.data
-            }
-            result.doOnFailure {
+            if (_astronautList.value == null || _astronautList.value!!.isEmpty()) {
                 _showUnableToUpdateMessage.value = true
             }
         }
+    }
+
+    private suspend fun updateAstronautsFromNetwork() {
+        val result = getAstronautsFromNetworkUseCase.execute(Unit)
+        result.doOnSuccess {
+            _astronautList.value = result.data
+            saveAstronautsToLocal()
+        }
+    }
+
+    private suspend fun updateAstronautsFromLocal() {
+        val result = getAstronautsFromLocalUseCase.execute(Unit)
+        result.doOnSuccess {
+            _astronautList.value = result.data
+        }
+    }
+
+    private suspend fun saveAstronautsToLocal() {
+        saveAstronautsToLocalUseCase.execute(_astronautList.value!!)
     }
 
     fun doneLoadingMessage() {

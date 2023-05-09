@@ -7,12 +7,12 @@ import com.papermoon.spaceapp.domain.usecase.UseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class GetAstronautsFromNetworkUseCase(
+class GetAstronautsFromLocalUseCase(
     private val astronautRepository: AstronautRepository
 ) : UseCase<List<Astronaut>, Unit> {
     override suspend fun execute(params: Unit): Resource<List<Astronaut>> {
         return withContext(Dispatchers.IO) {
-            astronautRepository.getAstronautsFromNetwork()
+            astronautRepository.getAstronautsFromLocal()
         }
     }
 }

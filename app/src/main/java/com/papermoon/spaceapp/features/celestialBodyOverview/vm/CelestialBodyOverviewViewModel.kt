@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
-import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
 import com.papermoon.spaceapp.domain.usecase.celestialBody.GetPlanetsFromLocalUseCase
 import com.papermoon.spaceapp.domain.usecase.celestialBody.GetPlanetsFromNetworkUseCase
@@ -40,6 +39,10 @@ class CelestialBodyOverviewViewModel(
         viewModelScope.launch {
             updatePlanetsFromNetwork()
             _planets.value ?: updatePlanetsFromLocal()
+
+            if (_planets.value == null || _planets.value!!.isEmpty()) {
+                _showUnableToUpdateMessage.value = true
+            }
         }
     }
 
@@ -54,14 +57,7 @@ class CelestialBodyOverviewViewModel(
     private suspend fun updatePlanetsFromLocal() {
         val result = getPlanetsFromLocalUseCase.execute(Unit)
         result.doOnSuccess {
-            if (result.data!!.isNotEmpty()) {
-                _planets.value = result.data
-            } else {
-                _showUnableToUpdateMessage.value = true
-            }
-        }
-        result.doOnFailure {
-            _showUnableToUpdateMessage.value = true
+            _planets.value = result.data
         }
     }
 
