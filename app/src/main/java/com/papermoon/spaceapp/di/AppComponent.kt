@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val appModule = module {
     viewModel { LaunchOverviewViewModel(get()) }
-    viewModel { AstronautOverviewViewModel(get()) }
+    viewModel { AstronautOverviewViewModel(get(), get(), get()) }
     viewModel { SpaceStationOverviewViewModel(get(), get()) }
     viewModel { CelestialBodyOverviewViewModel(get(), get(), get()) }
     viewModel { EventOverviewViewModel(get()) }

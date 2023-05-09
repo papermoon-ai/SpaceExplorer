@@ -25,7 +25,7 @@ data class NetworkAstronaut(
     val lastFlight: Date
 )
 
-fun NetworkAstronaut.asDomainObject(): Astronaut {
+fun NetworkAstronaut.toDomainObject(): Astronaut {
     return Astronaut(
         name,
         spacecraft,
@@ -39,6 +39,6 @@ fun NetworkAstronaut.asDomainObject(): Astronaut {
     )
 }
 
-fun List<NetworkAstronaut>.asDomainObject(): List<Astronaut> {
-    return this.map { it.asDomainObject() }
+fun List<NetworkAstronaut>.toDomainObject(): List<Astronaut> {
+    return this.map { it.toDomainObject() }
 }

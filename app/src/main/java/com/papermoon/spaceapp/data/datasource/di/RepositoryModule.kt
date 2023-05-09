@@ -5,6 +5,7 @@ import com.papermoon.spaceapp.data.CelestialBodyRepositoryImpl
 import com.papermoon.spaceapp.data.EventRepositoryImpl
 import com.papermoon.spaceapp.data.LaunchRepositoryImpl
 import com.papermoon.spaceapp.data.SpaceStationRepositoryImpl
+import com.papermoon.spaceapp.data.datasource.local.astronaut.dao.AstronautDao
 import com.papermoon.spaceapp.data.datasource.local.celestialBody.dao.CelestialBodyDao
 import com.papermoon.spaceapp.data.datasource.remote.astronaut.AstronautApiService
 import com.papermoon.spaceapp.data.datasource.remote.celestialBody.CelestialBodyApiService
@@ -20,7 +21,7 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     single { provideLaunchRepository(get()) }
-    single { provideAstronautRepository(get()) }
+    single { provideAstronautRepository(get(), get()) }
     single { provideSpaceStationRepository(get()) }
     single { provideCelestialBodyRepository(get(), get()) }
     single { provideEventRepository(get()) }
@@ -30,8 +31,8 @@ fun provideLaunchRepository(launchApiService: LaunchApiService): LaunchRepositor
     return LaunchRepositoryImpl(launchApiService)
 }
 
-fun provideAstronautRepository(astronautApiService: AstronautApiService): AstronautRepository {
-    return AstronautRepositoryImpl(astronautApiService)
+fun provideAstronautRepository(astronautApiService: AstronautApiService, astronautDao: AstronautDao): AstronautRepository {
+    return AstronautRepositoryImpl(astronautApiService, astronautDao)
 }
 
 fun provideSpaceStationRepository(spaceStationApiService: SpaceStationApiService): SpaceStationRepository {
