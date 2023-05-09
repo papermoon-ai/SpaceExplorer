@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.data.datasource.local.db
+package com.papermoon.spaceapp.data.datasource.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
@@ -11,9 +11,11 @@ import com.papermoon.spaceapp.data.datasource.local.common.converter.DateConvert
 import com.papermoon.spaceapp.data.datasource.local.common.converter.LocalImageWithDescriptionConverter
 import com.papermoon.spaceapp.data.datasource.local.launch.dao.LaunchDao
 import com.papermoon.spaceapp.data.datasource.local.launch.model.LocalLaunch
+import com.papermoon.spaceapp.data.datasource.local.spacestation.dao.SpaceStationDao
+import com.papermoon.spaceapp.data.datasource.local.spacestation.model.LocalSpaceStation
 
 @Database(
-    entities = [LocalCelestialBody::class, LocalAstronaut::class, LocalLaunch::class],
+    entities = [LocalCelestialBody::class, LocalAstronaut::class, LocalLaunch::class, LocalSpaceStation::class],
     version = 1,
     exportSchema = false
 )
@@ -22,4 +24,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun celestialBodyDao(): CelestialBodyDao
     abstract fun astronautDao(): AstronautDao
     abstract fun launchDao(): LaunchDao
+    abstract fun spaceStationDao(): SpaceStationDao
 }

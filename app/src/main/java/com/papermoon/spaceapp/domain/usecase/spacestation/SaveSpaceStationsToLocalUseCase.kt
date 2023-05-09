@@ -7,12 +7,12 @@ import com.papermoon.spaceapp.domain.usecase.UseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class GetActiveSpaceStationsFromNetworkUseCase(
+class SaveSpaceStationsToLocalUseCase(
     private val spaceStationRepository: SpaceStationRepository
-) : UseCase<List<SpaceStation>, Unit> {
-    override suspend fun execute(params: Unit): Resource<List<SpaceStation>> {
+) : UseCase<Unit, List<SpaceStation>> {
+    override suspend fun execute(params: List<SpaceStation>): Resource<Unit> {
         return withContext(Dispatchers.IO) {
-            spaceStationRepository.getActiveSpaceStationsFromNetwork()
+            spaceStationRepository.saveSpaceStationsToLocal(params)
         }
     }
 }

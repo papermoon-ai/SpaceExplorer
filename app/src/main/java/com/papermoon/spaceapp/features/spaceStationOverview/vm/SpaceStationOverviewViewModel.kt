@@ -5,15 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
-import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
-import com.papermoon.spaceapp.domain.usecase.spacestation.GetActiveSpaceStationsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.spacestation.GetSpaceStationsFromLocalUseCase
 import com.papermoon.spaceapp.domain.usecase.spacestation.GetSpaceStationsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.spacestation.SaveSpaceStationsToLocalUseCase
 import kotlinx.coroutines.launch
 
 class SpaceStationOverviewViewModel(
     private val getSpaceStationsFromNetworkUseCase: GetSpaceStationsFromNetworkUseCase,
-    private val getActiveSpaceStationsFromNetworkUseCase: GetActiveSpaceStationsFromNetworkUseCase
+    private val getSpaceStationsFromLocalUseCase: GetSpaceStationsFromLocalUseCase,
+    private val saveSpaceStationsToLocalUseCase: SaveSpaceStationsToLocalUseCase
 ) : ViewModel() {
 
     private var _spaceStationsList = MutableLiveData<List<SpaceStation>>()
@@ -33,17 +34,35 @@ class SpaceStationOverviewViewModel(
     }
 
     fun updateSpaceStationsList() {
-        viewModelScope.launch {
-            _showShimmer.value = true
+        _showShimmer.value = true
 
-            val result = getSpaceStationsFromNetworkUseCase.execute(Unit)
-            result.doOnSuccess {
-                _spaceStationsList.value = result.data
-            }
-            result.doOnFailure {
+        viewModelScope.launch {
+            updateSpaceStationsFromNetwork()
+            _spaceStationsList.value ?: updateSpaceStationsFromLocal()
+
+            if (_spaceStationsList.value == null || _spaceStationsList.value!!.isEmpty()) {
                 _showUnableToUpdateMessage.value = true
             }
         }
+    }
+
+    private suspend fun updateSpaceStationsFromNetwork() {
+        val result = getSpaceStationsFromNetworkUseCase.execute(Unit)
+        result.doOnSuccess {
+            _spaceStationsList.value = result.data
+            saveSpaceStationsToNetwork()
+        }
+    }
+
+    private suspend fun updateSpaceStationsFromLocal() {
+        val result = getSpaceStationsFromLocalUseCase.execute(Unit)
+        result.doOnSuccess {
+            _spaceStationsList.value = result.data
+        }
+    }
+
+    private suspend fun saveSpaceStationsToNetwork() {
+        saveSpaceStationsToLocalUseCase.execute(_spaceStationsList.value!!)
     }
 
     fun doneLoadingMessage() {
