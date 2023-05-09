@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.papermoon.spaceapp.domain.model.event.Event
 import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
-import com.papermoon.spaceapp.domain.usecase.GetUpcomingEventsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.event.GetUpcomingEventsFromNetworkUseCase
 import kotlinx.coroutines.launch
 
 class EventOverviewViewModel(

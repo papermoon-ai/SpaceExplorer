@@ -7,11 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
 import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
-import com.papermoon.spaceapp.domain.usecase.GetPlanetsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.celestialBody.GetPlanetsFromLocalUseCase
+import com.papermoon.spaceapp.domain.usecase.celestialBody.GetPlanetsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.celestialBody.SavePlanetsToLocalUseCase
 import kotlinx.coroutines.launch
 
 class CelestialBodyOverviewViewModel(
-    private val getPlanetsFromNetworkUseCase: GetPlanetsFromNetworkUseCase
+    private val getPlanetsFromNetworkUseCase: GetPlanetsFromNetworkUseCase,
+    private val getPlanetsFromLocalUseCase: GetPlanetsFromLocalUseCase,
+    private val savePlanetsToLocalUseCase: SavePlanetsToLocalUseCase
 ) : ViewModel() {
 
     private var _planets = MutableLiveData<List<CelestialBody>>()
@@ -31,17 +35,38 @@ class CelestialBodyOverviewViewModel(
     }
 
     fun updatePlanets() {
-        viewModelScope.launch {
-            _showShimmer.value = true
+        _showShimmer.value = true
 
-            val result = getPlanetsFromNetworkUseCase.execute(Unit)
-            result.doOnSuccess {
+        viewModelScope.launch {
+            updatePlanetsFromNetwork()
+            _planets.value ?: updatePlanetsFromLocal()
+        }
+    }
+
+    private suspend fun updatePlanetsFromNetwork() {
+        val result = getPlanetsFromNetworkUseCase.execute(Unit)
+        result.doOnSuccess {
+            _planets.value = result.data
+            savePlanetsToLocal()
+        }
+    }
+
+    private suspend fun updatePlanetsFromLocal() {
+        val result = getPlanetsFromLocalUseCase.execute(Unit)
+        result.doOnSuccess {
+            if (result.data!!.isNotEmpty()) {
                 _planets.value = result.data
-            }
-            result.doOnFailure {
+            } else {
                 _showUnableToUpdateMessage.value = true
             }
         }
+        result.doOnFailure {
+            _showUnableToUpdateMessage.value = true
+        }
+    }
+
+    private suspend fun savePlanetsToLocal() {
+        savePlanetsToLocalUseCase.execute(_planets.value!!)
     }
 
     fun doneLoadingMessage() {

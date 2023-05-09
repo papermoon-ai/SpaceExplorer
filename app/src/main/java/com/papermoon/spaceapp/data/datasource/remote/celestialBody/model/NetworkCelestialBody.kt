@@ -6,7 +6,6 @@ import com.papermoon.spaceapp.data.datasource.remote.commons.model.toDomainObjec
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
 
 data class NetworkCelestialBody(
-    val id: String,
     val name: String,
     val englishName: String,
     val discoverDate: String?,

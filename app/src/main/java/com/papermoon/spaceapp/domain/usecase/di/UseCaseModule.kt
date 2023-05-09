@@ -1,16 +1,15 @@
 package com.papermoon.spaceapp.domain.usecase.di
 
 import com.papermoon.spaceapp.domain.repository.AstronautRepository
-import com.papermoon.spaceapp.domain.repository.CelestialBodyRepository
 import com.papermoon.spaceapp.domain.repository.EventRepository
 import com.papermoon.spaceapp.domain.repository.LaunchRepository
 import com.papermoon.spaceapp.domain.repository.SpaceStationRepository
-import com.papermoon.spaceapp.domain.usecase.GetActiveSpaceStationsFromNetworkUseCase
-import com.papermoon.spaceapp.domain.usecase.GetAstronautsFromNetworkUseCase
-import com.papermoon.spaceapp.domain.usecase.GetPlanetsFromNetworkUseCase
-import com.papermoon.spaceapp.domain.usecase.GetSpaceStationsFromNetworkUseCase
-import com.papermoon.spaceapp.domain.usecase.GetUpcomingEventsFromNetworkUseCase
-import com.papermoon.spaceapp.domain.usecase.GetUpcomingLaunchesFromNetworkUserCase
+import com.papermoon.spaceapp.domain.usecase.astronaut.GetAstronautsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.celestialBody.di.celestialBodyUseCaseModule
+import com.papermoon.spaceapp.domain.usecase.event.GetUpcomingEventsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.launch.GetUpcomingLaunchesFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.spacestation.GetActiveSpaceStationsFromNetworkUseCase
+import com.papermoon.spaceapp.domain.usecase.spacestation.GetSpaceStationsFromNetworkUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -18,12 +17,12 @@ val useCaseModule = module {
     single { provideGetAstronautsFromNetworkUseCase(get()) }
     single { provideGetSpaceStationsFromNetworkUseCase(get()) }
     single { provideGetActiveSpaceStationsFromNetworkUseCase(get()) }
-    single { provideGetPlanetsFromNetworkUseCase(get()) }
     single { provideGetUpcomingEventsFromNetworkUseCase(get()) }
+    includes(celestialBodyUseCaseModule)
 }
 
-fun provideGetUpcomingLaunchesFromNetworkUseCase(launchRepository: LaunchRepository): GetUpcomingLaunchesFromNetworkUserCase {
-    return GetUpcomingLaunchesFromNetworkUserCase(launchRepository)
+fun provideGetUpcomingLaunchesFromNetworkUseCase(launchRepository: LaunchRepository): GetUpcomingLaunchesFromNetworkUseCase {
+    return GetUpcomingLaunchesFromNetworkUseCase(launchRepository)
 }
 
 fun provideGetAstronautsFromNetworkUseCase(astronautRepository: AstronautRepository): GetAstronautsFromNetworkUseCase {
@@ -36,10 +35,6 @@ fun provideGetSpaceStationsFromNetworkUseCase(spaceStationRepository: SpaceStati
 
 fun provideGetActiveSpaceStationsFromNetworkUseCase(spaceStationRepository: SpaceStationRepository): GetActiveSpaceStationsFromNetworkUseCase {
     return GetActiveSpaceStationsFromNetworkUseCase(spaceStationRepository)
-}
-
-fun provideGetPlanetsFromNetworkUseCase(celestialBodyRepository: CelestialBodyRepository): GetPlanetsFromNetworkUseCase {
-    return GetPlanetsFromNetworkUseCase(celestialBodyRepository)
 }
 
 fun provideGetUpcomingEventsFromNetworkUseCase(eventRepository: EventRepository): GetUpcomingEventsFromNetworkUseCase {

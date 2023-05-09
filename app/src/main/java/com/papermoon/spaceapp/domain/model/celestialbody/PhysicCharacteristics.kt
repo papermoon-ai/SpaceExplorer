@@ -1,5 +1,7 @@
 package com.papermoon.spaceapp.domain.model.celestialbody
 
+import com.papermoon.spaceapp.data.datasource.local.celestialBody.model.LocalPhysicCharacteristics
+
 data class PhysicCharacteristics(
     val gravity: Double,
     val density: Double,
@@ -10,3 +12,16 @@ data class PhysicCharacteristics(
     val rotationAroundAxis: Period,
     val rotationAroundSun: Period
 )
+
+fun PhysicCharacteristics.toLocalObject(): LocalPhysicCharacteristics {
+    return LocalPhysicCharacteristics(
+        gravity,
+        density,
+        minTemperature,
+        maxTemperature,
+        avgOrbitalSpeed,
+        area,
+        rotationAroundAxis.toLocalObject(),
+        rotationAroundSun.toLocalObject()
+    )
+}

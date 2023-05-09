@@ -7,11 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.papermoon.spaceapp.domain.model.launch.Launch
 import com.papermoon.spaceapp.domain.resource.doOnFailure
 import com.papermoon.spaceapp.domain.resource.doOnSuccess
-import com.papermoon.spaceapp.domain.usecase.GetUpcomingLaunchesFromNetworkUserCase
+import com.papermoon.spaceapp.domain.usecase.launch.GetUpcomingLaunchesFromNetworkUseCase
 import kotlinx.coroutines.launch
 
 class LaunchOverviewViewModel(
-    private val getUpcomingLaunchesFromNetworkUserCase: GetUpcomingLaunchesFromNetworkUserCase
+    private val getUpcomingLaunchesFromNetworkUseCase: GetUpcomingLaunchesFromNetworkUseCase
 ) : ViewModel() {
 
     private val _upcomingLaunches = MutableLiveData<List<Launch>>()
@@ -34,7 +34,7 @@ class LaunchOverviewViewModel(
         viewModelScope.launch {
             _showShimmer.value = true
 
-            val result = getUpcomingLaunchesFromNetworkUserCase.execute(Unit)
+            val result = getUpcomingLaunchesFromNetworkUseCase.execute(Unit)
 
             result.doOnSuccess {
                 _upcomingLaunches.value = result.data
