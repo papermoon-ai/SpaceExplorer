@@ -7,4 +7,5 @@ interface SpaceStationRepository {
     suspend fun getSpaceStationsFromNetwork(): Resource<List<SpaceStation>>
     suspend fun getSpaceStationsFromLocal(): Resource<List<SpaceStation>>
     suspend fun saveSpaceStationsToLocal(stations: List<SpaceStation>): Resource<Unit>
+    suspend fun deleteAllFromLocal(): Resource<Unit>
 }

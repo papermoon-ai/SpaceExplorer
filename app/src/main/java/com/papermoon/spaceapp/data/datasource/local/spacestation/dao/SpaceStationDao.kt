@@ -14,4 +14,7 @@ interface SpaceStationDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(stations: List<LocalSpaceStation>)
+
+    @Query("DELETE FROM space_station")
+    fun deleteAll()
 }

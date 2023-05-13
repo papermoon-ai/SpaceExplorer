@@ -7,4 +7,5 @@ interface LaunchRepository {
     suspend fun getUpcomingLaunchesFromNetwork(): Resource<List<Launch>>
     suspend fun getUpcomingLaunchesFromLocal(): Resource<List<Launch>>
     suspend fun saveUpcomingLaunchesToLocal(launches: List<Launch>): Resource<Unit>
+    suspend fun deleteAllFromLocal(): Resource<Unit>
 }

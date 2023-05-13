@@ -50,4 +50,7 @@
 
     <!-- Item description textView width -->
     <dimen name="item_description_textView_width">250dp</dimen>
+
+    <!-- Bottom Navigation -->
+    <dimen name="bottom_navigation_height">50dp</dimen>
 </resources>

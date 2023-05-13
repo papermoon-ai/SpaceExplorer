@@ -4,6 +4,7 @@ import com.papermoon.spaceapp.features.astronautOverview.vm.AstronautOverviewVie
 import com.papermoon.spaceapp.features.celestialBodyOverview.vm.CelestialBodyOverviewViewModel
 import com.papermoon.spaceapp.features.eventOverview.vm.EventOverviewViewModel
 import com.papermoon.spaceapp.features.launchOverview.vm.LaunchOverviewViewModel
+import com.papermoon.spaceapp.features.settings.vm.SettingsViewModel
 import com.papermoon.spaceapp.features.spaceStationOverview.vm.SpaceStationOverviewViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -14,4 +15,5 @@ val appModule = module {
     viewModel { SpaceStationOverviewViewModel(get(), get(), get()) }
     viewModel { CelestialBodyOverviewViewModel(get(), get(), get()) }
     viewModel { EventOverviewViewModel(get(), get(), get()) }
+    viewModel { SettingsViewModel(get(), get(), get(), get(), get()) }
 }

@@ -29,6 +29,10 @@ import com.papermoon.spaceapp.data.datasource.local.spacestation.model.LocalSpac
 )
 @TypeConverters(DateConverter::class, LocalImageWithDescriptionConverter::class)
 abstract class AppDatabase : RoomDatabase() {
+    companion object {
+        const val DATABASE_NAME = "space-app-database"
+    }
+
     abstract fun celestialBodyDao(): CelestialBodyDao
     abstract fun astronautDao(): AstronautDao
     abstract fun launchDao(): LaunchDao

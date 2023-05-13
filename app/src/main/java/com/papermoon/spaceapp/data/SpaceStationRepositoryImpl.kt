@@ -40,4 +40,13 @@ class SpaceStationRepositoryImpl(
             Resource.Failure(exception)
         }
     }
+
+    override suspend fun deleteAllFromLocal(): Resource<Unit> {
+        return try {
+            spaceStationDao.deleteAll()
+            Resource.Success(Unit)
+        } catch (exception: Exception) {
+            Resource.Failure(exception)
+        }
+    }
 }

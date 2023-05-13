@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorSurface"
+            app:contentScrim="?attr/colorSurfaceVariant"
             app:layout_scrollFlags="scroll|enterAlways"
             app:titleEnabled="false">
 
@@ -78,7 +78,9 @@
                 android:id="@+id/viewGroupError"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/base_margin"
+                android:layout_marginStart="@dimen/base_margin"
+                android:layout_marginEnd="@dimen/base_margin"
+                android:layout_marginBottom="@dimen/bottom_navigation_height"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:visibility="gone"

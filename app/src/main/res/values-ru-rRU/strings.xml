@@ -7,7 +7,12 @@
     <string name="settings">Настройки</string>
     <string name="language">Язык</string>
     <string name="dark_mode">Темная тема</string>
-    <string name="only_work_via_wifi">Работать только с Wi-Fi</string>
+    <string name="storage_usage">Использование памяти</string>
+    <string name="traffic_usage">Использование трафика</string>
+    <string name="disk_and_network_usage">Использование сети и кэша</string>
+    <string name="theme_settings">Настройки темы</string>
+    <string name="language_settings">Настройки языка</string>
+    <string name="clear_storage">Очистить хранилище</string>
 
     <!-- Commons -->
     <string name="label_name">Название</string>

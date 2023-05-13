@@ -39,4 +39,13 @@ class CelestialBodyRepositoryImpl(
             Resource.Failure(exception)
         }
     }
+
+    override suspend fun deleteAllFromLocal(): Resource<Unit> {
+        return try {
+            celestialBodyDao.deleteAll()
+            Resource.Success(Unit)
+        } catch (exception: Exception) {
+            Resource.Failure(exception)
+        }
+    }
 }

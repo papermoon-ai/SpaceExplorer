@@ -7,4 +7,5 @@ interface CelestialBodyRepository {
     suspend fun getPlanetsFromNetwork(): Resource<List<CelestialBody>>
     suspend fun getPlanetsFromLocal(): Resource<List<CelestialBody>>
     suspend fun savePlanetsToLocal(planets: List<CelestialBody>): Resource<Unit>
+    suspend fun deleteAllFromLocal(): Resource<Unit>
 }

@@ -40,4 +40,13 @@ class AstronautRepositoryImpl(
             Resource.Failure(exception)
         }
     }
+
+    override suspend fun deleteAllFromLocal(): Resource<Unit> {
+        return try {
+            astronautDao.deleteAll()
+            Resource.Success(Unit)
+        } catch (exception: Exception) {
+            Resource.Failure(exception)
+        }
+    }
 }

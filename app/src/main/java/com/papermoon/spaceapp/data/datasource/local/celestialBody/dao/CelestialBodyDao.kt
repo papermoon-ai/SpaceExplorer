@@ -14,4 +14,7 @@ interface CelestialBodyDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(celestialBodies: List<LocalCelestialBody>)
+
+    @Query("DELETE FROM celestial_body")
+    fun deleteAll()
 }
