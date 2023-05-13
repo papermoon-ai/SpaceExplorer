@@ -13,4 +13,7 @@ interface LaunchDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(launches: List<LocalLaunch>)
+
+    @Query("DELETE FROM launch")
+    fun deleteAll()
 }

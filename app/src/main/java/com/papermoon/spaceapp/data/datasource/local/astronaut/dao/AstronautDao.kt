@@ -13,4 +13,7 @@ interface AstronautDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(astronauts: List<LocalAstronaut>)
+
+    @Query("DELETE FROM astronaut")
+    fun deleteAll()
 }

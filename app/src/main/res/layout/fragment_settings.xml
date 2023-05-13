@@ -10,12 +10,21 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginTop="@dimen/base_margin"
+        android:layout_marginEnd="@dimen/base_margin"
+        android:text="@string/language_settings"
+        android:textAppearance="@style/AppTheme.Text.Title.H4"
+        android:textColor="?colorPrimary" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewLanguage"
         style="@style/CardViewDescriptionStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/big_margin">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +55,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/base_margin"
                     android:text="@string/language"
-                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintBottom_toBottomOf="@id/imgLanguage"
                     app:layout_constraintStart_toEndOf="@id/imgLanguage"
@@ -59,7 +68,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:textAppearance="@style/AppTheme.Text.Subtext.H3"
-                    android:textColor="?colorOnSurfaceVariant"
+                    android:textColor="?colorPrimary"
                     app:layout_constraintBottom_toBottomOf="@+id/imgLanguageArrow"
                     app:layout_constraintEnd_toStartOf="@id/imgLanguageArrow"
                     app:layout_constraintTop_toTopOf="@id/imgLanguageArrow"
@@ -81,11 +90,20 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginTop="@dimen/big_margin"
+        android:layout_marginEnd="@dimen/base_margin"
+        android:text="@string/theme_settings"
+        android:textAppearance="@style/AppTheme.Text.Title.H4"
+        android:textColor="?colorPrimary" />
+
     <androidx.cardview.widget.CardView
         style="@style/CardViewDescriptionStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/base_margin">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -116,7 +134,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/base_margin"
                     android:text="@string/dark_mode"
-                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
                     app:layout_constraintBottom_toBottomOf="@id/imgTheme"
                     app:layout_constraintStart_toEndOf="@id/imgTheme"
@@ -137,11 +155,20 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginTop="@dimen/big_margin"
+        android:layout_marginEnd="@dimen/base_margin"
+        android:text="@string/disk_and_network_usage"
+        android:textAppearance="@style/AppTheme.Text.Title.H4"
+        android:textColor="?colorPrimary" />
+
     <androidx.cardview.widget.CardView
         style="@style/CardViewDescriptionStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/base_margin">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -153,40 +180,90 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imgWifi"
+                    android:id="@+id/imgTraffic"
                     android:layout_width="@dimen/small_image_width"
                     android:layout_height="@dimen/small_image_height"
                     android:layout_marginStart="@dimen/base_margin"
                     android:layout_marginTop="@dimen/base_margin"
-                    android:layout_marginBottom="@dimen/base_margin"
-                    android:src="@drawable/ic_wifi"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/ic_traffic"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:tint="?colorPrimary" />
 
                 <TextView
-                    android:id="@+id/titleOnlyWifi"
+                    android:id="@+id/titleTrafficUsage"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/base_margin"
-                    android:text="@string/only_work_via_wifi"
-                    android:textAppearance="@style/AppTheme.Text.Description.H3.Bold"
+                    android:text="@string/traffic_usage"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
                     android:textColor="?colorOnSurface"
-                    app:layout_constraintBottom_toBottomOf="@id/imgWifi"
-                    app:layout_constraintStart_toEndOf="@id/imgWifi"
-                    app:layout_constraintTop_toTopOf="@id/imgWifi" />
+                    app:layout_constraintBottom_toBottomOf="@id/imgTraffic"
+                    app:layout_constraintStart_toEndOf="@id/imgTraffic"
+                    app:layout_constraintTop_toTopOf="@id/imgTraffic" />
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/switchOnlyWifi"
+                <TextView
+                    android:id="@+id/tvTrafficUsage"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/base_margin"
-                    app:layout_constraintBottom_toBottomOf="@+id/imgWifi"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="@+id/titleTrafficUsage"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imgWifi" />
+                    app:layout_constraintTop_toTopOf="@+id/titleTrafficUsage"
+                    tools:text="2.55 Кб" />
+
+                <ImageView
+                    android:id="@+id/imgStorage"
+                    android:layout_width="@dimen/small_image_width"
+                    android:layout_height="@dimen/small_image_height"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginBottom="@dimen/base_margin"
+                    android:src="@drawable/ic_storage"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgTraffic"
+                    app:tint="?colorPrimary" />
+
+                <TextView
+                    android:id="@+id/titleStorageUsage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/base_margin"
+                    android:text="@string/storage_usage"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorOnSurface"
+                    app:layout_constraintBottom_toBottomOf="@id/imgStorage"
+                    app:layout_constraintStart_toEndOf="@id/imgStorage"
+                    app:layout_constraintTop_toTopOf="@id/imgStorage" />
+
+                <TextView
+                    android:id="@+id/tvStorageUsage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:textAppearance="@style/AppTheme.Text.Description.H3"
+                    android:textColor="?colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="@+id/titleStorageUsage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/titleStorageUsage"
+                    tools:text="1 Мб" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/btnClearStorage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin"
+                android:text="@string/clear_storage"
+                android:textAppearance="@style/AppTheme.Text.Description.H3.Bold" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

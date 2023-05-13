@@ -14,4 +14,7 @@ interface EventDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(events: List<LocalEvent>)
+
+    @Query("DELETE FROM event")
+    fun deleteAll()
 }

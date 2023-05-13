@@ -7,4 +7,5 @@ interface EventRepository {
     suspend fun getUpcomingEventsFromNetwork(): Resource<List<Event>>
     suspend fun getUpcomingEventsFromLocal(): Resource<List<Event>>
     suspend fun saveUpcomingEventsToLocal(events: List<Event>): Resource<Unit>
+    suspend fun deleteAllFromLocal(): Resource<Unit>
 }

@@ -11,11 +11,16 @@ import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentSettingsBinding
+import com.papermoon.spaceapp.features.commons.readableFileSize.readableFileSize
+import com.papermoon.spaceapp.features.settings.vm.SettingsViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment : Fragment() {
 
     lateinit var binding: FragmentSettingsBinding
     lateinit var container: ViewGroup
+
+    private val settingsViewModel: SettingsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +39,7 @@ class SettingsFragment : Fragment() {
         binding.currentLanguage.text = getString(R.string.current_language)
 
         val darkModeSwitcher = binding.switchDarkMode
-        when(resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_YES -> darkModeSwitcher.isChecked = true
             Configuration.UI_MODE_NIGHT_NO -> darkModeSwitcher.isChecked = false
         }
@@ -52,5 +57,21 @@ class SettingsFragment : Fragment() {
                 activity!!.recreate()
             }
         }
+
+        settingsViewModel.storageUsage.observe(viewLifecycleOwner) {
+            binding.tvStorageUsage.text = readableFileSize(it)
+        }
+
+        binding.btnClearStorage.setOnClickListener {
+            settingsViewModel.clearStorage(requireContext())
+            settingsViewModel.updateStorageUsage(requireContext())
+        }
+
+        settingsViewModel.trafficUsage.observe(viewLifecycleOwner) {
+            binding.tvTrafficUsage.text = readableFileSize(it)
+        }
+
+        settingsViewModel.updateStorageUsage(requireContext())
+        settingsViewModel.updateTrafficUsage(android.os.Process.myUid())
     }
 }

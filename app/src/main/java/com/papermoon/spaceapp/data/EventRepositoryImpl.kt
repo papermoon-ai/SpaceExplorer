@@ -39,4 +39,13 @@ class EventRepositoryImpl(
             Resource.Failure(exception)
         }
     }
+
+    override suspend fun deleteAllFromLocal(): Resource<Unit> {
+        return try {
+            eventDao.deleteAll()
+            Resource.Success(Unit)
+        } catch (exception: Exception) {
+            Resource.Failure(exception)
+        }
+    }
 }

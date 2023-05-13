@@ -14,7 +14,12 @@
     <string name="settings">Settings</string>
     <string name="language">Language</string>
     <string name="dark_mode">Dark mode</string>
-    <string name="only_work_via_wifi">Only work via Wi-Fi</string>
+    <string name="storage_usage">Storage usage</string>
+    <string name="traffic_usage">Traffic usage</string>
+    <string name="disk_and_network_usage">Disk and network usage</string>
+    <string name="theme_settings">Theme settings</string>
+    <string name="language_settings">Language settings</string>
+    <string name="clear_storage">Clear storage</string>
 
     <!-- Commons -->
     <string name="label_name">Name</string>
