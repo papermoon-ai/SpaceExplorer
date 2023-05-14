@@ -93,10 +93,8 @@
     <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="backgroundTint">?colorSurfaceVariant</item>
         <item name="itemTextColor">?colorOnSurface</item>
-        <item name="itemTextAppearanceActive">?attr/textAppearanceCaption</item>
-        <item name="itemTextAppearanceInactive">?attr/textAppearanceCaption</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
         <item name="labelVisibilityMode">unlabeled</item>
-
     </style>
 
     <!-- Radio Button -->
@@ -106,5 +104,26 @@
         <item name="android:layout_marginBottom">@dimen/base_margin</item>
         <item name="android:paddingStart">@dimen/base_padding</item>
         <item name="android:paddingEnd">@dimen/base_padding</item>
+        <item name="buttonTint">?colorSecondary</item>
+    </style>
+
+    <!-- Collapsing toolbar -->
+    <style name="CollapsingToolbarStyle" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="contentScrim">?colorPrimary</item>
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <!-- Toolbar -->
+    <style name="ToolbarStyle" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="android:background">?colorPrimary</item>
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <!-- Collapsing toolbar -->
+    <style name="SwitchButton" parent="Theme.AppCompat.Light">
+        <item name="thumbTint">?colorSecondary</item>
+        <item name="trackTint">?colorPrimaryContainer</item>
     </style>
 </resources>

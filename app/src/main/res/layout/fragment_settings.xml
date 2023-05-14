@@ -18,7 +18,7 @@
         android:layout_marginEnd="@dimen/base_margin"
         android:text="@string/language_settings"
         android:textAppearance="@style/AppTheme.Text.Title.H4"
-        android:textColor="?colorPrimary" />
+        android:textColor="?colorSecondary" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewLanguage"
@@ -46,7 +46,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="?colorPrimary" />
+                    app:tint="?colorSecondary" />
 
                 <TextView
                     android:id="@+id/titleLanguage"
@@ -68,7 +68,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:textAppearance="@style/AppTheme.Text.Subtext.H3"
-                    android:textColor="?colorPrimary"
+                    android:textColor="?colorSecondary"
                     app:layout_constraintBottom_toBottomOf="@+id/imgLanguageArrow"
                     app:layout_constraintEnd_toStartOf="@id/imgLanguageArrow"
                     app:layout_constraintTop_toTopOf="@id/imgLanguageArrow"
@@ -82,7 +82,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/imgLanguage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/imgLanguage"
-                    app:tint="?colorPrimary" />
+                    app:tint="?colorSecondary" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,7 +98,7 @@
         android:layout_marginEnd="@dimen/base_margin"
         android:text="@string/theme_settings"
         android:textAppearance="@style/AppTheme.Text.Title.H4"
-        android:textColor="?colorPrimary" />
+        android:textColor="?colorSecondary" />
 
     <androidx.cardview.widget.CardView
         style="@style/CardViewDescriptionStyle"
@@ -125,7 +125,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="?colorPrimary" />
+                    app:tint="?colorSecondary" />
 
                 <TextView
                     android:id="@+id/titleTheme"
@@ -145,6 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/base_margin"
+                    android:theme="@style/SwitchButton"
                     app:layout_constraintBottom_toBottomOf="@+id/imgTheme"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/imgTheme" />
@@ -163,7 +164,7 @@
         android:layout_marginEnd="@dimen/base_margin"
         android:text="@string/disk_and_network_usage"
         android:textAppearance="@style/AppTheme.Text.Title.H4"
-        android:textColor="?colorPrimary" />
+        android:textColor="?colorSecondary" />
 
     <androidx.cardview.widget.CardView
         style="@style/CardViewDescriptionStyle"
@@ -188,7 +189,7 @@
                     android:src="@drawable/ic_traffic"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="?colorPrimary" />
+                    app:tint="?colorSecondary" />
 
                 <TextView
                     android:id="@+id/titleTrafficUsage"
@@ -210,7 +211,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
-                    android:textColor="?colorPrimary"
+                    android:textColor="?colorSecondary"
                     app:layout_constraintBottom_toBottomOf="@+id/titleTrafficUsage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/titleTrafficUsage"
@@ -227,7 +228,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imgTraffic"
-                    app:tint="?colorPrimary" />
+                    app:tint="?colorSecondary" />
 
                 <TextView
                     android:id="@+id/titleStorageUsage"
@@ -249,7 +250,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/base_margin"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
-                    android:textColor="?colorPrimary"
+                    android:textColor="?colorSecondary"
                     app:layout_constraintBottom_toBottomOf="@+id/titleStorageUsage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/titleStorageUsage"
@@ -262,6 +263,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/base_margin"
+                android:backgroundTint="?colorSecondary"
                 android:text="@string/clear_storage"
                 android:textAppearance="@style/AppTheme.Text.Description.H3.Bold" />
 

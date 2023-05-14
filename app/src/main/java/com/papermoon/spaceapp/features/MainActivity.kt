@@ -1,6 +1,7 @@
 package com.papermoon.spaceapp.features
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import com.google.android.material.color.MaterialColors
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
@@ -37,8 +39,7 @@ class MainActivity : AppCompatActivity() {
             // Bottom navigation transition animation disable
             else if (nextFragment is SettingsFragment || nextFragment is HomeFragment) {
                 return
-            }
-            else {
+            } else {
                 fragmentTransaction.setCustomAnimations(
                     R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out
                 )
@@ -59,7 +60,11 @@ class MainActivity : AppCompatActivity() {
 
         setBottomNavigation()
 
-        window.statusBarColor = getColor(R.color.light_gray)
+        window.statusBarColor = MaterialColors.getColor(
+            this,
+            com.google.android.material.R.attr.colorPrimary,
+            Color.BLACK
+        )
 
         if (savedInstanceState == null) {
             SpaceApp.INSTANCE.router.replaceScreen(Screens.overviewScreen())

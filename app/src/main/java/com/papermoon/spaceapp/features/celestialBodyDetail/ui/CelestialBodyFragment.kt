@@ -75,10 +75,12 @@ class CelestialBodyFragment(
     }
 
     private fun setupToolbar() {
-        (activity as MainActivity).setSupportActionBar(binding.toolbar)
+        val toolbar = binding.toolbar
+
+        (activity as MainActivity).setSupportActionBar(toolbar)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        binding.toolbar.setNavigationOnClickListener {
+        toolbar.setNavigationOnClickListener {
             onBackPressedCallback()
         }
     }

@@ -24,10 +24,10 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ToolbarStyle"
                 app:layout_collapseMode="pin"
                 app:title="@string/label_planets"
-                app:titleTextAppearance="@style/AppTheme.Text.Title.H2"
-                app:titleTextColor="?colorOnSurface" />
+                app:titleTextAppearance="@style/AppTheme.Text.Title.H2" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

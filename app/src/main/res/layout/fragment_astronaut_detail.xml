@@ -14,9 +14,9 @@
             android:id="@+id/collapsingToolBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
+            android:theme="@style/CollapsingToolbarStyle"
+            app:collapsedTitleTextColor="@android:color/white"
             app:expandedTitleTextColor="@android:color/white"
-            app:contentScrim="?attr/colorSurface"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.viewpager2.widget.ViewPager2
@@ -118,7 +118,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvAstronautNameLabel"
@@ -180,7 +180,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvAstronautLaunchNameLabel"
@@ -232,7 +232,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvAstronautCountryLabel"
@@ -284,7 +284,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvAstronautSpacecraftLabel"
@@ -337,7 +337,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvAstronautFirstFlightLabel"
