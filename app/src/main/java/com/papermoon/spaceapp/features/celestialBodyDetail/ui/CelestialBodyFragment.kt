@@ -181,7 +181,7 @@ class CelestialBodyFragment(
                 tvCelestialBodyCounter.visibility = View.GONE
             }
 
-            toolbar.title = celestialBody.name
+            toolbar.title = celestialBody.englishName
             viewPagerCelestialBody.registerOnPageChangeCallback(object: OnPageChangeCallback() {
                 override fun onPageScrolled(
                     position: Int,

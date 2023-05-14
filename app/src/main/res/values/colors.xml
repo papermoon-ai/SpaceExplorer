@@ -19,7 +19,7 @@
     <color name="md_theme_light_onBackground">#1B1B1F</color>
     <color name="md_theme_light_surface">#FFFBFF</color>
     <color name="md_theme_light_onSurface">#1B1B1F</color>
-    <color name="md_theme_light_surfaceVariant">#F7F7F7</color>
+    <color name="md_theme_light_surfaceVariant">#f4f4f4</color>
     <color name="md_theme_light_onSurfaceVariant">#46464F</color>
     <color name="md_theme_light_outline">#777680</color>
     <color name="md_theme_light_inverseOnSurface">#F3F0F4</color>

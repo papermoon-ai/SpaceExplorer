@@ -1,4 +1,4 @@
-package com.papermoon.spaceapp.features.commons.readableFileSize
+package com.papermoon.spaceapp.features.commons.stringFormat
 
 import java.text.DecimalFormat
 import kotlin.math.log10

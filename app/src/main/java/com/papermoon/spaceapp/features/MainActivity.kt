@@ -1,7 +1,9 @@
 package com.papermoon.spaceapp.features
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.github.terrakok.cicerone.androidx.AppNavigator
@@ -45,7 +47,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            setThemeFromPreferences()
+        }
+
         super.onCreate(savedInstanceState)
+
         _binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
@@ -78,6 +85,37 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnItemSelectedListener true
         }
+    }
+
+    private fun setThemeFromPreferences() {
+        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+        val defaultValue = AppCompatDelegate.MODE_NIGHT_YES
+        val theme = sharedPref.getInt(getString(R.string.dark_mode_key), defaultValue)
+        AppCompatDelegate.setDefaultNightMode(theme)
+    }
+
+    fun setDarkTheme() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putInt(getString(R.string.dark_mode_key), AppCompatDelegate.MODE_NIGHT_YES)
+            apply()
+        }
+
+        recreate()
+    }
+
+    fun setLightTheme() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putInt(getString(R.string.dark_mode_key), AppCompatDelegate.MODE_NIGHT_NO)
+            apply()
+        }
+
+        recreate()
     }
 
     override fun onResume() {

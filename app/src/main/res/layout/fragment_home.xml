@@ -1,307 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLaunch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:fitsSystemWindows="true">
 
-        <TextView
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorSurfaceVariant"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:titleEnabled="false">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="@string/app_title"
+                app:titleTextAppearance="@style/AppTheme.Text.Title.H2"
+                app:titleTextColor="?colorOnSurface" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:text="@string/app_title"
-            android:textAppearance="@style/AppTheme.Text.Title.H1"
-            android:textColor="?colorOnSurface" />
+            android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewPlanetsOption"
-            style="@style/CardViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base_card_view_height">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewPlanetsOption"
+                style="@style/CardViewStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="@dimen/base_card_view_height">
 
-                <ImageView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_planets"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvPlanetsOptionName"
-                    style="@style/AppTheme.Text.Title.H3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/base_margin"
-                    android:text="@string/label_planets"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/tvPlanetsOptionDescription"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_planets"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvPlanetsOptionDescription"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/base_margin"
-                    android:elevation="@dimen/base_elevation"
-                    android:text="@string/description_planets_option"
-                    android:textAppearance="@style/AppTheme.Text.Subtext.H4"
-                    android:textColor="@android:color/darker_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvPlanetsOptionName" />
+                    <TextView
+                        android:id="@+id/tvPlanetsOptionName"
+                        style="@style/AppTheme.Text.Title.H3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:text="@string/label_planets"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/tvPlanetsOptionDescription"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/text_scrim_height"
-                    android:layout_gravity="bottom"
-                    android:background="@drawable/scrim_bottom"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvPlanetsOptionName" />
+                    <TextView
+                        android:id="@+id/tvPlanetsOptionDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
+                        android:text="@string/description_planets_option"
+                        android:textAppearance="@style/AppTheme.Text.Subtext.H4"
+                        android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvPlanetsOptionName" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvPlanetsOptionName" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewLaunchOption"
-            style="@style/CardViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base_card_view_height">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewLaunchOption"
+                style="@style/CardViewStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="@dimen/base_card_view_height">
 
-                <ImageView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_launch"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvLaunchOptionName"
-                    style="@style/AppTheme.Text.Title.H3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/base_margin"
-                    android:text="@string/label_orbital_launches"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/tvLaunchOptionDescription"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_launch"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvLaunchOptionDescription"
-                    android:layout_width="@dimen/item_description_textView_width"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/base_margin"
-                    android:elevation="@dimen/base_elevation"
-                    android:text="@string/description_orbital_launches_option"
-                    android:textAppearance="@style/AppTheme.Text.Subtext.H4"
-                    android:textColor="@android:color/darker_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvLaunchOptionName" />
+                    <TextView
+                        android:id="@+id/tvLaunchOptionName"
+                        style="@style/AppTheme.Text.Title.H3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:text="@string/label_orbital_launches"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/tvLaunchOptionDescription"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/text_scrim_height"
-                    android:layout_gravity="bottom"
-                    android:background="@drawable/scrim_bottom"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvLaunchOptionName" />
+                    <TextView
+                        android:id="@+id/tvLaunchOptionDescription"
+                        android:layout_width="@dimen/item_description_textView_width"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
+                        android:text="@string/description_orbital_launches_option"
+                        android:textAppearance="@style/AppTheme.Text.Subtext.H4"
+                        android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvLaunchOptionName" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvLaunchOptionName" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewAstronautOption"
-            style="@style/CardViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base_card_view_height">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewAstronautOption"
+                style="@style/CardViewStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="@dimen/base_card_view_height">
 
-                <ImageView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/img_astronaut"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvAstronautOptionName"
-                    style="@style/AppTheme.Text.Title.H3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/base_margin"
-                    android:text="@string/label_astronauts"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/tvAstronautOptionDescription"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/img_astronaut"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
 
-                <TextView
-                    android:id="@+id/tvAstronautOptionDescription"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/base_margin"
-                    android:elevation="@dimen/base_elevation"
-                    android:text="@string/description_astronauts_option"
-                    android:textAppearance="@style/AppTheme.Text.Subtext.H4"
-                    android:textColor="@android:color/darker_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvAstronautOptionName" />
+                    <TextView
+                        android:id="@+id/tvAstronautOptionName"
+                        style="@style/AppTheme.Text.Title.H3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:text="@string/label_astronauts"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/tvAstronautOptionDescription"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/text_scrim_height"
-                    android:layout_gravity="bottom"
-                    android:background="@drawable/scrim_bottom_darker"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvAstronautOptionName" />
+                    <TextView
+                        android:id="@+id/tvAstronautOptionDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
+                        android:text="@string/description_astronauts_option"
+                        android:textAppearance="@style/AppTheme.Text.Subtext.H4"
+                        android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvAstronautOptionName" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom_darker"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvAstronautOptionName" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewEventOption"
-            style="@style/CardViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base_card_view_height">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewEventOption"
+                style="@style/CardViewStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="@dimen/base_card_view_height">
 
-                <ImageView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_event"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvEventOptionName"
-                    style="@style/AppTheme.Text.Title.H3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/base_margin"
-                    android:text="@string/label_events"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/tvEventOptionDescription"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_event"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvEventOptionDescription"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/base_margin"
-                    android:elevation="@dimen/base_elevation"
-                    android:text="@string/description_events_option"
-                    android:textAppearance="@style/AppTheme.Text.Subtext.H4"
-                    android:textColor="@android:color/darker_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvEventOptionName" />
+                    <TextView
+                        android:id="@+id/tvEventOptionName"
+                        style="@style/AppTheme.Text.Title.H3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:text="@string/label_events"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/tvEventOptionDescription"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/text_scrim_height"
-                    android:layout_gravity="bottom"
-                    android:background="@drawable/scrim_bottom"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvEventOptionName" />
+                    <TextView
+                        android:id="@+id/tvEventOptionDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
+                        android:text="@string/description_events_option"
+                        android:textAppearance="@style/AppTheme.Text.Subtext.H4"
+                        android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvEventOptionName" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvEventOptionName" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewSpaceStationOption"
-            style="@style/CardViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base_card_view_height">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSpaceStationOption"
+                style="@style/CardViewStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="@dimen/base_card_view_height">
 
-                <ImageView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_space_station"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvSpaceStationOptionName"
-                    style="@style/AppTheme.Text.Title.H3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/base_margin"
-                    android:text="@string/label_space_stations"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/tvSpaceStationOptionDescription"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_space_station"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvSpaceStationOptionDescription"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/base_margin"
-                    android:elevation="@dimen/base_elevation"
-                    android:text="@string/description_space_stations_option"
-                    android:textAppearance="@style/AppTheme.Text.Subtext.H4"
-                    android:textColor="@android:color/darker_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvSpaceStationOptionName" />
+                    <TextView
+                        android:id="@+id/tvSpaceStationOptionName"
+                        style="@style/AppTheme.Text.Title.H3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/base_margin"
+                        android:text="@string/label_space_stations"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/tvSpaceStationOptionDescription"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/text_scrim_height"
-                    android:layout_gravity="bottom"
-                    android:background="@drawable/scrim_bottom_darker"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvSpaceStationOptionName" />
+                    <TextView
+                        android:id="@+id/tvSpaceStationOptionDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/base_margin"
+                        android:elevation="@dimen/base_elevation"
+                        android:text="@string/description_space_stations_option"
+                        android:textAppearance="@style/AppTheme.Text.Subtext.H4"
+                        android:textColor="@android:color/darker_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvSpaceStationOptionName" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/scrim_bottom_darker"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvSpaceStationOptionName" />
 
-    </LinearLayout>
-</ScrollView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

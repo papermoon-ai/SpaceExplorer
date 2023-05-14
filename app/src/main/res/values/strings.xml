@@ -2,6 +2,9 @@
     <string name="app_name" translatable="false">SpaceApp</string>
     <string name="app_title" translatable="false">Space Explorer</string>
 
+    <!-- Shared preferences -->
+    <string name="dark_mode_key" translatable="false">darkModeKey</string>
+
     <!-- Languages -->
     <string name="current_language">English</string>
     <string name="current_language_tag">en</string>
