@@ -21,6 +21,7 @@
             <RadioButton
                 android:id="@+id/btnEnglishOption"
                 style="@style/RadioButton"
+                android:checked="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/english"

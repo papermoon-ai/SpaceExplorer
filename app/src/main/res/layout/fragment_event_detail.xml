@@ -15,9 +15,9 @@
             android:id="@+id/collapsingToolBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
+            android:theme="@style/CollapsingToolbarStyle"
+            app:collapsedTitleTextColor="@android:color/white"
             app:expandedTitleTextColor="@android:color/white"
-            app:contentScrim="?attr/colorSurface"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.viewpager2.widget.ViewPager2
@@ -115,7 +115,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvEventNameLabel"
@@ -155,7 +155,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -178,7 +178,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvEventDateLabel"
@@ -228,7 +228,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvEventTypeLabel"
@@ -280,7 +280,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvEventLocationLabel"

@@ -15,8 +15,8 @@
             android:id="@+id/collapsingToolBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorSurface"
+            android:theme="@style/CollapsingToolbarStyle"
+            app:collapsedTitleTextColor="@android:color/white"
             app:expandedTitleTextColor="@android:color/white"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -115,7 +115,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyNameLabel"
@@ -154,7 +154,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -178,7 +178,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyDiscoveryDate"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyDiscoveryDateLabel"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyDiscoveryDateLabel"
@@ -216,7 +216,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyDiscoverer"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyDiscovererLabel"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyDiscovererLabel"
@@ -268,7 +268,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodySatellitesLabel"
@@ -320,7 +320,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyArea"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyAreaLabel"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyAreaLabel"
@@ -358,7 +358,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyTemperature"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyTemperatureLabel"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyTemperatureLabel"
@@ -397,7 +397,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyOrbitalSpeedLabel"
                         app:layout_constraintVertical_bias="0.0"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyOrbitalSpeedLabel"
@@ -435,7 +435,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyRotationAxis"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyRotationAxisLabel"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyRotationAxisLabel"
@@ -473,7 +473,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyRotationSun"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyRotationSunLabel"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyRotationSunLabel"
@@ -511,7 +511,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyGravity"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyGravityLabel"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyGravityLabel"
@@ -549,7 +549,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvCelestialBodyDensity"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCelestialBodyDensityLabel"
-                        app:tint="?attr/colorPrimary" />
+                        app:tint="?attr/colorSecondary" />
 
                     <TextView
                         android:id="@+id/tvCelestialBodyDensityLabel"
