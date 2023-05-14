@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentSettingsBinding
-import com.papermoon.spaceapp.features.commons.readableFileSize.readableFileSize
+import com.papermoon.spaceapp.features.MainActivity
+import com.papermoon.spaceapp.features.commons.stringFormat.readableFileSize
 import com.papermoon.spaceapp.features.settings.vm.SettingsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -50,11 +50,9 @@ class SettingsFragment : Fragment() {
 
         binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                activity!!.recreate()
+                (activity as MainActivity).setDarkTheme()
             } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                activity!!.recreate()
+                (activity as MainActivity).setLightTheme()
             }
         }
 
