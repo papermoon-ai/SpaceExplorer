@@ -31,6 +31,11 @@ class EventOverviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEventOverviewBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         showShimmer()
 
@@ -56,7 +61,7 @@ class EventOverviewFragment : Fragment() {
             }
         }
 
-        eventViewModel.showUnableToLoadRateMessage.observe(viewLifecycleOwner) { showMessage ->
+        eventViewModel.showUnableToLoadEventsMessage.observe(viewLifecycleOwner) { showMessage ->
             if (showMessage) {
                 hideShimmer()
                 binding.swipeToRefresh.visibility = View.GONE
@@ -64,8 +69,6 @@ class EventOverviewFragment : Fragment() {
                 eventViewModel.doneUnableToLoadMessage()
             }
         }
-
-        return binding.root
     }
 
     private fun hideShimmer() {
@@ -89,10 +92,10 @@ class EventOverviewFragment : Fragment() {
     private fun setupSwipeToRefresh() {
         val swipeLayout = binding.swipeToRefresh
 
-        val colorPrimary = MaterialColors.getColor(context!!, com.google.android.material.R.attr.colorPrimary, Color.BLACK)
+        val colorSecondary = MaterialColors.getColor(context!!, com.google.android.material.R.attr.colorSecondary, Color.BLACK)
         val colorSurface = MaterialColors.getColor(context!!, com.google.android.material.R.attr.colorSurface, Color.WHITE)
 
-        swipeLayout.setColorSchemeColors(colorPrimary)
+        swipeLayout.setColorSchemeColors(colorSecondary)
         swipeLayout.setProgressBackgroundColorSchemeColor(colorSurface)
 
         swipeLayout.setOnRefreshListener {

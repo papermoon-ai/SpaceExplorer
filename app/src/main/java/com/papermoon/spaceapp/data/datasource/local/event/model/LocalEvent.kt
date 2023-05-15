@@ -14,7 +14,7 @@ data class LocalEvent(
     @PrimaryKey
     val name: String,
     val description: String,
-    val location: String,
+    val location: String?,
     val date: Date,
     val type: String,
     val images: List<LocalImageWithDescription>,

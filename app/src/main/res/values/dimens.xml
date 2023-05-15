@@ -2,6 +2,7 @@
 <resources>
     <!-- Margin -->
     <dimen name="base_margin">8dp</dimen>
+    <dimen name="middle_margin">12dp</dimen>
     <dimen name="little_margin">4dp</dimen>
     <dimen name="big_margin">16dp</dimen>
     <dimen name="great_margin">64dp</dimen>
@@ -42,6 +43,7 @@
 
     <!-- Text protection -->
     <dimen name="text_scrim_height">50dp</dimen>
+    <dimen name="little_text_scrim_height">40dp</dimen>
 
     <!-- Shimmer -->
     <dimen name="shimmer_little_placeholder_width">100dp</dimen>

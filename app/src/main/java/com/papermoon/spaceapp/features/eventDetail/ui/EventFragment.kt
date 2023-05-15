@@ -34,6 +34,11 @@ class EventFragment(
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEventDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
         setupUi()
@@ -46,8 +51,6 @@ class EventFragment(
                     onBackPressedCallback()
                 }
             })
-
-        return binding.root
     }
 
     private fun setupToolbar() {
@@ -92,6 +95,10 @@ class EventFragment(
         binding.tvEventLocation.text = event.location
         binding.tvEventDescription.text = event.description
 
+        if (event.location == null) {
+            binding.cardViewEventLocation.visibility = View.GONE
+        }
+
         if (event.newsUrl != null) {
             binding.btnEventNews.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, event.newsUrl)
@@ -103,7 +110,7 @@ class EventFragment(
             TabLayoutMediator(
                 binding.tabLayoutEventIndicator.root,
                 binding.viewPagerEvent
-            ) { tab, position ->
+            ) { _, _ ->
             }.attach()
         } else {
             binding.tvEventCounter.visibility = View.GONE
@@ -126,43 +133,55 @@ class EventFragment(
 
     private fun setPageViewerFullscreen() {
         binding.toolbar.title = ""
+        binding.collapsingToolBar.isTitleEnabled = false
 
         binding.nestedScrollViewEvent.visibility = View.GONE
         binding.appBarEvent.layoutParams.height = ActionBar.LayoutParams.MATCH_PARENT
-        binding.appBarEvent.setExpanded(true)
 
-        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
-        scrollingToolbarParams.scrollFlags = 0
-        scrollingToolbarParams.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
-
-        if (event.images.size > 1) {
-            binding.tabLayoutEventIndicator.root.visibility = View.GONE
-            binding.tvEventCounter.visibility = View.GONE
-        }
-        binding.collapsingToolBar.isTitleEnabled = false
+        disableToolbarScrolling()
+        hideImageIndicators()
 
         imageFullscreen = true
     }
 
     private fun setPageViewerNormalSize() {
         binding.toolbar.title = event.name
+        binding.collapsingToolBar.isTitleEnabled = true
 
         binding.nestedScrollViewEvent.visibility = View.VISIBLE
         binding.appBarEvent.layoutParams.height = resources.getDimension(R.dimen.big_image_height).toInt()
 
+        permitToolbarScrolling()
+        showImageIndicators()
+
+        binding.tvEventImageDescription.visibility = View.GONE
+
+        imageFullscreen = false
+    }
+
+    private fun permitToolbarScrolling() {
         val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
-        scrollingToolbarParams.scrollFlags = 0
         scrollingToolbarParams.scrollFlags =
             AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL + AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
+    }
 
+    private fun disableToolbarScrolling() {
+        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
+        scrollingToolbarParams.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
+    }
+
+    private fun showImageIndicators() {
         if (event.images.size > 1) {
             binding.tabLayoutEventIndicator.root.visibility = View.VISIBLE
             binding.tvEventCounter.visibility = View.VISIBLE
         }
-        binding.tvEventImageDescription.visibility = View.GONE
-        binding.collapsingToolBar.isTitleEnabled = true
+    }
 
-        imageFullscreen = false
+    private fun hideImageIndicators() {
+        if (event.images.size > 1) {
+            binding.tabLayoutEventIndicator.root.visibility = View.GONE
+            binding.tvEventCounter.visibility = View.GONE
+        }
     }
 
     override fun onDestroyView() {

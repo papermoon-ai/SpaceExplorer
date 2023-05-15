@@ -22,7 +22,7 @@ class SpaceStationOverviewViewModel(
         get() = _spaceStationsList
 
     private val _showUnableToUpdateMessage = MutableLiveData(false)
-    val showUnableToLoadRateMessage: LiveData<Boolean>
+    val showUnableToLoadStationsMessage: LiveData<Boolean>
         get() = _showUnableToUpdateMessage
 
     private val _showShimmer = MutableLiveData(false)

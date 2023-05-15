@@ -22,7 +22,7 @@ class LaunchOverviewViewModel(
         get() = _upcomingLaunches
 
     private val _showUnableToUpdateMessage = MutableLiveData(false)
-    val showUnableToLoadRateMessage: LiveData<Boolean>
+    val showUnableToLoadLaunchesMessage: LiveData<Boolean>
         get() = _showUnableToUpdateMessage
 
     private val _showShimmer = MutableLiveData(false)

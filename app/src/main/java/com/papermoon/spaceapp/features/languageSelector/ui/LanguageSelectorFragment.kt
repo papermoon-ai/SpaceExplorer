@@ -21,6 +21,12 @@ class LanguageSelectorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLanguageSelectorBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         setupToolbar()
 
         checkCurrentLanguageRadioButton()
@@ -35,8 +41,6 @@ class LanguageSelectorFragment : Fragment() {
                 }
             }
         }
-
-        return binding.root
     }
 
     private fun checkCurrentLanguageRadioButton() {

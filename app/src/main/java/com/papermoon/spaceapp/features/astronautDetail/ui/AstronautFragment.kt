@@ -34,6 +34,11 @@ class AstronautFragment(
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAstronautDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
         setUiValues()
@@ -46,8 +51,6 @@ class AstronautFragment(
                     onBackPressedCallback()
                 }
             })
-
-        return binding.root
     }
 
     private fun setupToolbar() {
@@ -59,7 +62,7 @@ class AstronautFragment(
     }
 
     private fun setupAdapter() {
-        val adapter = BaseViewPagerImageAdapter(astronaut.images) { position ->
+        val adapter = BaseViewPagerImageAdapter(astronaut.images) {
             if (!imageFullscreen) {
                 setPageViewerFullscreen()
             } else {
@@ -90,6 +93,8 @@ class AstronautFragment(
 
     private fun setUiValues() {
         with(binding) {
+            toolbar.title = astronaut.name
+
             tvAstronautName.text = astronaut.name
             tvAstronautCountry.text = astronaut.country
             tvAstronautSpacecraft.text = astronaut.spacecraft
@@ -108,15 +113,14 @@ class AstronautFragment(
 
             if (astronaut.images.size > 1) {
                 TabLayoutMediator(
-                    tabLayoutCelestialBodyIndicator.root,
+                    tabLayoutAstronautIndicator.root,
                     viewPagerAstronaut
-                ) { tab, position ->
+                ) { _, _ ->
                 }.attach()
             } else {
                 tvAstronautCounter.visibility = View.GONE
             }
 
-            toolbar.title = astronaut.name
             viewPagerAstronaut.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
                 override fun onPageScrolled(
                     position: Int,
@@ -135,42 +139,53 @@ class AstronautFragment(
 
     private fun setPageViewerFullscreen() {
         binding.toolbar.title = ""
+        binding.collapsingToolBar.isTitleEnabled = false
 
         binding.nestedScrollViewAstronaut.visibility = View.GONE
         binding.appBarAstronaut.layoutParams.height = ActionBar.LayoutParams.MATCH_PARENT
-        binding.appBarAstronaut.setExpanded(true)
 
-        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
-        scrollingToolbarParams.scrollFlags = 0
-        scrollingToolbarParams.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
-
-        if (astronaut.images.size > 1) {
-            binding.tabLayoutCelestialBodyIndicator.root.visibility = View.GONE
-            binding.tvAstronautCounter.visibility = View.GONE
-        }
-        binding.collapsingToolBar.isTitleEnabled = false
+        disableToolbarScrolling()
+        hideImageIndicators()
 
         imageFullscreen = true
     }
 
     private fun setPageViewerNormalSize() {
         binding.toolbar.title = astronaut.name
+        binding.collapsingToolBar.isTitleEnabled = true
 
         binding.nestedScrollViewAstronaut.visibility = View.VISIBLE
         binding.appBarAstronaut.layoutParams.height = resources.getDimension(R.dimen.big_image_height).toInt()
 
-        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
-        scrollingToolbarParams.scrollFlags = 0
-        scrollingToolbarParams.scrollFlags =
-            AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL + AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
-
-        if (astronaut.images.size > 1) {
-            binding.tabLayoutCelestialBodyIndicator.root.visibility = View.VISIBLE
-            binding.tvAstronautCounter.visibility = View.VISIBLE
-        }
+        permitToolbarScrolling()
+        showImageIndicators()
         binding.tvAstronautImageDescription.visibility = View.GONE
-        binding.collapsingToolBar.isTitleEnabled = true
 
         imageFullscreen = false
+    }
+
+    private fun permitToolbarScrolling() {
+        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
+        scrollingToolbarParams.scrollFlags =
+            AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL + AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
+    }
+
+    private fun disableToolbarScrolling() {
+        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
+        scrollingToolbarParams.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
+    }
+
+    private fun showImageIndicators() {
+        if (astronaut.images.size > 1) {
+            binding.tabLayoutAstronautIndicator.root.visibility = View.VISIBLE
+            binding.tvAstronautCounter.visibility = View.VISIBLE
+        }
+    }
+
+    private fun hideImageIndicators() {
+        if (astronaut.images.size > 1) {
+            binding.tabLayoutAstronautIndicator.root.visibility = View.GONE
+            binding.tvAstronautCounter.visibility = View.GONE
+        }
     }
 }

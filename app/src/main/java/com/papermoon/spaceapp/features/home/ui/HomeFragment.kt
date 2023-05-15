@@ -25,6 +25,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.cardViewPlanetsOption.setOnClickListener {
             SpaceApp.INSTANCE.router.navigateTo(celestialBodyOverviewScreen())
@@ -41,8 +46,6 @@ class HomeFragment : Fragment() {
         binding.cardViewEventOption.setOnClickListener {
             SpaceApp.INSTANCE.router.navigateTo(eventOverviewScreen())
         }
-
-        return binding.root
     }
 
     override fun onResume() {

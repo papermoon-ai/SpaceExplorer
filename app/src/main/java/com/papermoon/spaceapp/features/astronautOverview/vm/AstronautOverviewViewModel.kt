@@ -22,7 +22,7 @@ class AstronautOverviewViewModel(
         get() = _astronautList
 
     private val _showUnableToUpdateMessage = MutableLiveData(false)
-    val showUnableToLoadRateMessage: LiveData<Boolean>
+    val showUnableToLoadAstronautsMessage: LiveData<Boolean>
         get() = _showUnableToUpdateMessage
 
     private val _showShimmer = MutableLiveData(false)

@@ -68,7 +68,7 @@
                         style="@style/AppTheme.Text.Title.H3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/base_margin"
+                        android:layout_marginStart="@dimen/middle_margin"
                         android:text="@string/label_planets"
                         android:textColor="@android:color/white"
                         app:layout_constraintBottom_toTopOf="@+id/tvPlanetsOptionDescription"
@@ -78,7 +78,7 @@
                         android:id="@+id/tvPlanetsOptionDescription"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/big_margin"
                         android:elevation="@dimen/base_elevation"
                         android:text="@string/description_planets_option"
                         android:textAppearance="@style/AppTheme.Text.Subtext.H4"
@@ -89,9 +89,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_height="40dp"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/scrim_bottom"
+                        android:background="@drawable/scrim_bottom_darker"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvPlanetsOptionName" />
@@ -124,7 +124,7 @@
                         style="@style/AppTheme.Text.Title.H3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/base_margin"
+                        android:layout_marginStart="@dimen/middle_margin"
                         android:text="@string/label_orbital_launches"
                         android:textColor="@android:color/white"
                         app:layout_constraintBottom_toTopOf="@+id/tvLaunchOptionDescription"
@@ -134,23 +134,13 @@
                         android:id="@+id/tvLaunchOptionDescription"
                         android:layout_width="@dimen/item_description_textView_width"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/big_margin"
                         android:elevation="@dimen/base_elevation"
                         android:text="@string/description_orbital_launches_option"
                         android:textAppearance="@style/AppTheme.Text.Subtext.H4"
                         android:textColor="@android:color/darker_gray"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvLaunchOptionName" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/text_scrim_height"
-                        android:layout_gravity="bottom"
-                        android:background="@drawable/scrim_bottom"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tvLaunchOptionName" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -182,7 +172,7 @@
                         style="@style/AppTheme.Text.Title.H3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/base_margin"
+                        android:layout_marginStart="@dimen/middle_margin"
                         android:text="@string/label_astronauts"
                         android:textColor="@android:color/white"
                         app:layout_constraintBottom_toTopOf="@+id/tvAstronautOptionDescription"
@@ -192,7 +182,7 @@
                         android:id="@+id/tvAstronautOptionDescription"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/big_margin"
                         android:elevation="@dimen/base_elevation"
                         android:text="@string/description_astronauts_option"
                         android:textAppearance="@style/AppTheme.Text.Subtext.H4"
@@ -203,14 +193,14 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_height="@dimen/little_text_scrim_height"
                         android:layout_gravity="bottom"
                         android:background="@drawable/scrim_bottom_darker"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvAstronautOptionName" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -238,7 +228,7 @@
                         style="@style/AppTheme.Text.Title.H3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/base_margin"
+                        android:layout_marginStart="@dimen/middle_margin"
                         android:text="@string/label_events"
                         android:textColor="@android:color/white"
                         app:layout_constraintBottom_toTopOf="@+id/tvEventOptionDescription"
@@ -248,7 +238,7 @@
                         android:id="@+id/tvEventOptionDescription"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/big_margin"
                         android:elevation="@dimen/base_elevation"
                         android:text="@string/description_events_option"
                         android:textAppearance="@style/AppTheme.Text.Subtext.H4"
@@ -259,9 +249,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/text_scrim_height"
+                        android:layout_height="@dimen/little_text_scrim_height"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/scrim_bottom"
+                        android:background="@drawable/scrim_bottom_darker"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvEventOptionName" />
@@ -294,7 +284,7 @@
                         style="@style/AppTheme.Text.Title.H3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/base_margin"
+                        android:layout_marginStart="@dimen/middle_margin"
                         android:text="@string/label_space_stations"
                         android:textColor="@android:color/white"
                         app:layout_constraintBottom_toTopOf="@+id/tvSpaceStationOptionDescription"
@@ -304,7 +294,7 @@
                         android:id="@+id/tvSpaceStationOptionDescription"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/base_margin"
+                        android:layout_marginBottom="@dimen/big_margin"
                         android:elevation="@dimen/base_elevation"
                         android:text="@string/description_space_stations_option"
                         android:textAppearance="@style/AppTheme.Text.Subtext.H4"
