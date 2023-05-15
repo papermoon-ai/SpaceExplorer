@@ -94,7 +94,7 @@
                     android:layout_width="@dimen/base_image_height"
                     android:layout_height="@dimen/base_image_height"
                     android:src="@drawable/ic_cloud_off"
-                    app:tint="?attr/colorPrimary" />
+                    app:tint="?attr/colorSecondary" />
 
                 <TextView
                     android:id="@+id/tvErrorMessage"
@@ -111,6 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/base_margin"
+                    android:backgroundTint="?colorSecondary"
                     android:textAppearance="@style/AppTheme.Text.Description.H3"
                     tools:text="Try again" />
             </LinearLayout>

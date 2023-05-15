@@ -36,6 +36,11 @@ class CelestialBodyFragment(
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCelestialBodyDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
         setUiValues()
@@ -49,7 +54,6 @@ class CelestialBodyFragment(
                 }
             })
 
-        return binding.root
     }
 
     override fun onDestroyView() {
@@ -87,42 +91,27 @@ class CelestialBodyFragment(
 
     private fun setPageViewerFullscreen() {
         binding.toolbar.title = ""
+        binding.collapsingToolBar.isTitleEnabled = false
 
         binding.nestedScrollViewCelestialBody.visibility = View.GONE
         binding.appBarCelestialBody.layoutParams.height = LayoutParams.MATCH_PARENT
-        binding.appBarCelestialBody.setExpanded(true)
 
-        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
-        scrollingToolbarParams.scrollFlags = 0
-        scrollingToolbarParams.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
-
-        if (celestialBody.images.size > 1) {
-            binding.tabLayoutCelestialBodyIndicator.root.visibility = View.GONE
-            binding.tvCelestialBodyCounter.visibility = View.GONE
-        }
-        binding.collapsingToolBar.isTitleEnabled = false
+        disableToolbarScrolling()
+        hideImageIndicators()
 
         imageFullscreen = true
     }
 
     private fun setPageViewerNormalSize() {
         binding.toolbar.title = celestialBody.englishName
+        binding.collapsingToolBar.isTitleEnabled = true
 
         binding.nestedScrollViewCelestialBody.visibility = View.VISIBLE
         binding.appBarCelestialBody.layoutParams.height = resources.getDimension(R.dimen.big_image_height).toInt()
 
-        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
-        scrollingToolbarParams.scrollFlags = 0
-        scrollingToolbarParams.scrollFlags =
-            AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL + AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
-
-        if (celestialBody.images.size > 1) {
-            binding.tabLayoutCelestialBodyIndicator.root.visibility = View.VISIBLE
-            binding.tvCelestialBodyCounter.visibility = View.VISIBLE
-        }
-
+        permitToolbarScrolling()
+        showImageIndicators()
         binding.tvCelestialBodyImageDescription.visibility = View.GONE
-        binding.collapsingToolBar.isTitleEnabled = true
 
         imageFullscreen = false
     }
@@ -177,7 +166,7 @@ class CelestialBodyFragment(
                 TabLayoutMediator(
                     tabLayoutCelestialBodyIndicator.root,
                     viewPagerCelestialBody
-                ) { tab, position ->
+                ) { _, _ ->
                 }.attach()
             } else {
                 tvCelestialBodyCounter.visibility = View.GONE
@@ -197,6 +186,31 @@ class CelestialBodyFragment(
                     super.onPageScrolled(position, positionOffset, positionOffsetPixels)
                 }
             })
+        }
+    }
+
+    private fun permitToolbarScrolling() {
+        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
+        scrollingToolbarParams.scrollFlags =
+            AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL + AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
+    }
+
+    private fun disableToolbarScrolling() {
+        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
+        scrollingToolbarParams.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
+    }
+
+    private fun showImageIndicators() {
+        if (celestialBody.images.size > 1) {
+            binding.tabLayoutCelestialBodyIndicator.root.visibility = View.VISIBLE
+            binding.tvCelestialBodyCounter.visibility = View.VISIBLE
+        }
+    }
+
+    private fun hideImageIndicators() {
+        if (celestialBody.images.size > 1) {
+            binding.tabLayoutCelestialBodyIndicator.root.visibility = View.GONE
+            binding.tvCelestialBodyCounter.visibility = View.GONE
         }
     }
 

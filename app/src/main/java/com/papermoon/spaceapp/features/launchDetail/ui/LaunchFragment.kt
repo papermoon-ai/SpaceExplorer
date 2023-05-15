@@ -31,6 +31,11 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLaunchDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
         setUiValues()
@@ -43,8 +48,6 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
                     onBackPressedCallback()
                 }
             })
-
-        return binding.root
     }
 
     private fun setupToolbar() {
@@ -151,15 +154,8 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         binding.appBarLaunch.layoutParams.height = ActionBar.LayoutParams.MATCH_PARENT
         binding.appBarLaunch.setExpanded(true)
 
-        val scrollingToolbarParams =
-            binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
-        scrollingToolbarParams.scrollFlags = 0
-        scrollingToolbarParams.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
-
-        if (launch.images.size > 1) {
-            binding.tabLayoutLaunchIndicator.root.visibility = View.GONE
-            binding.tvLaunchCounter.visibility = View.GONE
-        }
+        disableToolbarScrolling()
+        hideImageIndicators()
 
         binding.collapsingToolBar.isTitleEnabled = false
 
@@ -168,23 +164,41 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
 
     private fun setPageViewerNormalSize() {
         binding.toolbar.title = launch.name
+        binding.collapsingToolBar.isTitleEnabled = true
 
         binding.nestedScrollViewLaunch.visibility = View.VISIBLE
         binding.appBarLaunch.layoutParams.height =
             resources.getDimension(R.dimen.big_image_height).toInt()
 
-        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
-        scrollingToolbarParams.scrollFlags = 0
-        scrollingToolbarParams.scrollFlags =
-            AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL + AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
-
-        if (launch.images.size > 1) {
-            binding.tvLaunchCounter.visibility = View.VISIBLE
-            binding.tabLayoutLaunchIndicator.root.visibility = View.VISIBLE
-        }
+        permitToolbarScrolling()
+        showImageIndicators()
         binding.tvLaunchImageDescription.visibility = View.GONE
-        binding.collapsingToolBar.isTitleEnabled = true
 
         imageFullscreen = false
+    }
+
+    private fun permitToolbarScrolling() {
+        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
+        scrollingToolbarParams.scrollFlags =
+            AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL + AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
+    }
+
+    private fun disableToolbarScrolling() {
+        val scrollingToolbarParams = binding.collapsingToolBar.layoutParams as AppBarLayout.LayoutParams
+        scrollingToolbarParams.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
+    }
+
+    private fun showImageIndicators() {
+        if (launch.images.size > 1) {
+            binding.tabLayoutLaunchIndicator.root.visibility = View.VISIBLE
+            binding.tvLaunchCounter.visibility = View.VISIBLE
+        }
+    }
+
+    private fun hideImageIndicators() {
+        if (launch.images.size > 1) {
+            binding.tabLayoutLaunchIndicator.root.visibility = View.GONE
+            binding.tvLaunchCounter.visibility = View.GONE
+        }
     }
 }

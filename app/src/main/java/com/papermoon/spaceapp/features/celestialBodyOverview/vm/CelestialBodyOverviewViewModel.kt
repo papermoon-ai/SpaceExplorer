@@ -22,7 +22,7 @@ class CelestialBodyOverviewViewModel(
         get() = _planets
 
     private val _showUnableToUpdateMessage = MutableLiveData(false)
-    val showUnableToLoadRateMessage: LiveData<Boolean>
+    val showUnableToLoadBodiesMessage: LiveData<Boolean>
         get() = _showUnableToUpdateMessage
 
     private val _showShimmer = MutableLiveData(false)

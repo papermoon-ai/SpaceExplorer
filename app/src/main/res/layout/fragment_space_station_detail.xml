@@ -29,7 +29,7 @@
                 app:layout_collapseParallaxMultiplier="0.7" />
 
             <include
-                android:id="@+id/tabLayoutCelestialBodyIndicator"
+                android:id="@+id/tabLayoutSpaceStationIndicator"
                 layout="@layout/tab_layout" />
 
             <View

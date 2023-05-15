@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.MaterialColors
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
 
     private val router = SpaceApp.INSTANCE.router
     private val navigationHolder = SpaceApp.INSTANCE.navigationHolder
+
+    lateinit var bottomNavigation: BottomNavigationView
 
     private val navigator = object : AppNavigator(this, R.id.content_main) {
         override fun setupFragmentTransaction(
@@ -72,7 +75,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setBottomNavigation() {
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
+        bottomNavigation = binding.bottomNavigation
+
+        bottomNavigation.setOnItemSelectedListener { item ->
             val currentFragment = supportFragmentManager.fragments.last()
 
             when (item.itemId) {

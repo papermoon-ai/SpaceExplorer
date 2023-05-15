@@ -22,7 +22,7 @@ class EventOverviewViewModel(
         get() = _upcomingEvents
 
     private val _showUnableToUpdateMessage = MutableLiveData(false)
-    val showUnableToLoadRateMessage: LiveData<Boolean>
+    val showUnableToLoadEventsMessage: LiveData<Boolean>
         get() = _showUnableToUpdateMessage
 
     private val _showShimmer = MutableLiveData(false)
