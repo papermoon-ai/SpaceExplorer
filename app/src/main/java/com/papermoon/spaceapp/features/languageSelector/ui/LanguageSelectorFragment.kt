@@ -28,7 +28,6 @@ class LanguageSelectorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupToolbar()
-
         checkCurrentLanguageRadioButton()
 
         binding.radioGroupLanguages.setOnCheckedChangeListener { _, checkedId ->

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.MaterialColors
 import com.papermoon.spaceapp.R
 import com.papermoon.spaceapp.Screens
@@ -24,10 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding
         get() = _binding!!
 
-    private val router = SpaceApp.INSTANCE.router
     private val navigationHolder = SpaceApp.INSTANCE.navigationHolder
-
-    lateinit var bottomNavigation: BottomNavigationView
 
     private val navigator = object : AppNavigator(this, R.id.content_main) {
         override fun setupFragmentTransaction(
@@ -39,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             if (currentFragment == null) {
                 return
             }
-            // Bottom navigation transition animation disable
+            // Settings transition animation disable
             else if (nextFragment is SettingsFragment || nextFragment is HomeFragment) {
                 return
             } else {
@@ -61,8 +57,6 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        setBottomNavigation()
-
         window.statusBarColor = MaterialColors.getColor(
             this,
             com.google.android.material.R.attr.colorPrimary,
@@ -71,29 +65,6 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             SpaceApp.INSTANCE.router.replaceScreen(Screens.overviewScreen())
-        }
-    }
-
-    private fun setBottomNavigation() {
-        bottomNavigation = binding.bottomNavigation
-
-        bottomNavigation.setOnItemSelectedListener { item ->
-            val currentFragment = supportFragmentManager.fragments.last()
-
-            when (item.itemId) {
-                R.id.dataOption -> {
-                    if (currentFragment !is HomeFragment) {
-                        router.newRootScreen(Screens.overviewScreen())
-                    }
-                }
-                R.id.settingsOption -> {
-                    if (currentFragment !is SettingsFragment) {
-                        router.newRootScreen(Screens.settingsScreen())
-                    }
-                }
-                else -> return@setOnItemSelectedListener false
-            }
-            return@setOnItemSelectedListener true
         }
     }
 

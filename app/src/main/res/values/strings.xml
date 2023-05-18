@@ -134,4 +134,11 @@
     <!-- Error messages -->
     <string name="message_error_unable_to_update">Unable to update data. Check internet connection and try again.</string>
     <string name="button_try_again">Try again</string>
+
+    <!-- File size -->
+    <string name="bytes">Bytes</string>
+    <string name="kilobyte">KB</string>
+    <string name="megabyte">MB</string>
+    <string name="gigabyte">GB</string>
+    <string name="terabyte">TB</string>
 </resources>
