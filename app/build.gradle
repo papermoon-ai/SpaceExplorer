@@ -5,11 +5,15 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def apiPropertiesFile = rootProject.file("api.properties")
+def apiProperties = new Properties()
+apiProperties.load(new FileInputStream(apiPropertiesFile))
+
 android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.spaceapp"
+        applicationId "com.papermoon.spaceapp"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -21,8 +25,7 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            // Wifi: 10.25.44.47 Mobile: 192.168.72.32
-            buildConfigField "String", "API_URL", "\"http://10.25.44.47:8080/\""
+            buildConfigField "String", "API_URL", apiProperties["API_URL"]
             debuggable true
         }
         release {

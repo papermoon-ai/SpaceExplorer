@@ -128,4 +128,11 @@
     <!-- Error messages -->
     <string name="message_error_unable_to_update">Не удалось обновить данные. Проверьте подключение к интернету и попробуйте снова.</string>
     <string name="button_try_again">Попробовать снова</string>
+
+    <!-- File size -->
+    <string name="bytes">Байт</string>
+    <string name="kilobyte">KБ</string>
+    <string name="megabyte">MБ</string>
+    <string name="gigabyte">ГБ</string>
+    <string name="terabyte">ТБ</string>
 </resources>

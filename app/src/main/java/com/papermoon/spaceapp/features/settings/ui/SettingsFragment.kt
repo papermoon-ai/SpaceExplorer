@@ -11,9 +11,11 @@ import com.papermoon.spaceapp.Screens
 import com.papermoon.spaceapp.SpaceApp
 import com.papermoon.spaceapp.databinding.FragmentSettingsBinding
 import com.papermoon.spaceapp.features.MainActivity
-import com.papermoon.spaceapp.features.commons.stringFormat.readableFileSize
 import com.papermoon.spaceapp.features.settings.vm.SettingsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.DecimalFormat
+import kotlin.math.log10
+import kotlin.math.pow
 
 class SettingsFragment : Fragment() {
 
@@ -33,7 +35,18 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupToolbar()
         setupUi()
+    }
+
+    private fun setupToolbar() {
+        (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
+        (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.root.setNavigationOnClickListener {
+            SpaceApp.INSTANCE.router.exit()
+        }
     }
 
     private fun setupUi() {
@@ -73,5 +86,23 @@ class SettingsFragment : Fragment() {
 
         settingsViewModel.updateStorageUsage(requireContext())
         settingsViewModel.updateTrafficUsage(android.os.Process.myUid())
+    }
+
+    private fun readableFileSize(size: Long): String {
+        val units = arrayOf(
+            getString(R.string.bytes),
+            getString(R.string.kilobyte),
+            getString(R.string.megabyte),
+            getString(R.string.gigabyte),
+            getString(R.string.terabyte)
+        )
+        if (size <= 0) {
+            return "0 ${units[0]}"
+        }
+        val digitGroups = (log10(size.toDouble()) / log10(1024.0)).toInt()
+
+        return DecimalFormat("#,##0.#").format(
+            size / 1024.0.pow(digitGroups.toDouble())
+        ) + " " + units[digitGroups]
     }
 }
