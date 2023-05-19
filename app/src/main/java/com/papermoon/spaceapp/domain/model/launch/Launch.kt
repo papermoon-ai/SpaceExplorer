@@ -4,6 +4,7 @@ import com.papermoon.spaceapp.data.datasource.local.launch.model.LocalLaunch
 import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 import com.papermoon.spaceapp.domain.model.commons.toLocalObject
 import org.joda.time.DateTime
+import java.io.Serializable
 
 data class Launch(
     val name: String,
@@ -12,7 +13,7 @@ data class Launch(
     val images: List<ImageWithDescription>,
     val pad: Pad,
     val mission: Mission?
-)
+) : Serializable
 
 fun Launch.toLocalObject(): LocalLaunch {
     return LocalLaunch(

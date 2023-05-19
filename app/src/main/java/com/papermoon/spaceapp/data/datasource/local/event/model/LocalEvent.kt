@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.local.event.model
 
-import androidx.core.net.toUri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.papermoon.spaceapp.data.datasource.local.common.model.LocalImageWithDescription
@@ -30,8 +29,8 @@ fun LocalEvent.toDomainObject(): Event {
         DateTime(date),
         type,
         images.map { it.toDomainObject() },
-        videoUrl?.toUri(),
-        newsUrl?.toUri()
+        videoUrl,
+        newsUrl
     )
 }
 

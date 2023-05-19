@@ -1,10 +1,10 @@
 package com.papermoon.spaceapp.domain.model.astronaut
 
-import android.net.Uri
 import com.papermoon.spaceapp.data.datasource.local.astronaut.model.LocalAstronaut
 import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 import com.papermoon.spaceapp.domain.model.commons.toLocalObject
 import org.joda.time.DateTime
+import java.io.Serializable
 
 data class Astronaut(
     val name: String,
@@ -13,10 +13,10 @@ data class Astronaut(
     val images: List<ImageWithDescription>,
     val bio: String,
     val country: String,
-    val wikiUrl: Uri?,
+    val wikiUrl: String?,
     val firstFlight: DateTime,
     val lastFlight: DateTime
-)
+) : Serializable
 
 fun Astronaut.toLocalObject(): LocalAstronaut {
     return LocalAstronaut(
@@ -26,7 +26,7 @@ fun Astronaut.toLocalObject(): LocalAstronaut {
         images.map { it.toLocalObject() },
         bio,
         country,
-        wikiUrl.toString(),
+        wikiUrl,
         firstFlight.toDate(),
         lastFlight.toDate()
     )

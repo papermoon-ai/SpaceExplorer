@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
@@ -17,11 +18,15 @@ import com.papermoon.spaceapp.databinding.FragmentLaunchDetailBinding
 import com.papermoon.spaceapp.domain.model.launch.Launch
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
+import com.papermoon.spaceapp.features.commons.bundle.serializable
 
-class LaunchFragment(private val launch: Launch) : Fragment() {
+class LaunchFragment: Fragment() {
     private var _binding: FragmentLaunchDetailBinding? = null
     private val binding: FragmentLaunchDetailBinding
         get() = _binding!!
+
+    private val launch: Launch
+        get() = arguments!!.serializable(LAUNCH_DATA)!!
 
     private var imageFullscreen = false
 
@@ -114,7 +119,7 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
 
             if (launch.pad.wikiUrl.toString().isNotEmpty()) {
                 btnLaunchOpenWeb.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW, launch.pad.wikiUrl)
+                    val intent = Intent(Intent.ACTION_VIEW, launch.pad.wikiUrl?.toUri())
                     startActivity(intent)
                 }
             } else {
@@ -123,7 +128,7 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
 
             if (launch.pad.mapUrl.toString().isNotEmpty()) {
                 btnLaunchOpenMap.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW, launch.pad.mapUrl)
+                    val intent = Intent(Intent.ACTION_VIEW, launch.pad.mapUrl?.toUri())
                     startActivity(intent)
                 }
             } else {
@@ -199,6 +204,17 @@ class LaunchFragment(private val launch: Launch) : Fragment() {
         if (launch.images.size > 1) {
             binding.tabLayoutLaunchIndicator.root.visibility = View.GONE
             binding.tvLaunchCounter.visibility = View.GONE
+        }
+    }
+
+    companion object {
+        private const val LAUNCH_DATA = "LaunchData"
+        fun getNewInstance(launch: Launch): LaunchFragment {
+            return LaunchFragment().apply {
+                arguments = Bundle().apply {
+                    putSerializable(LAUNCH_DATA, launch)
+                }
+            }
         }
     }
 }

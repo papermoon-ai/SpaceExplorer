@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.local.spacestation.model
 
-import androidx.core.net.toUri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -32,7 +31,7 @@ fun LocalSpaceStation.toDomainObject(): SpaceStation {
         images.map { it.toDomainObject() },
         isActive,
         owners,
-        wikiUrl?.toUri()
+        wikiUrl
     )
 }
 

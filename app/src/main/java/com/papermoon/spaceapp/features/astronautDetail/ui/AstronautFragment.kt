@@ -1,12 +1,13 @@
 package com.papermoon.spaceapp.features.astronautDetail.ui
 
-import android.app.ActionBar
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import androidx.activity.OnBackPressedCallback
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
@@ -17,14 +18,16 @@ import com.papermoon.spaceapp.databinding.FragmentAstronautDetailBinding
 import com.papermoon.spaceapp.domain.model.astronaut.Astronaut
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
+import com.papermoon.spaceapp.features.commons.bundle.serializable
 
-class AstronautFragment(
-    private val astronaut: Astronaut
-) : Fragment() {
+class AstronautFragment : Fragment() {
 
     private var _binding: FragmentAstronautDetailBinding? = null
     private val binding: FragmentAstronautDetailBinding
         get() = _binding!!
+
+    private val astronaut: Astronaut
+        get() = arguments!!.serializable(ASTRONAUT_DATA)!!
 
     private var imageFullscreen = false
 
@@ -107,7 +110,7 @@ class AstronautFragment(
             )
 
             btnAstronautOpenWeb.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, astronaut.wikiUrl)
+                val intent = Intent(Intent.ACTION_VIEW, astronaut.wikiUrl?.toUri())
                 startActivity(intent)
             }
 
@@ -142,7 +145,7 @@ class AstronautFragment(
         binding.collapsingToolBar.isTitleEnabled = false
 
         binding.nestedScrollViewAstronaut.visibility = View.GONE
-        binding.appBarAstronaut.layoutParams.height = ActionBar.LayoutParams.MATCH_PARENT
+        binding.appBarAstronaut.layoutParams.height = LayoutParams.MATCH_PARENT
 
         disableToolbarScrolling()
         hideImageIndicators()
@@ -186,6 +189,17 @@ class AstronautFragment(
         if (astronaut.images.size > 1) {
             binding.tabLayoutAstronautIndicator.root.visibility = View.GONE
             binding.tvAstronautCounter.visibility = View.GONE
+        }
+    }
+
+    companion object {
+        private const val ASTRONAUT_DATA = "AstronautData"
+        fun getNewInstance(astronaut: Astronaut): AstronautFragment {
+            return AstronautFragment().apply {
+                arguments = Bundle().apply {
+                    putSerializable(ASTRONAUT_DATA, astronaut)
+                }
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.appbar.AppBarLayout
@@ -18,15 +19,17 @@ import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
 import com.papermoon.spaceapp.domain.model.celestialbody.Period
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
+import com.papermoon.spaceapp.features.commons.bundle.serializable
 import java.text.DecimalFormat
 
-class CelestialBodyFragment(
-    private val celestialBody: CelestialBody
-) : Fragment() {
+class CelestialBodyFragment : Fragment() {
 
     private var _binding: FragmentCelestialBodyDetailBinding? = null
     private val binding: FragmentCelestialBodyDetailBinding
         get() = _binding!!
+
+    private val celestialBody: CelestialBody
+        get() = arguments!!.serializable(CELESTIAL_BODY_DATA)!!
 
     private var imageFullscreen = false
 
@@ -130,18 +133,18 @@ class CelestialBodyFragment(
 
             tvCelestialBodySatellites.text = celestialBody.satelliteCount.toString()
             tvCelestialBodyArea.text = getString(
-                    R.string.description_area,
-                    formatter.format(celestialBody.characteristics.area)
-                )
+                R.string.description_area,
+                formatter.format(celestialBody.characteristics.area)
+            )
             tvCelestialBodyTemperature.text = getString(
                 R.string.description_temperatures,
                 getTemperatureString(celestialBody.characteristics.minTemperature),
                 getTemperatureString(celestialBody.characteristics.maxTemperature)
             )
             tvCelestialBodyOrbitalSpeed.text = getString(
-                    R.string.description_orbital_speed,
-                    formatter.format(celestialBody.characteristics.avgOrbitalSpeed)
-                )
+                R.string.description_orbital_speed,
+                formatter.format(celestialBody.characteristics.avgOrbitalSpeed)
+            )
             tvCelestialBodyRotationAxis.text = getPeriodString(celestialBody.characteristics.rotationAroundAxis)
             tvCelestialBodyRotationSun.text = getPeriodString(celestialBody.characteristics.rotationAroundSun)
             tvCelestialBodyGravity.text = getString(
@@ -158,7 +161,7 @@ class CelestialBodyFragment(
             )
 
             btnCelestialBodyOpenWeb.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, celestialBody.wikiUrl)
+                val intent = Intent(Intent.ACTION_VIEW, celestialBody.wikiUrl.toUri())
                 startActivity(intent)
             }
 
@@ -173,7 +176,7 @@ class CelestialBodyFragment(
             }
 
             toolbar.title = celestialBody.englishName
-            viewPagerCelestialBody.registerOnPageChangeCallback(object: OnPageChangeCallback() {
+            viewPagerCelestialBody.registerOnPageChangeCallback(object : OnPageChangeCallback() {
                 override fun onPageScrolled(
                     position: Int,
                     positionOffset: Float,
@@ -273,5 +276,16 @@ class CelestialBodyFragment(
             )
         }
         return stringBuilder.toString()
+    }
+
+    companion object {
+        private const val CELESTIAL_BODY_DATA = "CelestialBodyData"
+        fun getNewInstance(celestialBody: CelestialBody): CelestialBodyFragment {
+            return CelestialBodyFragment().apply {
+                arguments = Bundle().apply {
+                    putSerializable(CELESTIAL_BODY_DATA, celestialBody)
+                }
+            }
+        }
     }
 }

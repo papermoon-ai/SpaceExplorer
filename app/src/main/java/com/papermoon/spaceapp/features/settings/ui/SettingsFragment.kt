@@ -44,13 +44,13 @@ class SettingsFragment : Fragment() {
         (activity as MainActivity).setSupportActionBar(binding.toolbar.root)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
+        (activity as MainActivity).title = getString(R.string.settings)
         binding.toolbar.root.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
         }
     }
 
     private fun setupUi() {
-        binding.toolbar.root.title = getString(R.string.settings)
         binding.currentLanguage.text = getString(R.string.current_language)
 
         val darkModeSwitcher = binding.switchDarkMode

@@ -1,9 +1,9 @@
 package com.papermoon.spaceapp.domain.model.celestialbody
 
-import android.net.Uri
 import com.papermoon.spaceapp.data.datasource.local.celestialBody.model.LocalCelestialBody
 import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 import com.papermoon.spaceapp.domain.model.commons.toLocalObject
+import java.io.Serializable
 
 data class CelestialBody(
     val name: String,
@@ -13,10 +13,10 @@ data class CelestialBody(
     val satelliteCount: Int,
     val description: String,
     val shortDescription: String,
-    val wikiUrl: Uri,
+    val wikiUrl: String,
     val images: List<ImageWithDescription>,
     val characteristics: PhysicCharacteristics
-)
+) : Serializable
 
 fun CelestialBody.toLocalObject(): LocalCelestialBody {
     return LocalCelestialBody(
@@ -27,7 +27,7 @@ fun CelestialBody.toLocalObject(): LocalCelestialBody {
         satelliteCount,
         description,
         shortDescription,
-        wikiUrl.toString(),
+        wikiUrl,
         images.map { it.toLocalObject() },
         characteristics.toLocalObject()
     )

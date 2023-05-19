@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.remote.event.model
 
-import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
 import com.papermoon.spaceapp.data.datasource.remote.commons.model.NetworkImageWithDescription
 import com.papermoon.spaceapp.data.datasource.remote.commons.model.toDomainObject
@@ -29,8 +28,8 @@ fun NetworkEvent.toDomainObject(): Event {
         DateTime(date),
         type,
         images.map { it.toDomainObject() },
-        videoUrl?.toUri(),
-        newsUrl?.toUri()
+        videoUrl,
+        newsUrl
     )
 }
 

@@ -23,18 +23,18 @@ import com.papermoon.spaceapp.features.spaceStationOverview.ui.SpaceStationOverv
 object Screens {
     fun overviewScreen() = FragmentScreen { HomeFragment() }
     fun launchOverviewScreen() = FragmentScreen { LaunchOverviewFragment() }
-    fun launchScreen(launch: Launch) = FragmentScreen { LaunchFragment(launch) }
+    fun launchScreen(launch: Launch) = FragmentScreen { LaunchFragment.getNewInstance(launch) }
     fun astronautOverviewScreen() = FragmentScreen { AstronautOverviewFragment() }
-    fun astronautScreen(astronaut: Astronaut) = FragmentScreen { AstronautFragment(astronaut) }
+    fun astronautScreen(astronaut: Astronaut) = FragmentScreen { AstronautFragment.getNewInstance(astronaut) }
     fun spaceStationOverviewScreen() = FragmentScreen { SpaceStationOverviewFragment() }
     fun spaceStationScreen(spaceStation: SpaceStation) =
-        FragmentScreen { SpaceStationFragment(spaceStation) }
+        FragmentScreen { SpaceStationFragment.getNewInstance(spaceStation) }
     fun celestialBodyOverviewScreen() = FragmentScreen { CelestialBodyOverviewFragment() }
     fun celestialBodyScreen(celestialBody: CelestialBody) =
-        FragmentScreen { CelestialBodyFragment(celestialBody) }
+        FragmentScreen { CelestialBodyFragment.getNewInstance(celestialBody) }
     fun eventOverviewScreen() = FragmentScreen { EventOverviewFragment() }
     fun eventScreen(event: Event) =
-        FragmentScreen { EventFragment(event) }
+        FragmentScreen { EventFragment.getNewInstance(event) }
     fun settingsScreen() = FragmentScreen { SettingsFragment() }
     fun languageSelectorScreen() = FragmentScreen { LanguageSelectorFragment() }
 }

@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.remote.astronaut.model
 
-import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
 import com.papermoon.spaceapp.data.datasource.remote.commons.model.NetworkImageWithDescription
 import com.papermoon.spaceapp.data.datasource.remote.commons.model.toDomainObject
@@ -33,7 +32,7 @@ fun NetworkAstronaut.toDomainObject(): Astronaut {
         images.map { it.toDomainObject() },
         bio,
         country,
-        wikiUrl?.toUri(),
+        wikiUrl,
         DateTime(firstFlight),
         DateTime(lastFlight)
     )

@@ -6,6 +6,6 @@
         android:id="@+id/settingsOption"
         android:icon="@drawable/ic_settings"
         android:title="@string/title_settings"
-        app:iconTint="?colorOnSurface"
+        app:iconTint="@android:color/white"
         app:showAsAction="always" />
 </menu>
