@@ -58,14 +58,14 @@ class LanguageSelectorFragment : Fragment() {
         (activity as MainActivity).setSupportActionBar(toolbar)
         (activity as MainActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        toolbar.title = getString(R.string.settings)
+        (activity as MainActivity).title = getString(R.string.language)
         toolbar.setNavigationOnClickListener {
             SpaceApp.INSTANCE.router.exit()
         }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
-        binding.toolbar.root.title = getString(R.string.language)
+        (activity as MainActivity).title = getString(R.string.language)
         super.onConfigurationChanged(newConfig)
     }
 }

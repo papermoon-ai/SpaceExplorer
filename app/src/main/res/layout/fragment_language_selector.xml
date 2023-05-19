@@ -33,27 +33,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/russian"
                 android:textAppearance="@style/AppTheme.Text.Description.H3" />
-
-            <RadioButton
-                style="@style/RadioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Deutsche"
-                android:textAppearance="@style/AppTheme.Text.Description.H3" />
-
-            <RadioButton
-                style="@style/RadioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Français"
-                android:textAppearance="@style/AppTheme.Text.Description.H3" />
-
-            <RadioButton
-                style="@style/RadioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Español"
-                android:textAppearance="@style/AppTheme.Text.Description.H3" />
         </RadioGroup>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

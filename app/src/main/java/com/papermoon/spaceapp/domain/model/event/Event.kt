@@ -1,10 +1,10 @@
 package com.papermoon.spaceapp.domain.model.event
 
-import android.net.Uri
 import com.papermoon.spaceapp.data.datasource.local.event.model.LocalEvent
 import com.papermoon.spaceapp.domain.model.commons.ImageWithDescription
 import com.papermoon.spaceapp.domain.model.commons.toLocalObject
 import org.joda.time.DateTime
+import java.io.Serializable
 
 data class Event(
     val name: String,
@@ -13,9 +13,9 @@ data class Event(
     val date: DateTime,
     val type: String,
     val images: List<ImageWithDescription>,
-    val videoUrl: Uri?,
-    val newsUrl: Uri?,
-)
+    val videoUrl: String?,
+    val newsUrl: String?,
+) : Serializable
 
 fun Event.toLocalObject(): LocalEvent {
     return LocalEvent(
@@ -25,8 +25,8 @@ fun Event.toLocalObject(): LocalEvent {
         date.toDate(),
         type,
         images.map { it.toLocalObject() },
-        videoUrl.toString(),
-        newsUrl.toString()
+        videoUrl,
+        newsUrl
     )
 }
 

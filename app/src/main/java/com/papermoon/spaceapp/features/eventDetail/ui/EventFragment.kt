@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
@@ -17,14 +18,16 @@ import com.papermoon.spaceapp.databinding.FragmentEventDetailBinding
 import com.papermoon.spaceapp.domain.model.event.Event
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
+import com.papermoon.spaceapp.features.commons.bundle.serializable
 
-class EventFragment(
-    private val event: Event
-) : Fragment() {
+class EventFragment : Fragment() {
 
     private var _binding: FragmentEventDetailBinding? = null
     private val binding: FragmentEventDetailBinding
         get() = _binding!!
+
+    private val event: Event
+        get() = arguments!!.serializable(EVENT_DATA)!!
 
     private var imageFullscreen = false
 
@@ -101,7 +104,7 @@ class EventFragment(
 
         if (event.newsUrl != null) {
             binding.btnEventNews.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, event.newsUrl)
+                val intent = Intent(Intent.ACTION_VIEW, event.newsUrl?.toUri())
                 startActivity(intent)
             }
         }
@@ -116,7 +119,8 @@ class EventFragment(
             binding.tvEventCounter.visibility = View.GONE
         }
 
-        binding.viewPagerEvent.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+        binding.viewPagerEvent.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -187,5 +191,16 @@ class EventFragment(
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val EVENT_DATA = "EventData"
+        fun getNewInstance(event: Event): EventFragment {
+            return EventFragment().apply {
+                arguments = Bundle().apply {
+                    putSerializable(EVENT_DATA, event)
+                }
+            }
+        }
     }
 }

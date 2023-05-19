@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.remote.launch.model
 
-import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
 import com.papermoon.spaceapp.domain.model.launch.Pad
 
@@ -14,5 +13,5 @@ data class NetworkPad(
 )
 
 fun NetworkPad.toDomainObject(): Pad {
-    return Pad(name, location, mapUrl?.toUri(), wikiUrl?.toUri())
+    return Pad(name, location, mapUrl, wikiUrl)
 }

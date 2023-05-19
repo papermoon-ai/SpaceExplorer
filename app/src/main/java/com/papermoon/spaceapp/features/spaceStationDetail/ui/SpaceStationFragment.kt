@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
@@ -16,14 +17,16 @@ import com.papermoon.spaceapp.databinding.FragmentSpaceStationDetailBinding
 import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
 import com.papermoon.spaceapp.features.MainActivity
 import com.papermoon.spaceapp.features.commons.adapter.BaseViewPagerImageAdapter
+import com.papermoon.spaceapp.features.commons.bundle.serializable
 
-class SpaceStationFragment(
-    private val spaceStation: SpaceStation
-) : Fragment() {
+class SpaceStationFragment : Fragment() {
 
     private var _binding: FragmentSpaceStationDetailBinding? = null
     private val binding: FragmentSpaceStationDetailBinding
         get() = _binding!!
+
+    private val spaceStation: SpaceStation
+        get() = arguments!!.serializable(STATION_DATA)!!
 
     private var imageFullscreen = false
 
@@ -126,7 +129,7 @@ class SpaceStationFragment(
             toolbar.title = spaceStation.name
             if (spaceStation.wikiUrl != null) {
                 btnStationOpenInWeb.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW, spaceStation.wikiUrl)
+                    val intent = Intent(Intent.ACTION_VIEW, spaceStation.wikiUrl?.toUri())
                     startActivity(intent)
                 }
             } else {
@@ -186,6 +189,17 @@ class SpaceStationFragment(
         if (spaceStation.images.size > 1) {
             binding.tabLayoutSpaceStationIndicator.root.visibility = View.GONE
             binding.tvSpaceStationCounter.visibility = View.GONE
+        }
+    }
+
+    companion object {
+        private const val STATION_DATA = "SpaceStationData"
+        fun getNewInstance(spaceStation: SpaceStation): SpaceStationFragment {
+            return SpaceStationFragment().apply {
+                arguments = Bundle().apply {
+                    putSerializable(STATION_DATA, spaceStation)
+                }
+            }
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.remote.celestialBody.model
 
-import androidx.core.net.toUri
 import com.papermoon.spaceapp.data.datasource.remote.commons.model.NetworkImageWithDescription
 import com.papermoon.spaceapp.data.datasource.remote.commons.model.toDomainObject
 import com.papermoon.spaceapp.domain.model.celestialbody.CelestialBody
@@ -27,7 +26,7 @@ fun NetworkCelestialBody.toDomainObject(): CelestialBody {
         satelliteCount,
         description,
         shortDescription,
-        wikiUrl.toUri(),
+        wikiUrl,
         images.map { it.toDomainObject() },
         characteristics.toDomainObject()
     )

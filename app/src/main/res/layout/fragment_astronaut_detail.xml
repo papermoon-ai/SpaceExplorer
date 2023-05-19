@@ -18,7 +18,7 @@
             android:theme="@style/CollapsingToolbarStyle"
             app:collapsedTitleTextColor="@android:color/white"
             app:expandedTitleTextColor="@android:color/white"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerAstronaut"

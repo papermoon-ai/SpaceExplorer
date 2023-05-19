@@ -1,6 +1,7 @@
 package com.papermoon.spaceapp.domain.model.celestialbody
 
 import com.papermoon.spaceapp.data.datasource.local.celestialBody.model.LocalPhysicCharacteristics
+import java.io.Serializable
 
 data class PhysicCharacteristics(
     val gravity: Double,
@@ -11,7 +12,7 @@ data class PhysicCharacteristics(
     val area: Double,
     val rotationAroundAxis: Period,
     val rotationAroundSun: Period
-)
+) : Serializable
 
 fun PhysicCharacteristics.toLocalObject(): LocalPhysicCharacteristics {
     return LocalPhysicCharacteristics(

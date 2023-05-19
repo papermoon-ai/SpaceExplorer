@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.local.celestialBody.model
 
-import androidx.core.net.toUri
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -41,7 +40,7 @@ fun LocalCelestialBody.toDomainObject(): CelestialBody {
         satelliteCount,
         description,
         shortDescription,
-        wikiUrl.toUri(),
+        wikiUrl,
         images.map { it.toDomainObject() },
         characteristics.toDomainObject()
     )

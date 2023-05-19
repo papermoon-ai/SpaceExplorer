@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.local.astronaut.model
 
-import androidx.core.net.toUri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -34,7 +33,7 @@ fun LocalAstronaut.toDomainObject(): Astronaut {
         images.map { it.toDomainObject() },
         bio,
         country,
-        wikiUrl?.toUri(),
+        wikiUrl,
         DateTime(firstFlight),
         DateTime(lastFlight)
     )

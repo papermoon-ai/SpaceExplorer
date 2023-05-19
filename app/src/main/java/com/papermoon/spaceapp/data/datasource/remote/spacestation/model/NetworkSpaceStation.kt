@@ -1,6 +1,5 @@
 package com.papermoon.spaceapp.data.datasource.remote.spacestation.model
 
-import androidx.core.net.toUri
 import com.papermoon.spaceapp.data.datasource.remote.commons.model.NetworkImageWithDescription
 import com.papermoon.spaceapp.data.datasource.remote.commons.model.toDomainObject
 import com.papermoon.spaceapp.domain.model.spacestation.SpaceStation
@@ -25,7 +24,7 @@ fun NetworkSpaceStation.toDomainObject(): SpaceStation {
         images.map { it.toDomainObject() },
         isActive,
         owners.map { it.name },
-        wikiUrl?.toUri()
+        wikiUrl
     )
 }
 
