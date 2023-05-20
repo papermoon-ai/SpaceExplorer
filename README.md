@@ -20,6 +20,7 @@ Additionally functionality:
 ## Used techologies and architecture 
 - MVVM
 - Coroutines
+- Viewbinding 
 - Koin
 - Cicerone 
 - Retrofit
