@@ -109,7 +109,6 @@
 
     <!-- Collapsing toolbar -->
     <style name="CollapsingToolbarStyle" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:fitsSystemWindows">true</item>
         <item name="contentScrim">?colorPrimary</item>
         <item name="colorControlNormal">@android:color/white</item>
     </style>

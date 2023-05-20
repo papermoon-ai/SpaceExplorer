@@ -30,6 +30,7 @@ android {
         }
         release {
             minifyEnabled false
+            buildConfigField "String", "API_URL", apiProperties["API_URL"]
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
