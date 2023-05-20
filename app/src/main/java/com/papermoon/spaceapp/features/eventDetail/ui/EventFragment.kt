@@ -107,6 +107,8 @@ class EventFragment : Fragment() {
                 val intent = Intent(Intent.ACTION_VIEW, event.newsUrl?.toUri())
                 startActivity(intent)
             }
+        } else {
+            binding.btnEventNews.visibility = View.GONE
         }
 
         if (event.images.size > 1) {
