@@ -20,10 +20,11 @@ Additionally functionality:
 ## Used techologies and architecture 
 - MVVM
 - Coroutines
-- Retrofit
-- Room
 - Koin
 - Cicerone 
+- Retrofit
+- Room
+- Gson
 - Picasso 
 
 ## License 
