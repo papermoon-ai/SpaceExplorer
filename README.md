@@ -3,7 +3,7 @@ Space Explorer is an android application designed to collect and display data re
 
 ## Features
 This android app lets you view space data: 
-- Who is in space write now
+- Who is in space right now
 - What rockets are about to launch 
 - Active and inactive spacestations 
 - Planets info 
